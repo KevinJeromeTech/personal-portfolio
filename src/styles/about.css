@@ -1,0 +1,35 @@
+.about-page h1,
+.about-page h2,
+.about-page h3 {
+  text-align: center;
+  color: #ffffff;
+}
+
+.about-page h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.about-page h2 {
+  margin-bottom: 1rem;
+}
+
+.about-page p {
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.resume-section {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.resume-section p {
+  max-width: 800px;
+  margin: 0 auto 1.5rem;
+}
+
+.highlights-grid,
+.core-values {
+  margin-top: 2rem;
+}

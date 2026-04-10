@@ -1,0 +1,28 @@
+.site-footer {
+  background: rgba(15, 17, 25, 0.95);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  margin-top: 2rem;
+}
+
+.footer-content {
+  padding: 2rem 0;
+  text-align: center;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.social-links a {
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 700;
+  transition: color 0.25s ease;
+}
+
+.social-links a:hover {
+  color: #ffffff;
+}

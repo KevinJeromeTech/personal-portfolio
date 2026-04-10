@@ -1,0 +1,134 @@
+.skills-page h1,
+.technical-skills h2,
+.soft-skills h2,
+.skill-item h2,
+.info-card h3 {
+  color: var(--burgundy);
+  text-align: center;
+}
+
+.skills-page h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.skill-item {
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--dark);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: left;
+}
+
+.skill-item h2,
+.skill-item p {
+  text-align: left;
+}
+
+.skill-item h2 {
+  color: #ffffff;
+  margin: 0 0 0.8rem;
+}
+
+.skill-item p {
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+  line-height: 1.7;
+}
+
+.skill-item {
+  background: linear-gradient(180deg, rgba(26, 26, 34, 0.96), rgba(18, 18, 26, 0.96));
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.skill-item:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.22);
+}
+
+.skill-icon-wrap {
+  width: 58px;
+  height: 58px;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--burgundy), #c2184c);
+  box-shadow: 0 12px 28px rgba(128, 0, 32, 0.24);
+  margin-bottom: 1rem;
+}
+
+.skill-icon {
+  font-size: 1.6rem;
+  color: white;
+}
+
+.technical-skills,
+.soft-skills {
+  margin-top: 2rem;
+}
+
+.tech-card,
+.soft-card {
+  background: linear-gradient(180deg, rgba(24, 24, 32, 0.96), rgba(18, 18, 26, 0.96));
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.tech-heading {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.tech-heading h3 {
+  margin: 0;
+  text-align: left;
+  color: #ffffff;
+}
+
+.tech-heading-icon {
+  font-size: 1.35rem;
+  color: #ff4d79;
+  flex-shrink: 0;
+}
+
+.icon-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.icon-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  color: rgba(255, 255, 255, 0.9);
+  padding: 0.5rem 0;
+  line-height: 1.5;
+}
+
+.list-icon {
+  color: #ff4d79;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.soft-card p {
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.7;
+  margin-top: 0.5rem;
+}
+
+body.dark-mode .skill-item,
+body.dark-mode .tech-card,
+body.dark-mode .soft-card {
+  background: linear-gradient(180deg, rgba(18, 18, 26, 0.96), rgba(13, 13, 20, 0.96));
+}
+
+@media (max-width: 900px) {
+  .skill-item h2,
+  .skill-item p,
+  .tech-heading h3 {
+    text-align: left;
+  }
+}
