@@ -8,7 +8,7 @@ const projects = [
       "ExpenseIQ is a full-stack expense intelligence dashboard built to help users track spending, review transactions, and understand financial behavior through a cleaner, more professional analytics experience.",
     image: "/Images/ExpenseIQ.png",
     github: "https://github.com/SpikeTek241/ExpenseIQ",
-    demo: "https://expense-8dxuwkq6u-spiketek241s-projects.vercel.app/",
+    demo: "https://expense-iq-lilac.vercel.app/",
     featured: true,
     stack: ["React", "TypeScript", "Node.js"],
     highlights: [
@@ -30,6 +30,7 @@ const projects = [
     featured: true,
     stack: ["HTML", "CSS", "JavaScript"],
     highlights: [
+
       "Designed a visually engaging layout around a strong educational mission.",
       "Built responsive sections for content presentation and navigation.",
       "Focused on branding, structure, and real user-facing communication.",
@@ -61,8 +62,8 @@ const projects = [
     longDescription:
       "This portfolio is a redesigned personal site built to present my work, technical growth, design instincts, and professional direction more clearly to recruiters, engineers, and collaborators.",
     image: "/Images/nportfolio.png",
-    github: "https://github.com/SpikeTek241/Portfolio",
-    demo: "",
+    github: "https://github.com/SpikeTek241/personal-portfolio",
+    demo: "https://personal-portfolio-liard-xi-32.vercel.app/",
     featured: true,
     stack: ["React", "CSS", "Vite"],
     highlights: [
