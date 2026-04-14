@@ -17,7 +17,7 @@
   --radius-sm: 16px;
   --radius-md: 22px;
   --radius-lg: 28px;
-  --max-width: 1360px;
+  --max-width: 1100px;
 }
 
 * {
@@ -134,7 +134,7 @@ a {
 }
 
 .three-column-grid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 }
 
 .preview-grid {

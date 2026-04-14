@@ -4,7 +4,6 @@ import {
   FaPalette,
   FaCode,
   FaServer,
-  FaBullseye,
   FaPuzzlePiece,
   FaBookOpen,
   FaHtml5,
@@ -20,14 +19,16 @@ import {
   FaDocker,
   FaFigma,
 } from "react-icons/fa";
-import { SiExpress, SiTailwindcss, SiVite, SiPostman } from "react-icons/si";
+import { SiExpress, SiTailwindcss, SiVite, SiPostman, SiTypescript } from "react-icons/si";
 import { HiOutlineSpeakerphone } from "react-icons/hi";
 import { MdGroups2, MdOutlineAutoGraph } from "react-icons/md";
+import "../styles/skills.css";
 
 export default function Skills() {
   return (
     <>
       <Navbar />
+
       <main className="container page-shell">
         <section className="skills-page section-card">
           <h1>My Skills</h1>
@@ -114,44 +115,118 @@ export default function Skills() {
             <div className="info-card tech-card">
               <div className="tech-heading">
                 <FaCode className="tech-heading-icon" />
-                <h3>Languages</h3>
+                <h3>Programming Languages</h3>
               </div>
+
               <ul className="icon-list">
-                <li><FaHtml5 className="list-icon" /> HTML & CSS</li>
-                <li><FaJsSquare className="list-icon" /> JavaScript</li>
-                <li><FaPython className="list-icon" /> Python</li>
-                <li><FaDatabase className="list-icon" /> SQL</li>
-                <li><FaCuttlefish className="list-icon" /> C</li>
-                <li><FaJava className="list-icon" /> Java</li>
+                <li>
+                  <FaHtml5 className="list-icon" />
+                  HTML &amp; CSS
+                </li>
+                <li>
+                  <FaJsSquare className="list-icon" />
+                  JavaScript
+                </li>
+                <li>
+                  <SiTypescript className="list-icon" />
+                  TypeScript
+                </li>
+                <li>
+                  <FaPython className="list-icon" />
+                  Python
+                </li>
+                <li>
+                  <FaDatabase className="list-icon" />
+                  SQL
+                </li>
+                <li>
+                  <FaCuttlefish className="list-icon" />
+                  C
+                </li>
+                <li>
+                  <FaJava className="list-icon" />
+                  Java
+                </li>
               </ul>
             </div>
 
             <div className="info-card tech-card">
               <div className="tech-heading">
                 <FaReact className="tech-heading-icon" />
-                <h3>Frameworks & Libraries</h3>
+                <h3>Frameworks &amp; Libraries</h3>
               </div>
+
               <ul className="icon-list">
-                <li><FaReact className="list-icon" /> React.js</li>
-                <li><FaNodeJs className="list-icon" /> Node.js</li>
-                <li><SiExpress className="list-icon" /> Express.js</li>
-                <li><SiTailwindcss className="list-icon" /> Tailwind CSS</li>
-                <li><FaBootstrap className="list-icon" /> Bootstrap</li>
+                <li>
+                  <FaReact className="list-icon" />
+                  React.js
+                </li>
+                <li>
+                  <FaNodeJs className="list-icon" />
+                  Node.js
+                </li>
+                <li>
+                  <SiExpress className="list-icon" />
+                  Express.js
+                </li>
+                <li>
+                  <SiTailwindcss className="list-icon" />
+                  Tailwind CSS
+                </li>
+                <li>
+                  <FaBootstrap className="list-icon" />
+                  Bootstrap
+                </li>
               </ul>
             </div>
 
             <div className="info-card tech-card">
               <div className="tech-heading">
                 <MdOutlineAutoGraph className="tech-heading-icon" />
-                <h3>Tools & Platforms</h3>
+                <h3>Tools &amp; Platforms</h3>
               </div>
+
               <ul className="icon-list">
-                <li><FaGitAlt className="list-icon" /> Git & GitHub</li>
-                <li><SiVite className="list-icon" /> Vite</li>
-                <li><FaFigma className="list-icon" /> Figma</li>
-                <li><FaDocker className="list-icon" /> Docker</li>
-                <li><FaCode className="list-icon" /> Visual Studio Code</li>
-                <li><SiPostman className="list-icon" /> Postman</li>
+                <li>
+                  <FaGitAlt className="list-icon" />
+                  Git &amp; GitHub
+                </li>
+                <li>
+                  <SiVite className="list-icon" />
+                  Vite
+                </li>
+                <li>
+                  <FaFigma className="list-icon" />
+                  Figma
+                </li>
+                <li>
+                  <FaDocker className="list-icon" />
+                  Docker
+                </li>
+                <li>
+                  <FaCode className="list-icon" />
+                  Visual Studio Code
+                </li>
+                <li>
+                  <SiPostman className="list-icon" />
+                  Postman
+                </li>
+              </ul>
+            </div>
+
+            <div className="info-card tech-card">
+              <div className="tech-heading">
+                <FaPuzzlePiece className="tech-heading-icon" />
+                <h3>Core Concepts</h3>
+              </div>
+
+              <ul className="icon-list">
+                <li>REST APIs</li>
+                <li>Responsive Design</li>
+                <li>Authentication (JWT)</li>
+                <li>Database Design</li>
+                <li>State Management</li>
+                <li>Version Control</li>
               </ul>
             </div>
           </div>
@@ -196,6 +271,7 @@ export default function Skills() {
           </div>
         </section>
       </main>
+
       <Footer />
     </>
   );
