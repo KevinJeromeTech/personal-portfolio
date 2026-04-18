@@ -376,7 +376,7 @@
   font-weight: 800;
   border: none;
   cursor: pointer;
-  transition: transform 0.2s ease, opacity 0.2s ease;
+  transition: transform 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease;
 }
 
 .project-links a:hover,
@@ -384,8 +384,10 @@
 .project-modal-actions a:hover {
   transform: translateY(-2px);
   opacity: 0.96;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.16);
 }
 
+/* Framer Motion modal base styles */
 .project-modal-overlay {
   position: fixed;
   inset: 0;
@@ -414,6 +416,7 @@
     0 30px 70px rgba(0, 0, 0, 0.34),
     0 0 45px rgba(128, 0, 32, 0.24);
   position: relative;
+  will-change: transform, opacity;
 }
 
 .project-modal-close {
@@ -429,6 +432,12 @@
   font-size: 1.6rem;
   cursor: pointer;
   z-index: 5;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.project-modal-close:hover {
+  transform: scale(1.06);
+  background: rgba(255, 255, 255, 0.18);
 }
 
 .project-modal-image-wrap {

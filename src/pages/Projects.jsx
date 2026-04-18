@@ -1,8 +1,57 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
+import { AnimatePresence, motion } from "motion/react";
 import Navbar from "../components/Navbar.jsx";
 import Footer from "../components/Footer.jsx";
 import projects from "../data/projects.js";
 import "../styles/projects.css";
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 24, scale: 0.98 },
+  visible: (index) => ({
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.45,
+      delay: index * 0.08,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  }),
+};
+
+const overlayVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { duration: 0.22, ease: "easeOut" },
+  },
+  exit: {
+    opacity: 0,
+    transition: { duration: 0.2, ease: "easeInOut" },
+  },
+};
+
+const modalVariants = {
+  hidden: { opacity: 0, y: 24, scale: 0.96 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.28,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+  exit: {
+    opacity: 0,
+    y: 18,
+    scale: 0.97,
+    transition: {
+      duration: 0.22,
+      ease: "easeInOut",
+    },
+  },
+};
 
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState(null);
@@ -21,6 +70,21 @@ export default function Projects() {
     document.body.style.overflow = "auto";
   };
 
+  useEffect(() => {
+    const handleEsc = (e) => {
+      if (e.key === "Escape") closeModal();
+    };
+
+    if (selectedProject) {
+      window.addEventListener("keydown", handleEsc);
+    }
+
+    return () => {
+      window.removeEventListener("keydown", handleEsc);
+      document.body.style.overflow = "auto";
+    };
+  }, [selectedProject]);
+
   return (
     <>
       <Navbar />
@@ -34,12 +98,18 @@ export default function Projects() {
           </p>
 
           <div className="upgraded-grid">
-            {sortedProjects.map((project) => (
-              <article
+            {sortedProjects.map((project, index) => (
+              <motion.article
                 className={`project-showcase-card ${
                   project.featured ? "featured-project" : ""
                 }`}
                 key={project.id}
+                variants={cardVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.2 }}
+                custom={index}
+                whileHover={{ y: -6, scale: 1.01 }}
               >
                 <button
                   type="button"
@@ -47,13 +117,20 @@ export default function Projects() {
                   onClick={() => openModal(project)}
                   aria-label={`Open details for ${project.title}`}
                 >
-                  <img src={project.image} alt={project.title} />
+                  <motion.img
+                    src={project.image}
+                    alt={project.title}
+                    whileHover={{ scale: 1.04 }}
+                    transition={{ duration: 0.28, ease: "easeOut" }}
+                  />
                 </button>
 
                 <div className="project-copy">
                   <div className="project-top-row">
                     <h3>{project.title}</h3>
-                    {project.featured && <span className="featured-badge">Featured</span>}
+                    {project.featured && (
+                      <span className="featured-badge">Featured</span>
+                    )}
                   </div>
 
                   <p>{project.description}</p>
@@ -61,9 +138,14 @@ export default function Projects() {
                   {project.stack?.length > 0 && (
                     <div className="project-stack">
                       {project.stack.map((item) => (
-                        <span key={item} className="project-badge">
+                        <motion.span
+                          key={item}
+                          className="project-badge"
+                          whileHover={{ y: -2 }}
+                          transition={{ duration: 0.18 }}
+                        >
                           {item}
-                        </span>
+                        </motion.span>
                       ))}
                     </div>
                   )}
@@ -90,91 +172,104 @@ export default function Projects() {
                     </button>
                   </div>
                 </div>
-              </article>
+              </motion.article>
             ))}
           </div>
         </section>
       </main>
 
-      {selectedProject && (
-        <div className="project-modal-overlay" onClick={closeModal}>
-          <div
-            className="project-modal"
-            onClick={(event) => event.stopPropagation()}
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="project-modal-title"
+      <AnimatePresence>
+        {selectedProject && (
+          <motion.div
+            className="project-modal-overlay"
+            onClick={closeModal}
+            variants={overlayVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
           >
-            <button
-              type="button"
-              className="project-modal-close"
-              onClick={closeModal}
-              aria-label="Close project modal"
+            <motion.div
+              className="project-modal"
+              onClick={(e) => e.stopPropagation()}
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="project-modal-title"
+              variants={modalVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
             >
-              ×
-            </button>
+              <button
+                className="project-modal-close"
+                onClick={closeModal}
+                aria-label="Close project modal"
+                type="button"
+              >
+                ×
+              </button>
 
-            <div className="project-modal-image-wrap">
-              <img
-                src={selectedProject.image}
-                alt={selectedProject.title}
-                className="project-modal-image"
-              />
-            </div>
-
-            <div className="project-modal-content">
-              <div className="project-modal-header">
-                <h2 id="project-modal-title">{selectedProject.title}</h2>
-                {selectedProject.featured && (
-                  <span className="featured-badge">Featured</span>
-                )}
+              <div className="project-modal-image-wrap">
+                <img
+                  src={selectedProject.image}
+                  alt={selectedProject.title}
+                  className="project-modal-image"
+                />
               </div>
 
-              <p className="project-modal-description">
-                {selectedProject.longDescription || selectedProject.description}
-              </p>
-
-              {selectedProject.highlights?.length > 0 && (
-                <div className="project-modal-section">
-                  <h4>Highlights</h4>
-                  <ul className="project-modal-list">
-                    {selectedProject.highlights.map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
+              <div className="project-modal-content">
+                <div className="project-modal-header">
+                  <h2 id="project-modal-title">{selectedProject.title}</h2>
+                  {selectedProject.featured && (
+                    <span className="featured-badge">Featured</span>
+                  )}
                 </div>
-              )}
 
-              {selectedProject.stack?.length > 0 && (
-                <div className="project-modal-section">
-                  <h4>Tech Stack</h4>
-                  <div className="project-stack">
-                    {selectedProject.stack.map((item) => (
-                      <span key={item} className="project-badge">
-                        {item}
-                      </span>
-                    ))}
+                <p className="project-modal-description">
+                  {selectedProject.longDescription || selectedProject.description}
+                </p>
+
+                {selectedProject.highlights?.length > 0 && (
+                  <div className="project-modal-section">
+                    <h4>Highlights</h4>
+                    <ul className="project-modal-list">
+                      {selectedProject.highlights.map((item) => (
+                        <li key={item}>{item}</li>
+                      ))}
+                    </ul>
                   </div>
+                )}
+
+                {selectedProject.stack?.length > 0 && (
+                  <div className="project-modal-section">
+                    <h4>Tech Stack</h4>
+                    <div className="project-stack">
+                      {selectedProject.stack.map((item) => (
+                        <span key={item} className="project-badge">
+                          {item}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                <div className="project-modal-actions">
+                  {selectedProject.demo && (
+                    <a href={selectedProject.demo} target="_blank" rel="noreferrer">
+                      Live Demo
+                    </a>
+                  )}
+
+                  {selectedProject.github && (
+                    <a href={selectedProject.github} target="_blank" rel="noreferrer">
+                      GitHub
+                    </a>
+                  )}
                 </div>
-              )}
-
-              <div className="project-modal-actions">
-                {selectedProject.demo && (
-                  <a href={selectedProject.demo} target="_blank" rel="noreferrer">
-                    Live Demo
-                  </a>
-                )}
-
-                {selectedProject.github && (
-                  <a href={selectedProject.github} target="_blank" rel="noreferrer">
-                    GitHub
-                  </a>
-                )}
               </div>
-            </div>
-          </div>
-        </div>
-      )}
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <Footer />
     </>

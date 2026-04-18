@@ -5,18 +5,35 @@ import SkillsPreview from "../components/SkillsPreview.jsx";
 import ProjectCarousel from "../components/ProjectCarousel.jsx";
 import ContactCTA from "../components/ContactCTA.jsx";
 import Footer from "../components/Footer.jsx";
+import Reveal from "../components/Reveal.jsx";
 
 export default function Home() {
   return (
     <>
       <Navbar />
+
       <main className="container page-shell">
-        <Hero />
-        <AboutPreview />
-        <SkillsPreview />
-        <ProjectCarousel />
-        <ContactCTA />
+        <Reveal>
+          <Hero />
+        </Reveal>
+
+        <Reveal delay={100}>
+          <AboutPreview />
+        </Reveal>
+
+        <Reveal delay={200}>
+          <SkillsPreview />
+        </Reveal>
+
+        <Reveal delay={300}>
+          <ProjectCarousel />
+        </Reveal>
+
+        <Reveal delay={400}>
+          <ContactCTA />
+        </Reveal>
       </main>
+
       <Footer />
     </>
   );

@@ -31,17 +31,19 @@ export default function ProjectCarousel() {
   const intervalRef = useRef(null);
 
   useEffect(() => {
-    if (featuredProjects.length === 0 || isPaused) return;
+    if (!featuredProjects.length || isPaused) return;
 
     intervalRef.current = setInterval(() => {
       setIndex((prev) => (prev + 1) % featuredProjects.length);
-    }, 4000);
+    }, 4500);
 
     return () => clearInterval(intervalRef.current);
   }, [featuredProjects.length, isPaused]);
 
   const goPrev = () => {
-    setIndex((prev) => (prev - 1 + featuredProjects.length) % featuredProjects.length);
+    setIndex((prev) =>
+      prev === 0 ? featuredProjects.length - 1 : prev - 1
+    );
   };
 
   const goNext = () => {
@@ -59,7 +61,7 @@ export default function ProjectCarousel() {
       </div>
 
       <div
-        className="portfolio-carousel"
+        className="portfolio-carousel premium-carousel"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       >
@@ -68,12 +70,18 @@ export default function ProjectCarousel() {
           style={{ transform: `translateX(-${index * 100}%)` }}
         >
           {featuredProjects.map((project) => (
-            <div className="portfolio-item" key={project.id}>
+            <article className="portfolio-item" key={project.id}>
               <img src={project.image} alt={project.title} />
 
               <div className="portfolio-overlay always-visible-overlay">
                 <div className="overlay-content">
-                  <h4>{project.title}</h4>
+                  <div className="carousel-card-top">
+                    <h4>{project.title}</h4>
+                    {project.featured && (
+                      <span className="featured-badge">Featured</span>
+                    )}
+                  </div>
+
                   <p>{project.description}</p>
 
                   {Array.isArray(project.stack) && (
@@ -88,9 +96,11 @@ export default function ProjectCarousel() {
                   )}
 
                   <div className="overlay-buttons">
-                    <a href={project.github} target="_blank" rel="noreferrer">
-                      GitHub
-                    </a>
+                    {project.github && (
+                      <a href={project.github} target="_blank" rel="noreferrer">
+                        GitHub
+                      </a>
+                    )}
 
                     {project.demo && (
                       <a href={project.demo} target="_blank" rel="noreferrer">
@@ -102,7 +112,7 @@ export default function ProjectCarousel() {
                   </div>
                 </div>
               </div>
-            </div>
+            </article>
           ))}
         </div>
 
