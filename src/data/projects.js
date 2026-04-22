@@ -54,8 +54,9 @@ const projects = [
       "Showcases product thinking and interface direction for future expansion.",
     ],
   },
+
   {
-    id: 4,
+    id: 5,
     title: "Personal Portfolio",
     description:
       "A redesigned portfolio showcasing projects, growth, branding, and professional identity.",
