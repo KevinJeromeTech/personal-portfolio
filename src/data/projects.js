@@ -30,7 +30,6 @@ const projects = [
     featured: true,
     stack: ["HTML", "CSS", "JavaScript"],
     highlights: [
-
       "Designed a visually engaging layout around a strong educational mission.",
       "Built responsive sections for content presentation and navigation.",
       "Focused on branding, structure, and real user-facing communication.",
@@ -54,7 +53,25 @@ const projects = [
       "Showcases product thinking and interface direction for future expansion.",
     ],
   },
-
+  {
+    id: 4,
+    title: "StoreLens",
+    description:
+      "Retail intelligence platform providing analytics and insights for store performance. Currently in active development.",
+    longDescription:
+      "StoreLens is a retail intelligence platform currently in development, focused on giving users clear store analytics, performance visibility, and future-ready full-stack architecture.",
+    image: "/Images/StoreLens.png",
+    github: "#",
+    demo: "",
+    featured: false,
+    status: "In Progress",
+    stack: ["React", "Spring Boot", "PostgreSQL"],
+    highlights: [
+      "Designed as a serious full-stack retail analytics product.",
+      "Built around React, Spring Boot, and PostgreSQL architecture.",
+      "Will be promoted to featured once the production version is complete.",
+    ],
+  },
   {
     id: 5,
     title: "Personal Portfolio",

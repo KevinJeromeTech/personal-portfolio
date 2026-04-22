@@ -98,82 +98,101 @@ export default function Projects() {
           </p>
 
           <div className="upgraded-grid">
-            {sortedProjects.map((project, index) => (
-              <motion.article
-                className={`project-showcase-card ${
-                  project.featured ? "featured-project" : ""
-                }`}
-                key={project.id}
-                variants={cardVariants}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.2 }}
-                custom={index}
-                whileHover={{ y: -6, scale: 1.01 }}
-              >
-                <button
-                  type="button"
-                  className="project-image-wrap project-image-button"
-                  onClick={() => openModal(project)}
-                  aria-label={`Open details for ${project.title}`}
+            {sortedProjects.map((project, index) => {
+              const isInProgress = project.status === "In Progress";
+
+              return (
+                <motion.article
+                  className={`project-showcase-card ${
+                    project.featured ? "featured-project" : ""
+                  } ${isInProgress ? "in-progress-project" : ""}`}
+                  key={project.id}
+                  variants={cardVariants}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, amount: 0.2 }}
+                  custom={index}
+                  whileHover={{ y: -6, scale: 1.01 }}
                 >
-                  <motion.img
-                    src={project.image}
-                    alt={project.title}
-                    whileHover={{ scale: 1.04 }}
-                    transition={{ duration: 0.28, ease: "easeOut" }}
-                  />
-                </button>
+                  <button
+                    type="button"
+                    className="project-image-wrap project-image-button"
+                    onClick={() => openModal(project)}
+                    aria-label={`Open details for ${project.title}`}
+                  >
+                    <motion.img
+                      src={project.image}
+                      alt={project.title}
+                      whileHover={{ scale: 1.04 }}
+                      transition={{ duration: 0.28, ease: "easeOut" }}
+                    />
+                  </button>
 
-                <div className="project-copy">
-                  <div className="project-top-row">
-                    <h3>{project.title}</h3>
-                    {project.featured && (
-                      <span className="featured-badge">Featured</span>
-                    )}
-                  </div>
+                  <div className="project-copy">
+                    <div className="project-top-row">
+                      <div className="project-title-group">
+                        {project.status && (
+                          <span className="project-status">{project.status}</span>
+                        )}
+                        <h3>{project.title}</h3>
+                      </div>
 
-                  <p>{project.description}</p>
-
-                  {project.stack?.length > 0 && (
-                    <div className="project-stack">
-                      {project.stack.map((item) => (
-                        <motion.span
-                          key={item}
-                          className="project-badge"
-                          whileHover={{ y: -2 }}
-                          transition={{ duration: 0.18 }}
-                        >
-                          {item}
-                        </motion.span>
-                      ))}
+                      {project.featured && (
+                        <span className="featured-badge">Featured</span>
+                      )}
                     </div>
-                  )}
 
-                  <div className="project-links">
-                    {project.demo && (
-                      <a href={project.demo} target="_blank" rel="noreferrer">
-                        Live Demo
-                      </a>
+                    <p>{project.description}</p>
+
+                    {project.stack?.length > 0 && (
+                      <div className="project-stack">
+                        {project.stack.map((item) => (
+                          <motion.span
+                            key={item}
+                            className="project-badge"
+                            whileHover={{ y: -2 }}
+                            transition={{ duration: 0.18 }}
+                          >
+                            {item}
+                          </motion.span>
+                        ))}
+                      </div>
                     )}
 
-                    {project.github && (
-                      <a href={project.github} target="_blank" rel="noreferrer">
-                        GitHub
-                      </a>
-                    )}
+                    <div className="project-links">
+                      {project.demo ? (
+                        <a href={project.demo} target="_blank" rel="noreferrer">
+                          Live Demo
+                        </a>
+                      ) : (
+                        <span className="project-link-disabled">Live Demo</span>
+                      )}
 
-                    <button
-                      type="button"
-                      className="project-modal-button"
-                      onClick={() => openModal(project)}
-                    >
-                      View Details
-                    </button>
+                      {project.github ? (
+                        <a
+                          href={project.github}
+                          target="_blank"
+                          rel="noreferrer"
+                          className={project.github === "#" ? "link-disabled" : ""}
+                        >
+                          GitHub
+                        </a>
+                      ) : (
+                        <span className="project-link-disabled">GitHub</span>
+                      )}
+
+                      <button
+                        type="button"
+                        className="project-modal-button"
+                        onClick={() => openModal(project)}
+                      >
+                        View Details
+                      </button>
+                    </div>
                   </div>
-                </div>
-              </motion.article>
-            ))}
+                </motion.article>
+              );
+            })}
           </div>
         </section>
       </main>
@@ -218,7 +237,13 @@ export default function Projects() {
 
               <div className="project-modal-content">
                 <div className="project-modal-header">
-                  <h2 id="project-modal-title">{selectedProject.title}</h2>
+                  <div className="project-title-group">
+                    {selectedProject.status && (
+                      <span className="project-status">{selectedProject.status}</span>
+                    )}
+                    <h2 id="project-modal-title">{selectedProject.title}</h2>
+                  </div>
+
                   {selectedProject.featured && (
                     <span className="featured-badge">Featured</span>
                   )}
@@ -253,16 +278,29 @@ export default function Projects() {
                 )}
 
                 <div className="project-modal-actions">
-                  {selectedProject.demo && (
-                    <a href={selectedProject.demo} target="_blank" rel="noreferrer">
+                  {selectedProject.demo ? (
+                    <a
+                      href={selectedProject.demo}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
                       Live Demo
                     </a>
+                  ) : (
+                    <span className="project-link-disabled">Live Demo</span>
                   )}
 
-                  {selectedProject.github && (
-                    <a href={selectedProject.github} target="_blank" rel="noreferrer">
+                  {selectedProject.github ? (
+                    <a
+                      href={selectedProject.github}
+                      target="_blank"
+                      rel="noreferrer"
+                      className={selectedProject.github === "#" ? "link-disabled" : ""}
+                    >
                       GitHub
                     </a>
+                  ) : (
+                    <span className="project-link-disabled">GitHub</span>
                   )}
                 </div>
               </div>
