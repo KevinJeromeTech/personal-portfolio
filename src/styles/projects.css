@@ -211,10 +211,11 @@
 
 .upgraded-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 2rem;
-  max-width: 1000px;
+  max-width: 1100px;
   margin: 0 auto;
+  align-items: stretch;
 }
 
 .project-showcase-card {
@@ -338,13 +339,16 @@
 .featured-badge {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
+  min-width: 86px;
+  padding: 0.46rem 0.8rem;
+  border-radius: 999px;
   background: linear-gradient(135deg, #ffffff, #f3f4f6);
   color: var(--burgundy);
-  padding: 0.46rem 0.76rem;
-  border-radius: 999px;
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   font-weight: 800;
   white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .project-status {
