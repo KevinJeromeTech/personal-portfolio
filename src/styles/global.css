@@ -487,6 +487,70 @@ body.dark-mode span {
   color: rgba(255, 255, 255, 0.88);
 }
 
+/* ── Custom cursor glow ── */
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(128, 0, 32, 0.75) 0%,
+    rgba(255, 77, 123, 0.35) 55%,
+    transparent 70%
+  );
+  box-shadow: 0 0 18px rgba(128, 0, 32, 0.55), 0 0 48px rgba(255, 77, 123, 0.18);
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%, -50%);
+}
+
+@media (hover: none) {
+  .custom-cursor { display: none; }
+}
+
+/* ── 3D tilt cards ── */
+.tilt-card {
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+/* ── Confetti ── */
+.confetti-container {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  pointer-events: none;
+  z-index: 20;
+}
+
+.confetti-piece {
+  position: absolute;
+}
+
+/* ── Grain texture on section cards ── */
+.section-card::before {
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 3px,
+      rgba(255, 255, 255, 0.007) 3px,
+      rgba(255, 255, 255, 0.007) 4px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 3px,
+      rgba(255, 255, 255, 0.005) 3px,
+      rgba(255, 255, 255, 0.005) 4px
+    ),
+    linear-gradient(120deg, rgba(255, 255, 255, 0.05), transparent 30%),
+    radial-gradient(circle at top right, rgba(255, 255, 255, 0.06), transparent 20%);
+}
+
 @media (max-width: 900px) {
   .two-column-grid,
   .three-column-grid,

@@ -1,7 +1,5 @@
 import { useMemo, useState, useEffect } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import Navbar from "../components/Navbar.jsx";
-import Footer from "../components/Footer.jsx";
 import projects from "../data/projects.js";
 import "../styles/projects.css";
 
@@ -55,9 +53,13 @@ export default function Projects() {
 
   return (
     <>
-      <Navbar />
-
-      <motion.main className="container page-shell" initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}>
+      <motion.main
+        className="container page-shell"
+        initial={{ opacity: 0, y: 18 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -12 }}
+        transition={{ duration: 0.38, ease: [0.22, 1, 0.36, 1] }}
+      >
         <section className="projects-page section-card projects-hero-card">
           <div className="projects-hero-orb-1" aria-hidden="true" />
           <div className="projects-hero-orb-2" aria-hidden="true" />
@@ -180,7 +182,6 @@ export default function Projects() {
           </motion.div>
         </section>
       </motion.main>
-
       {/* Modal */}
       <AnimatePresence>
         {selectedProject && (
@@ -283,8 +284,6 @@ export default function Projects() {
           </motion.div>
         )}
       </AnimatePresence>
-
-      <Footer />
     </>
   );
 }

@@ -1,6 +1,5 @@
+import { useEffect, useRef } from "react";
 import { motion } from "motion/react";
-import Navbar from "../components/Navbar.jsx";
-import Footer from "../components/Footer.jsx";
 import {
   FaPalette,
   FaCode,
@@ -24,6 +23,7 @@ import {
 import { SiExpress, SiTailwindcss, SiVite, SiPostman, SiTypescript } from "react-icons/si";
 import { HiOutlineSpeakerphone } from "react-icons/hi";
 import { MdGroups2, MdOutlineAutoGraph } from "react-icons/md";
+import ScrambleText from "../components/ScrambleText.jsx";
 import "../styles/skills.css";
 
 const fadeUp = (delay = 0) => ({
@@ -142,108 +142,159 @@ const softSkills = [
   },
 ];
 
+const progressSkills = [
+  { name: "HTML / CSS", percent: 92, color: "#ff4d7b" },
+  { name: "JavaScript", percent: 85, color: "#facc15" },
+  { name: "React.js", percent: 82, color: "#60a5fa" },
+  { name: "Node.js / Express", percent: 70, color: "#4ade80" },
+  { name: "Python", percent: 65, color: "#a78bfa" },
+  { name: "TypeScript", percent: 58, color: "#38bdf8" },
+];
+
+function ProgressBar({ name, percent, color, delay }) {
+  const ref = useRef(null);
+
+  useEffect(() => {
+    const node = ref.current;
+    if (!node) return;
+    const fill = node.querySelector(".progress-fill");
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        observer.unobserve(node);
+        fill.style.transition = `width 1.2s cubic-bezier(0.22, 1, 0.36, 1) ${delay}s`;
+        fill.style.width = `${percent}%`;
+      },
+      { threshold: 0.4 }
+    );
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, [percent, delay]);
+
+  return (
+    <div className="progress-item" ref={ref}>
+      <div className="progress-label">
+        <span>{name}</span>
+        <span className="progress-percent">{percent}%</span>
+      </div>
+      <div className="progress-track">
+        <div className="progress-fill" style={{ background: color, width: 0 }} />
+      </div>
+    </div>
+  );
+}
+
 export default function Skills() {
   return (
-    <>
-      <Navbar />
+    <motion.main
+      className="container page-shell"
+      initial={{ opacity: 0, y: 18 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -12 }}
+      transition={{ duration: 0.38, ease: [0.22, 1, 0.36, 1] }}
+    >
+      {/* ── Page header ── */}
+      <motion.section className="section-card skills-hero-card" {...fadeUp(0)}>
+        <div className="skills-hero-orb-1" aria-hidden="true" />
+        <div className="skills-hero-orb-2" aria-hidden="true" />
+        <div className="skills-hero-inner">
+          <span className="page-eyebrow">Skills & Expertise</span>
+          <h1 className="page-hero-title">What I work with</h1>
+          <p className="skills-lead">
+            A detailed look at my core skills and areas of expertise — spanning
+            web development, design, digital strategy, and backend thinking.
+          </p>
+        </div>
+      </motion.section>
 
-      <motion.main className="container page-shell" initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}>
+      {/* ── Proficiency bars ── */}
+      <motion.section className="section-card" {...fadeUp(0)}>
+        <div className="section-heading-block">
+          <ScrambleText text="Proficiency" as="h2" />
+          <div className="heading-accent" />
+        </div>
+        <div className="progress-list">
+          {progressSkills.map((skill, i) => (
+            <ProgressBar key={skill.name} {...skill} delay={i * 0.1} />
+          ))}
+        </div>
+      </motion.section>
 
-        {/* ── Page header ── */}
-        <motion.section className="section-card skills-hero-card" {...fadeUp(0)}>
-          <div className="skills-hero-orb-1" aria-hidden="true" />
-          <div className="skills-hero-orb-2" aria-hidden="true" />
-          <div className="skills-hero-inner">
-            <span className="page-eyebrow">Skills & Expertise</span>
-            <h1 className="page-hero-title">What I work with</h1>
-            <p className="skills-lead">
-              A detailed look at my core skills and areas of expertise — spanning
-              web development, design, digital strategy, and backend thinking.
-            </p>
-          </div>
-        </motion.section>
+      {/* ── Skill areas ── */}
+      <motion.section className="section-card" {...fadeUp(0)}>
+        <div className="section-heading-block">
+          <ScrambleText text="Skill Areas" as="h2" />
+          <div className="heading-accent" />
+        </div>
+        <div className="skill-areas-grid">
+          {skillAreas.map((skill, i) => (
+            <motion.div
+              className="skill-area-card tilt-card"
+              key={skill.title}
+              {...fadeUp(i * 0.07)}
+            >
+              <span className="skill-num">{skill.num}</span>
+              <div className="skill-icon-wrap">
+                <span className="skill-icon">{skill.icon}</span>
+              </div>
+              <h3>{skill.title}</h3>
+              <p>{skill.desc}</p>
+            </motion.div>
+          ))}
+        </div>
+      </motion.section>
 
-        {/* ── Skill areas ── */}
-        <motion.section className="section-card" {...fadeUp(0)}>
-          <div className="section-heading-block">
-            <h2>Skill Areas</h2>
-            <div className="heading-accent" />
-          </div>
-          <div className="skill-areas-grid">
-            {skillAreas.map((skill, i) => (
-              <motion.div
-                className="skill-area-card"
-                key={skill.title}
-                {...fadeUp(i * 0.07)}
-                whileHover={{ y: -6 }}
-                transition={{ duration: 0.25 }}
-              >
-                <span className="skill-num">{skill.num}</span>
-                <div className="skill-icon-wrap">
-                  <span className="skill-icon">{skill.icon}</span>
-                </div>
-                <h3>{skill.title}</h3>
-                <p>{skill.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </motion.section>
+      {/* ── Technical skills ── */}
+      <motion.section className="section-card" {...fadeUp(0)}>
+        <div className="section-heading-block">
+          <ScrambleText text="Technical Skills" as="h2" />
+          <div className="heading-accent" />
+        </div>
+        <div className="tech-groups-grid">
+          {techGroups.map((group, i) => (
+            <motion.div className="tech-group-card tilt-card" key={group.title} {...fadeUp(i * 0.08)}>
+              <div className="tech-heading">
+                <span className="tech-heading-icon">{group.icon}</span>
+                <h3>{group.title}</h3>
+              </div>
+              <div className="tech-badge-grid">
+                {group.items.map((item) => (
+                  <span className="tech-badge" key={item.name}>
+                    {item.icon && (
+                      <span className="tech-badge-icon" aria-hidden="true">
+                        {item.icon}
+                      </span>
+                    )}
+                    {item.name}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </motion.section>
 
-        {/* ── Technical skills ── */}
-        <motion.section className="section-card" {...fadeUp(0)}>
-          <div className="section-heading-block">
-            <h2>Technical Skills</h2>
-            <div className="heading-accent" />
-          </div>
-          <div className="tech-groups-grid">
-            {techGroups.map((group, i) => (
-              <motion.div className="tech-group-card" key={group.title} {...fadeUp(i * 0.08)}>
-                <div className="tech-heading">
-                  <span className="tech-heading-icon">{group.icon}</span>
-                  <h3>{group.title}</h3>
-                </div>
-                <div className="tech-badge-grid">
-                  {group.items.map((item) => (
-                    <span className="tech-badge" key={item.name}>
-                      {item.icon && (
-                        <span className="tech-badge-icon" aria-hidden="true">
-                          {item.icon}
-                        </span>
-                      )}
-                      {item.name}
-                    </span>
-                  ))}
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </motion.section>
-
-        {/* ── Soft skills ── */}
-        <motion.section className="section-card" {...fadeUp(0)}>
-          <div className="section-heading-block">
-            <h2>Soft Skills</h2>
-            <div className="heading-accent" />
-          </div>
-          <div className="three-column-grid">
-            {softSkills.map((skill, i) => (
-              <motion.div
-                className="soft-skill-card"
-                key={skill.title}
-                {...fadeUp(i * 0.1)}
-                whileHover={{ y: -5 }}
-              >
-                <div className="soft-skill-icon">{skill.icon}</div>
-                <h3>{skill.title}</h3>
-                <p>{skill.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </motion.section>
-
-      </motion.main>
-
-      <Footer />
-    </>
+      {/* ── Soft skills ── */}
+      <motion.section className="section-card" {...fadeUp(0)}>
+        <div className="section-heading-block">
+          <ScrambleText text="Soft Skills" as="h2" />
+          <div className="heading-accent" />
+        </div>
+        <div className="three-column-grid">
+          {softSkills.map((skill, i) => (
+            <motion.div
+              className="soft-skill-card"
+              key={skill.title}
+              {...fadeUp(i * 0.1)}
+              whileHover={{ y: -5 }}
+            >
+              <div className="soft-skill-icon">{skill.icon}</div>
+              <h3>{skill.title}</h3>
+              <p>{skill.desc}</p>
+            </motion.div>
+          ))}
+        </div>
+      </motion.section>
+    </motion.main>
   );
 }

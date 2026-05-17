@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { motion } from "motion/react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { FiDownload } from "react-icons/fi";
+import MagneticButton from "./MagneticButton.jsx";
 
 const roles = [
   "Full-Stack Developer",
@@ -146,38 +147,46 @@ export default function Hero() {
         </motion.p>
 
         <motion.div className="hero-actions" variants={item}>
-          <Link to="/skills" className="hero-button hero-btn-primary">
-            Explore Skills
-          </Link>
-          <a
-            href="/Documents/Kevin-Jerome-Master-CS-Resume-V1.pdf"
-            download
-            className="hero-button hero-btn-secondary"
-          >
-            <FiDownload aria-hidden="true" />
-            Resume
-          </a>
+          <MagneticButton>
+            <Link to="/skills" className="hero-button hero-btn-primary">
+              Explore Skills
+            </Link>
+          </MagneticButton>
+          <MagneticButton>
+            <a
+              href="/Documents/Kevin-Jerome-Master-CS-Resume-V1.pdf"
+              download
+              className="hero-button hero-btn-secondary"
+            >
+              <FiDownload aria-hidden="true" />
+              Resume
+            </a>
+          </MagneticButton>
         </motion.div>
 
         <motion.div className="hero-socials" variants={item}>
-          <a
-            href="https://github.com/KevinJeromeTech"
-            target="_blank"
-            rel="noreferrer"
-            className="social-icon-btn"
-            aria-label="GitHub"
-          >
-            <FaGithub />
-          </a>
-          <a
-            href="https://www.linkedin.com/in/kevinjerome-kj/"
-            target="_blank"
-            rel="noreferrer"
-            className="social-icon-btn"
-            aria-label="LinkedIn"
-          >
-            <FaLinkedin />
-          </a>
+          <MagneticButton strength={0.5}>
+            <a
+              href="https://github.com/KevinJeromeTech"
+              target="_blank"
+              rel="noreferrer"
+              className="social-icon-btn"
+              aria-label="GitHub"
+            >
+              <FaGithub />
+            </a>
+          </MagneticButton>
+          <MagneticButton strength={0.5}>
+            <a
+              href="https://www.linkedin.com/in/kevinjerome-kj/"
+              target="_blank"
+              rel="noreferrer"
+              className="social-icon-btn"
+              aria-label="LinkedIn"
+            >
+              <FaLinkedin />
+            </a>
+          </MagneticButton>
         </motion.div>
       </motion.div>
     </section>
