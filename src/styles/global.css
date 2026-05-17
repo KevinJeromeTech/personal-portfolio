@@ -293,6 +293,52 @@ section h2 {
   letter-spacing: -0.03em;
 }
 
+/* ── Shared page utilities ── */
+.page-eyebrow {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(255, 200, 200, 0.8);
+  padding: 0.35rem 0.9rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  margin-bottom: 0.9rem;
+}
+
+.page-hero-title {
+  font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+  line-height: 1.08;
+  margin: 0 0 1.2rem;
+  background: linear-gradient(135deg, #ffffff 30%, #ffbfd0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.04em;
+}
+
+.section-heading-block {
+  text-align: center;
+  margin-bottom: 2.2rem;
+}
+
+.section-heading-block h2 {
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  color: #ffffff;
+  margin: 0 0 0.45rem;
+  letter-spacing: -0.03em;
+}
+
+.heading-accent {
+  width: 52px;
+  height: 3px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.9), rgba(255, 180, 200, 0.35));
+  border-radius: 2px;
+  margin: 0 auto;
+}
+
 /* Shimmer sweep on card hover */
 .info-card::after,
 .preview-card::after {
