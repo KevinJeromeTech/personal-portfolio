@@ -1,3 +1,4 @@
+/* ── Legacy page styles ── */
 .about-page h1,
 .about-page h2,
 .about-page h3 {
@@ -19,32 +20,13 @@
   color: rgba(255, 255, 255, 0.9);
 }
 
-.resume-section {
-  margin-top: 2rem;
-  text-align: center;
-}
-
-.resume-section p {
-  max-width: 800px;
-  margin: 0 auto 1.5rem;
-}
-
-.highlights-grid,
-.core-values {
-  margin-top: 2rem;
-}
-
-/* ── Stat counters ── */
+/* ── Stat counters (shared between About page and AboutPreview) ── */
 .about-stats {
   display: flex;
   justify-content: center;
-  gap: 2rem;
+  gap: 2.5rem;
   flex-wrap: wrap;
-  margin: 0 0 2.4rem;
-  padding: 1.6rem 1rem;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: var(--radius-md);
+  padding: 0.5rem 1rem;
 }
 
 .stat-item {
@@ -56,7 +38,7 @@
 }
 
 .stat-number {
-  font-size: 2.6rem;
+  font-size: 2.8rem;
   font-weight: 900;
   letter-spacing: -0.04em;
   background: linear-gradient(135deg, #ffffff, #ffbfd0);
@@ -69,8 +51,288 @@
 .stat-label {
   font-size: 0.82rem;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.65);
+  color: rgba(255, 255, 255, 0.6);
   text-transform: uppercase;
-  letter-spacing: 0.07em;
+  letter-spacing: 0.08em;
   text-align: center;
+}
+
+/* ── About intro card ── */
+.about-intro-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.about-intro-orb-1,
+.about-intro-orb-2 {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(80px);
+  opacity: 0.22;
+}
+
+.about-intro-orb-1 {
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(circle, rgba(255, 100, 140, 0.65), transparent);
+  top: -160px;
+  right: -60px;
+}
+
+.about-intro-orb-2 {
+  width: 340px;
+  height: 340px;
+  background: radial-gradient(circle, rgba(128, 0, 80, 0.5), transparent);
+  bottom: -120px;
+  left: -60px;
+}
+
+.about-intro-grid {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 3.5rem;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Photo column ── */
+.about-photo-col {
+  display: flex;
+  justify-content: center;
+}
+
+.about-photo-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.about-photo {
+  width: 260px;
+  height: 320px;
+  border-radius: 24px;
+  object-fit: cover;
+  object-position: top;
+  border: 2px solid rgba(255, 255, 255, 0.14);
+  box-shadow:
+    0 24px 60px rgba(0, 0, 0, 0.35),
+    0 0 40px rgba(128, 0, 32, 0.22);
+}
+
+.about-photo-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 0.42rem 0.9rem;
+  border-radius: 999px;
+  backdrop-filter: blur(10px);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* ── Text column ── */
+.about-text-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.about-bio-text {
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.85;
+  margin: 0 0 1rem;
+  font-size: 1.02rem;
+  position: relative;
+  z-index: 1;
+}
+
+.about-intro-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+
+/* ── Stats section ── */
+.about-stats-section {
+  padding: 2rem 2.4rem;
+}
+
+/* ── What I Bring cards ── */
+.about-highlight-card {
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-md);
+  padding: 2rem 1.75rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.about-highlight-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg), var(--glow-burgundy);
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+.about-highlight-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, var(--burgundy), #c2184c);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35rem;
+  color: #ffffff;
+  margin-bottom: 1.1rem;
+  box-shadow: 0 8px 20px rgba(128, 0, 32, 0.3);
+  flex-shrink: 0;
+}
+
+.about-highlight-card h3 {
+  color: #ffffff;
+  font-size: 1.2rem;
+  margin: 0 0 0.6rem;
+  position: relative;
+  z-index: 1;
+}
+
+.about-highlight-card p {
+  color: rgba(255, 255, 255, 0.82);
+  line-height: 1.7;
+  margin: 0;
+  font-size: 0.97rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Core Value cards ── */
+.core-value-card {
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-md);
+  padding: 2rem 1.75rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.core-value-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+}
+
+.core-value-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  border: 2px solid rgba(255, 255, 255, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35rem;
+  color: var(--icon-color, #ffffff);
+  margin-bottom: 1.1rem;
+}
+
+.core-value-card h3 {
+  color: #ffffff;
+  font-size: 1.2rem;
+  margin: 0 0 0.6rem;
+}
+
+.core-value-card p {
+  color: rgba(255, 255, 255, 0.82);
+  line-height: 1.7;
+  margin: 0;
+  font-size: 0.97rem;
+}
+
+/* ── Resume CTA ── */
+.resume-cta-card {
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.resume-cta-orb {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 80, 130, 0.28), transparent 65%);
+  top: -250px;
+  right: -100px;
+  pointer-events: none;
+  filter: blur(50px);
+}
+
+.resume-cta-content {
+  position: relative;
+  z-index: 1;
+  max-width: 580px;
+  margin: 0 auto;
+}
+
+.resume-cta-content h2 {
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  color: #ffffff;
+  margin: 0 0 0.9rem;
+  letter-spacing: -0.03em;
+}
+
+.resume-cta-content p {
+  color: rgba(255, 255, 255, 0.82);
+  line-height: 1.8;
+  margin: 0 0 2rem;
+  font-size: 1.05rem;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .about-intro-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .about-photo-col {
+    order: -1;
+  }
+
+  .about-photo {
+    width: 200px;
+    height: 240px;
+  }
+
+  .about-text-col {
+    align-items: center;
+    text-align: center;
+  }
+
+  .about-intro-actions {
+    justify-content: center;
+  }
+
+  .about-stats {
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .about-stats {
+    gap: 1rem;
+  }
+
+  .stat-number {
+    font-size: 2.2rem;
+  }
 }

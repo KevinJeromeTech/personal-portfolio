@@ -5,84 +5,52 @@ import Footer from "../components/Footer.jsx";
 import projects from "../data/projects.js";
 import "../styles/projects.css";
 
-const cardVariants = {
-  hidden: { opacity: 0, y: 24, scale: 0.98 },
-  visible: (index) => ({
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: {
-      duration: 0.45,
-      delay: index * 0.08,
-      ease: [0.22, 1, 0.36, 1],
-    },
-  }),
-};
-
-const overlayVariants = {
+const modalOverlayVariants = {
   hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { duration: 0.22, ease: "easeOut" },
-  },
-  exit: {
-    opacity: 0,
-    transition: { duration: 0.2, ease: "easeInOut" },
-  },
+  visible: { opacity: 1, transition: { duration: 0.22 } },
+  exit:    { opacity: 0, transition: { duration: 0.2 } },
 };
 
 const modalVariants = {
-  hidden: { opacity: 0, y: 24, scale: 0.96 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: {
-      duration: 0.28,
-      ease: [0.22, 1, 0.36, 1],
-    },
-  },
-  exit: {
-    opacity: 0,
-    y: 18,
-    scale: 0.97,
-    transition: {
-      duration: 0.22,
-      ease: "easeInOut",
-    },
-  },
+  hidden:  { opacity: 0, y: 24, scale: 0.96 },
+  visible: { opacity: 1, y: 0,  scale: 1,   transition: { duration: 0.28, ease: [0.22, 1, 0.36, 1] } },
+  exit:    { opacity: 0, y: 18, scale: 0.97, transition: { duration: 0.22 } },
 };
 
+const filterOptions = [
+  { key: "all",         label: "All" },
+  { key: "featured",    label: "Featured" },
+  { key: "in-progress", label: "In Progress" },
+];
+
 export default function Projects() {
+  const [filter, setFilter] = useState("all");
   const [selectedProject, setSelectedProject] = useState(null);
 
-  const sortedProjects = useMemo(() => {
-    return [...projects].sort((a, b) => Number(b.featured) - Number(a.featured));
-  }, []);
+  const sortedProjects = useMemo(
+    () => [...projects].sort((a, b) => Number(b.featured) - Number(a.featured)),
+    []
+  );
 
-  const openModal = (project) => {
-    setSelectedProject(project);
-    document.body.style.overflow = "hidden";
-  };
+  const filteredProjects = useMemo(() => {
+    if (filter === "featured")    return sortedProjects.filter((p) => p.featured);
+    if (filter === "in-progress") return sortedProjects.filter((p) => p.status === "In Progress");
+    return sortedProjects;
+  }, [sortedProjects, filter]);
 
-  const closeModal = () => {
-    setSelectedProject(null);
-    document.body.style.overflow = "auto";
-  };
+  const counts = useMemo(() => ({
+    all:          sortedProjects.length,
+    featured:     sortedProjects.filter((p) => p.featured).length,
+    "in-progress": sortedProjects.filter((p) => p.status === "In Progress").length,
+  }), [sortedProjects]);
+
+  const openModal  = (project) => { setSelectedProject(project); document.body.style.overflow = "hidden"; };
+  const closeModal = ()         => { setSelectedProject(null);   document.body.style.overflow = "auto"; };
 
   useEffect(() => {
-    const handleEsc = (e) => {
-      if (e.key === "Escape") closeModal();
-    };
-
-    if (selectedProject) {
-      window.addEventListener("keydown", handleEsc);
-    }
-
-    return () => {
-      window.removeEventListener("keydown", handleEsc);
-      document.body.style.overflow = "auto";
-    };
+    const handleEsc = (e) => { if (e.key === "Escape") closeModal(); };
+    if (selectedProject) window.addEventListener("keydown", handleEsc);
+    return () => { window.removeEventListener("keydown", handleEsc); document.body.style.overflow = "auto"; };
   }, [selectedProject]);
 
   return (
@@ -90,119 +58,136 @@ export default function Projects() {
       <Navbar />
 
       <main className="container page-shell">
-        <section className="projects-page section-card">
-          <h1>My Projects</h1>
-          <p className="lead-text">
-            A selection of projects that reflect my growth in full-stack development,
-            frontend engineering, product design, and technical execution.
-          </p>
-
-          <div className="upgraded-grid">
-            {sortedProjects.map((project, index) => {
-              const isInProgress = project.status === "In Progress";
-
-              return (
-                <motion.article
-                  className={`project-showcase-card ${
-                    project.featured ? "featured-project" : ""
-                  } ${isInProgress ? "in-progress-project" : ""}`}
-                  key={project.id}
-                  variants={cardVariants}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true, amount: 0.2 }}
-                  custom={index}
-                  whileHover={{ y: -6, scale: 1.01 }}
-                >
-                  <button
-                    type="button"
-                    className="project-image-wrap project-image-button"
-                    onClick={() => openModal(project)}
-                    aria-label={`Open details for ${project.title}`}
-                  >
-                    <motion.img
-                      src={project.image}
-                      alt={project.title}
-                      whileHover={{ scale: 1.04 }}
-                      transition={{ duration: 0.28, ease: "easeOut" }}
-                    />
-                  </button>
-
-                  <div className="project-copy">
-                    <div className="project-top-row">
-                      <div className="project-title-group">
-                        {project.status && (
-                          <span className="project-status">{project.status}</span>
-                        )}
-                        <h3>{project.title}</h3>
-                      </div>
-
-                      {project.featured && (
-                        <span className="featured-badge">Featured</span>
-                      )}
-                    </div>
-
-                    <p>{project.description}</p>
-
-                    {project.stack?.length > 0 && (
-                      <div className="project-stack">
-                        {project.stack.map((item) => (
-                          <motion.span
-                            key={item}
-                            className="project-badge"
-                            whileHover={{ y: -2 }}
-                            transition={{ duration: 0.18 }}
-                          >
-                            {item}
-                          </motion.span>
-                        ))}
-                      </div>
-                    )}
-
-                    <div className="project-links">
-                      {project.demo ? (
-                        <a href={project.demo} target="_blank" rel="noreferrer">
-                          Live Demo
-                        </a>
-                      ) : (
-                        <span className="project-link-disabled">Live Demo</span>
-                      )}
-
-                      {project.github ? (
-                        <a
-                          href={project.github}
-                          target="_blank"
-                          rel="noreferrer"
-                          className={project.github === "#" ? "link-disabled" : ""}
-                        >
-                          GitHub
-                        </a>
-                      ) : (
-                        <span className="project-link-disabled">GitHub</span>
-                      )}
-
-                      <button
-                        type="button"
-                        className="project-modal-button"
-                        onClick={() => openModal(project)}
-                      >
-                        View Details
-                      </button>
-                    </div>
-                  </div>
-                </motion.article>
-              );
-            })}
+        <section className="projects-page section-card projects-hero-card">
+          <div className="projects-hero-orb-1" aria-hidden="true" />
+          <div className="projects-hero-orb-2" aria-hidden="true" />
+          <div className="projects-hero-inner">
+            <span className="page-eyebrow">Portfolio</span>
+            <h1 className="page-hero-title">My Projects</h1>
+            <p className="projects-lead">
+              A selection of builds that reflect my growth in full-stack development,
+              frontend engineering, product design, and technical execution.
+            </p>
           </div>
+
+          {/* Filter bar */}
+          <div className="filter-bar" role="group" aria-label="Filter projects">
+            {filterOptions.map(({ key, label }) => (
+              <button
+                key={key}
+                type="button"
+                className={`filter-btn ${filter === key ? "active" : ""}`}
+                onClick={() => setFilter(key)}
+              >
+                {label}
+                <span className="filter-count">{counts[key]}</span>
+              </button>
+            ))}
+          </div>
+        </section>
+
+        <section className="section-card projects-grid-section">
+          <motion.div className="upgraded-grid" layout>
+            <AnimatePresence mode="popLayout">
+              {filteredProjects.map((project, index) => {
+                const isInProgress = project.status === "In Progress";
+                return (
+                  <motion.article
+                    className={`project-showcase-card ${project.featured ? "featured-project" : ""} ${isInProgress ? "in-progress-project" : ""}`}
+                    key={project.id}
+                    layout
+                    initial={{ opacity: 0, y: 24, scale: 0.97 }}
+                    animate={{ opacity: 1, y: 0,  scale: 1 }}
+                    exit={{    opacity: 0, scale: 0.95 }}
+                    transition={{ duration: 0.38, delay: index * 0.06, ease: [0.22, 1, 0.36, 1] }}
+                    whileHover={{ y: -6, scale: 1.01 }}
+                  >
+                    <button
+                      type="button"
+                      className="project-image-wrap project-image-button"
+                      onClick={() => openModal(project)}
+                      aria-label={`Open details for ${project.title}`}
+                    >
+                      <motion.img
+                        src={project.image}
+                        alt={project.title}
+                        whileHover={{ scale: 1.04 }}
+                        transition={{ duration: 0.28 }}
+                      />
+                    </button>
+
+                    <div className="project-copy">
+                      <div className="project-top-row">
+                        <div className="project-title-group">
+                          {project.status && (
+                            <span className="project-status">{project.status}</span>
+                          )}
+                          <h3>{project.title}</h3>
+                        </div>
+                        {project.featured && (
+                          <span className="featured-badge">Featured</span>
+                        )}
+                      </div>
+
+                      <p>{project.description}</p>
+
+                      {project.stack?.length > 0 && (
+                        <div className="project-stack">
+                          {project.stack.map((item) => (
+                            <motion.span
+                              key={item}
+                              className="project-badge"
+                              whileHover={{ y: -2 }}
+                              transition={{ duration: 0.18 }}
+                            >
+                              {item}
+                            </motion.span>
+                          ))}
+                        </div>
+                      )}
+
+                      <div className="project-links">
+                        {project.demo ? (
+                          <a href={project.demo} target="_blank" rel="noreferrer">Live Demo</a>
+                        ) : (
+                          <span className="project-link-disabled">Live Demo</span>
+                        )}
+                        {project.github ? (
+                          <a
+                            href={project.github}
+                            target="_blank"
+                            rel="noreferrer"
+                            className={project.github === "#" ? "link-disabled" : ""}
+                          >
+                            GitHub
+                          </a>
+                        ) : (
+                          <span className="project-link-disabled">GitHub</span>
+                        )}
+                        <button
+                          type="button"
+                          className="project-modal-button"
+                          onClick={() => openModal(project)}
+                        >
+                          Details
+                        </button>
+                      </div>
+                    </div>
+                  </motion.article>
+                );
+              })}
+            </AnimatePresence>
+          </motion.div>
         </section>
       </main>
 
+      {/* Modal */}
       <AnimatePresence>
         {selectedProject && (
           <motion.div
             className="project-modal-overlay"
             onClick={closeModal}
-            variants={overlayVariants}
+            variants={modalOverlayVariants}
             initial="hidden"
             animate="visible"
             exit="exit"
@@ -221,7 +206,7 @@ export default function Projects() {
               <button
                 className="project-modal-close"
                 onClick={closeModal}
-                aria-label="Close project modal"
+                aria-label="Close"
                 type="button"
               >
                 ×
@@ -243,7 +228,6 @@ export default function Projects() {
                     )}
                     <h2 id="project-modal-title">{selectedProject.title}</h2>
                   </div>
-
                   {selectedProject.featured && (
                     <span className="featured-badge">Featured</span>
                   )}
@@ -269,9 +253,7 @@ export default function Projects() {
                     <h4>Tech Stack</h4>
                     <div className="project-stack">
                       {selectedProject.stack.map((item) => (
-                        <span key={item} className="project-badge">
-                          {item}
-                        </span>
+                        <span key={item} className="project-badge">{item}</span>
                       ))}
                     </div>
                   </div>
@@ -279,17 +261,10 @@ export default function Projects() {
 
                 <div className="project-modal-actions">
                   {selectedProject.demo ? (
-                    <a
-                      href={selectedProject.demo}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      Live Demo
-                    </a>
+                    <a href={selectedProject.demo} target="_blank" rel="noreferrer">Live Demo</a>
                   ) : (
                     <span className="project-link-disabled">Live Demo</span>
                   )}
-
                   {selectedProject.github ? (
                     <a
                       href={selectedProject.github}
