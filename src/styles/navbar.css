@@ -2,11 +2,18 @@
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: rgba(15, 17, 25, 0.92);
+  background: rgba(15, 17, 25, 0.78);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  box-shadow: none;
+  transition: background 0.35s ease, box-shadow 0.35s ease, min-height 0.35s ease;
+}
+
+.site-header.scrolled {
+  background: rgba(15, 17, 25, 0.96);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.22);
+  border-bottom-color: rgba(255, 255, 255, 0.07);
 }
 
 .nav-shell {
@@ -129,13 +136,20 @@
   align-items: center;
   justify-content: center;
   border: none;
-  border-radius: 16px;
-  padding: 0.82rem 1.1rem;
-  background: linear-gradient(135deg, #1f2937, #293548);
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   color: #ffffff;
-  font-weight: 800;
+  font-size: 1.15rem;
   cursor: pointer;
-  box-shadow: 0 10px 24px rgba(31, 41, 55, 0.24);
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.dark-toggle:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: rotate(15deg);
 }
 
 .mobile-toggle {
@@ -143,8 +157,9 @@
   border: none;
   background: transparent;
   color: #ffffff;
-  font-size: 1.8rem;
+  font-size: 1.65rem;
   cursor: pointer;
+  line-height: 1;
 }
 
 .mobile-menu {

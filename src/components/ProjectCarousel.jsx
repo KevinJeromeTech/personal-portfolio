@@ -6,6 +6,8 @@ import {
   FaHtml5,
   FaCss3Alt,
   FaJsSquare,
+  FaChevronLeft,
+  FaChevronRight,
 } from "react-icons/fa";
 import { SiTypescript, SiVite } from "react-icons/si";
 import projects from "../data/projects.js";
@@ -122,7 +124,7 @@ export default function ProjectCarousel() {
           aria-label="Previous project"
           type="button"
         >
-          ←
+          <FaChevronLeft />
         </button>
 
         <button
@@ -131,7 +133,7 @@ export default function ProjectCarousel() {
           aria-label="Next project"
           type="button"
         >
-          →
+          <FaChevronRight />
         </button>
       </div>
 
