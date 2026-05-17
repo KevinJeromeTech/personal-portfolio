@@ -4,50 +4,301 @@
   padding-bottom: 4rem;
 }
 
+/* ── Enhanced hero background orbs ── */
+.hero-enhanced {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(90px);
+  opacity: 0.28;
+  animation: orbFloat 9s ease-in-out infinite alternate;
+}
+
+.hero-orb-1 {
+  width: 480px;
+  height: 480px;
+  background: radial-gradient(circle, rgba(255, 100, 140, 0.7), rgba(128, 0, 32, 0.2));
+  top: -180px;
+  right: -100px;
+  animation-delay: 0s;
+}
+
+.hero-orb-2 {
+  width: 380px;
+  height: 380px;
+  background: radial-gradient(circle, rgba(128, 0, 60, 0.5), rgba(60, 0, 20, 0.15));
+  bottom: -140px;
+  left: -80px;
+  animation-delay: -4.5s;
+}
+
+@keyframes orbFloat {
+  from { transform: translate(0, 0) scale(1); }
+  to   { transform: translate(28px, 18px) scale(1.1); }
+}
+
+/* ── Avatar ── */
 .profile-picture {
   margin-bottom: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-avatar-wrap {
+  position: relative;
+  width: 186px;
+  height: 186px;
+  margin: 0 auto;
+}
+
+.avatar-glow-ring {
+  position: absolute;
+  inset: -5px;
+  border-radius: 50%;
+  background: conic-gradient(#ff4d7b, #ffffff, #800020, #ff4d7b);
+  animation: ringRotate 5s linear infinite;
+  z-index: 0;
+}
+
+.avatar-glow-ring::after {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  border-radius: 50%;
+  /* mask the inner part so only the ring border shows */
+  background: linear-gradient(145deg, rgba(128, 0, 32, 0.94), rgba(80, 0, 20, 0.97));
 }
 
 .hero-logo {
+  position: relative;
+  z-index: 2;
   width: 170px;
   height: 170px;
-  margin: 0 auto;
   border-radius: 999px;
   object-fit: cover;
-  box-shadow: 0 18px 50px rgba(128, 0, 32, 0.18);
-  border: 6px solid rgba(255, 255, 255, 0.85);
+  border: 5px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 0 18px 50px rgba(128, 0, 32, 0.28);
+  margin: 8px;
+  display: block;
+  animation: avatarFloat 6s ease-in-out infinite;
 }
 
+@keyframes ringRotate {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes avatarFloat {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-8px); }
+}
+
+/* ── Open to Work badge ── */
+.open-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  color: #ffffff;
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 0.44rem 0.9rem;
+  border-radius: 999px;
+  backdrop-filter: blur(10px);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  position: relative;
+  z-index: 1;
+}
+
+.pulse-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #4ade80;
+  box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.6);
+  animation: pulseDot 2s ease-out infinite;
+  flex-shrink: 0;
+}
+
+@keyframes pulseDot {
+  0%   { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.6); }
+  70%  { box-shadow: 0 0 0 8px rgba(74, 222, 128, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0); }
+}
+
+/* ── Hero content ── */
 .hero-content {
   max-width: 860px;
   margin: 0 auto;
+  position: relative;
+  z-index: 1;
 }
 
-.hero h1 {
+.hero-greeting {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0 0 0.25rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.hero-name {
+  font-size: clamp(3rem, 7vw, 5.2rem);
+  line-height: 1.02;
+  margin: 0 0 0.9rem;
+  background: linear-gradient(135deg, #ffffff 30%, #ffbfd0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.04em;
+}
+
+/* ── Typing animation ── */
+.hero-role-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  margin-bottom: 1.4rem;
+  min-height: 2.2rem;
+}
+
+.hero-role {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.9);
+  letter-spacing: 0.01em;
+}
+
+.typing-cursor {
+  font-size: 1.35rem;
+  font-weight: 300;
+  color: rgba(255, 200, 200, 0.85);
+  animation: blinkCursor 1s step-end infinite;
+  margin-left: 2px;
+}
+
+@keyframes blinkCursor {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+.hero-bio {
+  line-height: 1.9;
   text-align: center;
-  font-size: clamp(2.8rem, 6vw, 4.7rem);
-  line-height: 1.05;
-  margin-bottom: 1.2rem;
+  font-size: 1.1rem;
+  max-width: 680px;
+  margin: 0 auto 2.2rem;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* ── CTA buttons ── */
+.hero-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.6rem;
+}
+
+.hero-btn-primary {
+  background: linear-gradient(135deg, #ffffff, #f3f4f6);
+  color: var(--burgundy);
+  font-weight: 800;
+  padding: 0.95rem 1.8rem;
+  border-radius: 14px;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.22);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.hero-btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.28);
+}
+
+.hero-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  font-weight: 700;
+  padding: 0.95rem 1.6rem;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(10px);
+  transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+}
+
+.hero-btn-secondary:hover {
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.38);
+}
+
+/* ── Social icon buttons ── */
+.hero-socials {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.9rem;
+}
+
+.social-icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 1.3rem;
+  transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease;
+}
+
+.social-icon-btn:hover {
+  transform: translateY(-3px) scale(1.06);
+  background: rgba(255, 255, 255, 0.18);
   color: #ffffff;
 }
 
-.hero p {
-  line-height: 1.9;
-  text-align: center;
-  font-size: 1.16rem;
-  max-width: 860px;
-  margin: 0 auto 2rem;
-  color: rgba(255, 255, 255, 0.9);
-}
-
+/* ── Section headings ── */
 .about-preview h2,
 .skills-preview h2,
 .carousel-section h2,
 .contact-cta h2 {
   text-align: center;
   font-size: clamp(2rem, 3vw, 2.7rem);
-  margin-bottom: 1rem;
+  margin-bottom: 0.4rem;
   color: #ffffff;
+}
+
+.about-preview h2::after,
+.skills-preview h2::after,
+.carousel-section h2::after,
+.contact-cta h2::after {
+  content: "";
+  display: block;
+  width: 56px;
+  height: 3px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.9), rgba(255,180,200,0.4));
+  border-radius: 2px;
+  margin: 0.55rem auto 1rem;
 }
 
 .about-preview p,
@@ -64,10 +315,9 @@
   text-align: center;
 }
 
+/* ── Skill preview cards ── */
 .skill-card {
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .skill-card:hover {
@@ -75,7 +325,6 @@
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
 }
 
-/* icon animation */
 .skill-icon-wrap {
   display: flex;
   align-items: center;
@@ -90,5 +339,42 @@
 }
 
 .skill-card:hover .skill-icon {
-  transform: scale(1.15) rotate(2deg);
+  transform: scale(1.2) rotate(3deg);
+}
+
+/* ── Carousel pill dots ── */
+.carousel-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  border: none;
+  background: rgba(255, 255, 255, 0.28);
+  cursor: pointer;
+  transition: all 0.35s ease;
+  padding: 0;
+}
+
+.carousel-dot.active {
+  background: #ffffff;
+  width: 30px;
+}
+
+@media (max-width: 600px) {
+  .hero-role {
+    font-size: 1.12rem;
+  }
+
+  .typing-cursor {
+    font-size: 1.12rem;
+  }
+
+  .hero-avatar-wrap {
+    width: 160px;
+    height: 160px;
+  }
+
+  .hero-logo {
+    width: 146px;
+    height: 146px;
+  }
 }

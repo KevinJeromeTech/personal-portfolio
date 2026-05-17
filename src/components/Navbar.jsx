@@ -1,21 +1,30 @@
 import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { BsSun, BsMoon } from "react-icons/bs";
+import { HiMenuAlt3, HiX } from "react-icons/hi";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [darkMode, setDarkMode] = useState(
     localStorage.getItem("dark-mode") === "true"
   );
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     document.body.classList.toggle("dark-mode", darkMode);
     localStorage.setItem("dark-mode", darkMode);
   }, [darkMode]);
 
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   const closeMenu = () => setMenuOpen(false);
 
   return (
-    <header className="site-header">
+    <header className={`site-header ${scrolled ? "scrolled" : ""}`}>
       <div className="container nav-shell">
         <Link to="/" className="logo-holder" onClick={closeMenu}>
           <img
@@ -43,9 +52,10 @@ export default function Navbar() {
           <button
             className="dark-toggle"
             type="button"
+            aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}
             onClick={() => setDarkMode((prev) => !prev)}
           >
-            {darkMode ? "Light Mode" : "Dark Mode"}
+            {darkMode ? <BsSun /> : <BsMoon />}
           </button>
         </nav>
 
@@ -56,7 +66,7 @@ export default function Navbar() {
           aria-label="Toggle menu"
           onClick={() => setMenuOpen((prev) => !prev)}
         >
-          ☰
+          {menuOpen ? <HiX /> : <HiMenuAlt3 />}
         </button>
       </div>
 
@@ -72,9 +82,10 @@ export default function Navbar() {
         <button
           className="dark-toggle mobile-dark-toggle"
           type="button"
+          aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}
           onClick={() => setDarkMode((prev) => !prev)}
         >
-          {darkMode ? "Light Mode" : "Dark Mode"}
+          {darkMode ? <BsSun /> : <BsMoon />}
         </button>
       </div>
     </header>

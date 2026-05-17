@@ -293,6 +293,30 @@ section h2 {
   letter-spacing: -0.03em;
 }
 
+/* Shimmer sweep on card hover */
+.info-card::after,
+.preview-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.06) 50%,
+    transparent 70%
+  );
+  background-size: 200% 100%;
+  background-position: 200% 0;
+  transition: background-position 0.55s ease;
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+.info-card:hover::after,
+.preview-card:hover::after {
+  background-position: -50% 0;
+}
+
 body.dark-mode .section-card,
 body.dark-mode .info-card,
 body.dark-mode .preview-card,
