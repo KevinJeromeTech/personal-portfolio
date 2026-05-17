@@ -157,7 +157,7 @@ export default function About() {
               Turning ideas into<br />digital reality
             </h1>
             <p className="about-bio-text">
-              Hi! I&apos;m Kevin Jerome — a passionate web designer and software developer
+              Hi! I&apos;m Kevin Jerome, a passionate web designer and software developer
               committed to creating exceptional digital experiences. My journey in technology
               started out of curiosity, which quickly evolved into a deep passion for building
               and designing engaging websites.
