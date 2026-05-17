@@ -92,7 +92,7 @@ export default function Hero() {
 
         <div className="hero-socials">
           <a
-            href="https://github.com/SpikeTek241"
+            href="https://github.com/KevinJeromeTech"
             target="_blank"
             rel="noreferrer"
             className="social-icon-btn"
