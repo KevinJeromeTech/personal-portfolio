@@ -38,7 +38,24 @@ function ScrollProgressBar() {
   );
 }
 
+function useSpotlight() {
+  useEffect(() => {
+    const handle = (e) => {
+      const card = e.target.closest(
+        ".section-card, .project-showcase-card, .skill-area-card, .tech-group-card, .about-highlight-card, .core-value-card, .soft-skill-card"
+      );
+      if (!card) return;
+      const rect = card.getBoundingClientRect();
+      card.style.setProperty("--mx", `${e.clientX - rect.left}px`);
+      card.style.setProperty("--my", `${e.clientY - rect.top}px`);
+    };
+    document.addEventListener("mousemove", handle);
+    return () => document.removeEventListener("mousemove", handle);
+  }, []);
+}
+
 function App() {
+  useSpotlight();
   return (
     <>
       <ScrollProgressBar />

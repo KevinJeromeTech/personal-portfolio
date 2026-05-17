@@ -339,7 +339,64 @@ section h2 {
   margin: 0 auto;
 }
 
-/* Shimmer sweep on card hover */
+/* ── Spotlight hover effect on all cards ── */
+.section-card,
+.project-showcase-card,
+.skill-area-card,
+.tech-group-card,
+.about-highlight-card,
+.core-value-card,
+.soft-skill-card {
+  --mx: 50%;
+  --my: 50%;
+}
+
+.section-card::after,
+.project-showcase-card::after,
+.skill-area-card::after,
+.tech-group-card::after,
+.about-highlight-card::after,
+.core-value-card::after,
+.soft-skill-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    280px circle at var(--mx) var(--my),
+    rgba(255, 255, 255, 0.055),
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.section-card:hover::after,
+.project-showcase-card:hover::after,
+.skill-area-card:hover::after,
+.tech-group-card:hover::after,
+.about-highlight-card:hover::after,
+.core-value-card:hover::after,
+.soft-skill-card:hover::after {
+  opacity: 1;
+}
+
+/* ── Button press microinteraction ── */
+.hero-button:active,
+.hero-btn-primary:active,
+.hero-btn-secondary:active,
+.filter-btn:active,
+.contact-submit-btn:active,
+.button-contact:active,
+.dark-toggle:active,
+.mobile-toggle:active {
+  transform: scale(0.96) !important;
+  transition-duration: 0.08s !important;
+}
+
+/* ── Shimmer sweep on preview/info card hover ── */
 .info-card::after,
 .preview-card::after {
   content: "";
@@ -348,7 +405,7 @@ section h2 {
   background: linear-gradient(
     105deg,
     transparent 30%,
-    rgba(255, 255, 255, 0.06) 50%,
+    rgba(255, 255, 255, 0.05) 50%,
     transparent 70%
   );
   background-size: 200% 100%;
@@ -361,6 +418,13 @@ section h2 {
 .info-card:hover::after,
 .preview-card:hover::after {
   background-position: -50% 0;
+}
+
+/* ── Enhanced card hover glow ── */
+.about-highlight-card:hover,
+.core-value-card:hover,
+.soft-skill-card:hover {
+  box-shadow: var(--shadow-lg), 0 0 40px rgba(128, 0, 32, 0.18);
 }
 
 body.dark-mode .section-card,

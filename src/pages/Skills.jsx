@@ -147,7 +147,7 @@ export default function Skills() {
     <>
       <Navbar />
 
-      <main className="container page-shell">
+      <motion.main className="container page-shell" initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}>
 
         {/* ── Page header ── */}
         <motion.section className="section-card skills-hero-card" {...fadeUp(0)}>
@@ -241,7 +241,7 @@ export default function Skills() {
           </div>
         </motion.section>
 
-      </main>
+      </motion.main>
 
       <Footer />
     </>

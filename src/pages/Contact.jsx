@@ -60,7 +60,7 @@ export default function Contact() {
   return (
     <>
       <Navbar />
-      <main className="container page-shell">
+      <motion.main className="container page-shell" initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}>
         <section className="section-card contact-page-card">
           <div className="contact-hero-orb-1" aria-hidden="true" />
           <div className="contact-hero-orb-2" aria-hidden="true" />
@@ -185,7 +185,7 @@ export default function Contact() {
             </motion.div>
           </div>
         </section>
-      </main>
+      </motion.main>
       <Footer />
     </>
   );

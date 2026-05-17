@@ -98,7 +98,7 @@ export default function About() {
   return (
     <>
       <Navbar />
-      <main className="container page-shell">
+      <motion.main className="container page-shell" initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}>
 
         {/* ── Intro ── */}
         <motion.section className="section-card about-intro-card" {...fadeUp(0)}>
@@ -225,7 +225,7 @@ export default function About() {
           </div>
         </motion.section>
 
-      </main>
+      </motion.main>
       <Footer />
     </>
   );
