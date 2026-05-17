@@ -37,9 +37,43 @@
   animation-delay: -4.5s;
 }
 
+.hero-orb-3 {
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(200, 50, 100, 0.35), transparent 70%);
+  top: 40%;
+  left: 10%;
+  animation-delay: -2.5s;
+  animation-duration: 11s;
+  opacity: 0.18;
+}
+
 @keyframes orbFloat {
   from { transform: translate(0, 0) scale(1); }
   to   { transform: translate(28px, 18px) scale(1.1); }
+}
+
+/* ── Floating particles ── */
+.hero-particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.18);
+  animation: particleFloat linear infinite;
+}
+
+@keyframes particleFloat {
+  0%   { transform: translateY(0) translateX(0) scale(1); opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 0.6; }
+  100% { transform: translateY(-120px) translateX(30px) scale(0.6); opacity: 0; }
 }
 
 /* ── Avatar ── */
@@ -158,11 +192,19 @@
   font-size: clamp(3rem, 7vw, 5.2rem);
   line-height: 1.02;
   margin: 0 0 0.9rem;
-  background: linear-gradient(135deg, #ffffff 30%, #ffbfd0 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #ffbfd0 40%, #ffffff 60%, #ffd6e4 100%);
+  background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   letter-spacing: -0.04em;
+  animation: gradientShift 5s ease-in-out infinite;
+}
+
+@keyframes gradientShift {
+  0%   { background-position: 0% center; }
+  50%  { background-position: 100% center; }
+  100% { background-position: 0% center; }
 }
 
 /* ── Typing animation ── */
