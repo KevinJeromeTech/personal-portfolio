@@ -43,7 +43,7 @@ const projects = [
     longDescription:
       "Kairos is a productivity and scheduling concept centered around focused structure, time awareness, and intentional planning. The project explores how digital interfaces can support rhythm, organization, and calm productivity.",
     image: "/Images/Kairos.png",
-    github: "https://github.com/Kairos-Moment/kairos-app?tab=readme-ov-file",
+    github: "https://github.com/KevinJeromeTech/kairos-app",
     demo: "",
     featured: false,
     stack: ["React", "Node.js", "CSS"],
