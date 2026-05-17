@@ -9,8 +9,8 @@ const contactCards = [
   {
     icon: <MdEmail />,
     label: "Email",
-    value: "blade94781kj@gmail.com",
-    href: "mailto:blade94781kj@gmail.com",
+    value: "kevinjerome.dev@gmail.com",
+    href: "mailto:kevinjerome.dev@gmail.com",
     color: "#ec4899",
     bg: "rgba(236,72,153,0.12)",
     external: false,

@@ -15,7 +15,7 @@ const socials = [
     external: true,
   },
   {
-    href: "mailto:blade94781kj@gmail.com",
+    href: "mailto:kevinjerome.dev@gmail.com",
     label: "Email",
     icon: <MdEmail />,
     external: false,
