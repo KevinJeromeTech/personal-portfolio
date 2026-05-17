@@ -109,7 +109,7 @@ const timeline = [
     year: "2022 – Present",
     type: "edu",
     icon: <FaGraduationCap />,
-    title: "B.S. Computer Science",
+    title: "B.A. Computer Science",
     org: "Florida International University",
     desc: "Studying data structures, algorithms, software engineering, systems programming, and full-stack web development.",
   },
