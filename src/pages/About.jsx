@@ -110,7 +110,7 @@ const timeline = [
     type: "edu",
     icon: <FaGraduationCap />,
     title: "B.S. Computer Science",
-    org: "University",
+    org: "Florida International University",
     desc: "Studying data structures, algorithms, software engineering, systems programming, and full-stack web development.",
   },
   {
