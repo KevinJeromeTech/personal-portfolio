@@ -9,7 +9,7 @@ const socials = [
     external: true,
   },
   {
-    href: "https://github.com/SpikeTek241",
+    href: "https://github.com/KevinJeromeTech",
     label: "GitHub",
     icon: <FaGithub />,
     external: true,

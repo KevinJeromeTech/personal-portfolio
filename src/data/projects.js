@@ -7,7 +7,7 @@ const projects = [
     longDescription:
       "ExpenseIQ is a full-stack expense intelligence dashboard built to help users track spending, review transactions, and understand financial behavior through a cleaner, more professional analytics experience.",
     image: "/Images/ExpenseIQ.png",
-    github: "https://github.com/SpikeTek241/ExpenseIQ",
+    github: "https://github.com/KevinJeromeTech/ExpenseIQ",
     demo: "https://expense-iq-lilac.vercel.app/",
     featured: true,
     stack: ["React", "TypeScript", "Node.js"],
@@ -25,7 +25,7 @@ const projects = [
     longDescription:
       "Universal Education Empowerment is a mission-driven web project focused on presenting educational resources through a strong visual identity and purposeful layout designed for accessibility, clarity, and impact.",
     image: "/Images/UEE.png",
-    github: "https://github.com/SpikeTek241/UEE",
+    github: "https://github.com/KevinJeromeTech/UEE",
     demo: "https://spiketek241.github.io/Universal-Educational-Empowerment/",
     featured: true,
     stack: ["HTML", "CSS", "JavaScript"],
@@ -80,7 +80,7 @@ const projects = [
     longDescription:
       "This portfolio is a redesigned personal site built to present my work, technical growth, design instincts, and professional direction more clearly to recruiters, engineers, and collaborators.",
     image: "/Images/nportfolio.png",
-    github: "https://github.com/SpikeTek241/personal-portfolio",
+    github: "https://github.com/KevinJeromeTech/personal-portfolio",
     demo: "https://personal-portfolio-liard-xi-32.vercel.app/",
     featured: true,
     stack: ["React", "CSS", "Vite"],
