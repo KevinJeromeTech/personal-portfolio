@@ -21,7 +21,7 @@ import {
   FaFigma,
   FaCss3Alt,
 } from "react-icons/fa";
-import { SiExpress, SiTailwindcss, SiVite, SiPostman, SiTypescript } from "react-icons/si";
+import { SiExpress, SiTailwindcss, SiVite, SiPostman, SiTypescript, SiNextdotjs } from "react-icons/si";
 import { HiOutlineSpeakerphone } from "react-icons/hi";
 import { MdGroups2, MdOutlineAutoGraph } from "react-icons/md";
 import ScrambleText from "../components/ScrambleText.jsx";
@@ -93,6 +93,7 @@ const techGroups = [
     title: "Frameworks & Libraries",
     items: [
       { icon: <FaReact />, name: "React.js" },
+      { icon: <SiNextdotjs />, name: "Next.js" },
       { icon: <FaNodeJs />, name: "Node.js" },
       { icon: <SiExpress />, name: "Express.js" },
       { icon: <SiTailwindcss />, name: "Tailwind CSS" },
