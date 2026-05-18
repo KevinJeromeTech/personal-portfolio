@@ -158,7 +158,7 @@ export default function Contact() {
                       {card.icon}
                     </div>
                     <div className="contact-info-text">
-                      <span className="contact-info-label">{card.label}</span>
+                      <span style={{ color: "#fff", fontSize: "1rem", fontWeight: 600 }}>{card.label}</span>
                     </div>
                   </a>
                 ))}
