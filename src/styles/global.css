@@ -141,6 +141,10 @@ a {
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
 }
 
+.about-preview .preview-grid {
+  grid-template-columns: repeat(2, 1fr);
+}
+
 .portfolio-grid {
   grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
 }
@@ -555,7 +559,8 @@ body.dark-mode span {
   .two-column-grid,
   .three-column-grid,
   .preview-grid,
-  .portfolio-grid {
+  .portfolio-grid,
+  .about-preview .preview-grid {
     grid-template-columns: 1fr;
   }
 
