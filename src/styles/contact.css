@@ -101,7 +101,8 @@
   display: flex;
   flex-direction: column;
   gap: 0.18rem;
-  overflow: hidden;
+  overflow: visible;
+  min-width: 0;
 }
 
 .contact-info-label {
