@@ -157,7 +157,9 @@ export default function Contact() {
                     >
                       {card.icon}
                     </div>
-                    <span className="contact-info-label">{card.label}</span>
+                    <div className="contact-info-text">
+                      <span className="contact-info-label">{card.label}</span>
+                    </div>
                   </a>
                 ))}
               </div>
