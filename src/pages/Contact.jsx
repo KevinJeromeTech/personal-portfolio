@@ -8,7 +8,7 @@ import Confetti from "../components/Confetti.jsx";
 // 1. Go to https://web3forms.com
 // 2. Enter your email and click "Create Access Key"
 // 3. Check your inbox, copy the key, and paste it below
-const WEB3FORMS_KEY = "YOUR_ACCESS_KEY_HERE";
+const WEB3FORMS_KEY = "f54d177d-d4cb-4795-8863-4864e31decd0";
 
 const contactCards = [
   {
