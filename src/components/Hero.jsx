@@ -154,7 +154,7 @@ export default function Hero() {
           </MagneticButton>
           <MagneticButton>
             <a
-              href="/Documents/Kevin-Jerome-Master-CS-Resume-V1.pdf"
+              href="/Documents/KevinJeromeSoftwareEngineerResume.pdf"
               download
               className="hero-button hero-btn-secondary"
             >
