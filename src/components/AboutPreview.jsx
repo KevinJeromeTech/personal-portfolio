@@ -57,6 +57,8 @@ export default function AboutPreview() {
         ))}
       </div>
 
+      <h3 className="preview-grid-title">Core Strengths</h3>
+
       <div className="preview-grid">
         <div className="preview-card">
           <h3>Innovative Solutions</h3>
