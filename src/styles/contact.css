@@ -217,6 +217,20 @@
   opacity: 0.97;
 }
 
+.contact-submit-btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.contact-error {
+  color: #fca5a5;
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-align: center;
+  margin: 0 0 0.5rem;
+}
+
 /* ── Success state ── */
 .contact-success {
   display: flex;

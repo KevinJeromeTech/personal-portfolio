@@ -5,6 +5,11 @@ import { MdEmail } from "react-icons/md";
 import { FiSend } from "react-icons/fi";
 import Confetti from "../components/Confetti.jsx";
 
+// 1. Go to https://web3forms.com
+// 2. Enter your email and click "Create Access Key"
+// 3. Check your inbox, copy the key, and paste it below
+const WEB3FORMS_KEY = "YOUR_ACCESS_KEY_HERE";
+
 const contactCards = [
   {
     icon: <MdEmail />,
@@ -43,18 +48,42 @@ const fadeUp = (delay = 0) => ({
 
 export default function Contact() {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState("idle"); // idle | sending | success | error
 
   function handleChange(e) {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
-    setSubmitted(true);
-    setFormData({ name: "", email: "", message: "" });
+    setStatus("sending");
+
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          subject: `Portfolio contact from ${formData.name}`,
+          ...formData,
+        }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        setStatus("success");
+        setFormData({ name: "", email: "", message: "" });
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    }
   }
+
+  const isSending = status === "sending";
+  const isSuccess = status === "success";
+  const isError   = status === "error";
 
   return (
     <motion.main
@@ -111,7 +140,7 @@ export default function Contact() {
           {/* ── Right: form ── */}
           <motion.div className="contact-form-col" {...fadeUp(0.18)}>
             <AnimatePresence mode="wait">
-              {!submitted ? (
+              {!isSuccess ? (
                 <motion.form
                   key="form"
                   className="contact-form"
@@ -157,9 +186,20 @@ export default function Contact() {
                       onChange={handleChange}
                     />
                   </div>
-                  <button type="submit" className="contact-submit-btn">
+
+                  {isError && (
+                    <p className="contact-error">
+                      Something went wrong. Please try again or email directly.
+                    </p>
+                  )}
+
+                  <button
+                    type="submit"
+                    className="contact-submit-btn"
+                    disabled={isSending}
+                  >
                     <FiSend aria-hidden="true" />
-                    Send Message
+                    {isSending ? "Sending…" : "Send Message"}
                   </button>
                 </motion.form>
               ) : (
@@ -170,7 +210,7 @@ export default function Contact() {
                   animate={{ opacity: 1, scale: 1, y: 0 }}
                   transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                 >
-                  <Confetti active={submitted} />
+                  <Confetti active={isSuccess} />
                   <div className="success-icon">
                     <FaCheckCircle />
                   </div>
@@ -179,7 +219,7 @@ export default function Contact() {
                   <button
                     type="button"
                     className="hero-button hero-btn-secondary"
-                    onClick={() => setSubmitted(false)}
+                    onClick={() => setStatus("idle")}
                   >
                     Send Another
                   </button>
