@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { motion } from "motion/react";
 import { Helmet } from "react-helmet-async";
-import { FaGithub, FaLinkedin, FaCheckCircle } from "react-icons/fa";
+import { toast } from "react-hot-toast";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { FiSend } from "react-icons/fi";
-import Confetti from "../components/Confetti.jsx";
 
 const WEB3FORMS_KEY = "f54d177d-d4cb-4795-8863-4864e31decd0";
 
@@ -58,7 +58,7 @@ function validateForm({ name, email, message }) {
 export default function Contact() {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [errors, setErrors]     = useState({});
-  const [status, setStatus]     = useState("idle"); // idle | sending | success | error
+  const [sending, setSending]   = useState(false);
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -79,7 +79,7 @@ export default function Contact() {
       setErrors(fieldErrors);
       return;
     }
-    setStatus("sending");
+    setSending(true);
 
     try {
       const res = await fetch("https://api.web3forms.com/submit", {
@@ -93,20 +93,18 @@ export default function Contact() {
       });
       const data = await res.json();
       if (data.success) {
-        setStatus("success");
+        toast.success("Message sent! I'll get back to you soon.");
         setFormData({ name: "", email: "", message: "" });
         setErrors({});
       } else {
-        setStatus("error");
+        toast.error("Something went wrong. Please try again.");
       }
     } catch {
-      setStatus("error");
+      toast.error("Something went wrong. Please try again.");
+    } finally {
+      setSending(false);
     }
   }
-
-  const isSending = status === "sending";
-  const isSuccess = status === "success";
-  const isError   = status === "error";
 
   return (
     <>
@@ -172,112 +170,44 @@ export default function Contact() {
 
             {/* ── Right: form ── */}
             <motion.div className="contact-form-col" {...fadeUp(0.18)}>
-              <AnimatePresence mode="wait">
-                {!isSuccess ? (
-                  <motion.form
-                    key="form"
-                    className="contact-form"
-                    onSubmit={handleSubmit}
-                    noValidate
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <div className={`form-group ${errors.name ? "has-error" : ""}`}>
-                      <label htmlFor="name">Name</label>
-                      <input
-                        id="name"
-                        name="name"
-                        type="text"
-                        placeholder="Your Name"
-                        autoComplete="name"
-                        aria-describedby={errors.name ? "name-error" : undefined}
-                        aria-invalid={!!errors.name}
-                        value={formData.name}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                      />
-                      {errors.name && (
-                        <span id="name-error" className="field-error" role="alert">{errors.name}</span>
-                      )}
-                    </div>
-                    <div className={`form-group ${errors.email ? "has-error" : ""}`}>
-                      <label htmlFor="email">Email</label>
-                      <input
-                        id="email"
-                        name="email"
-                        type="email"
-                        placeholder="Your Email"
-                        autoComplete="email"
-                        aria-describedby={errors.email ? "email-error" : undefined}
-                        aria-invalid={!!errors.email}
-                        value={formData.email}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                      />
-                      {errors.email && (
-                        <span id="email-error" className="field-error" role="alert">{errors.email}</span>
-                      )}
-                    </div>
-                    <div className={`form-group ${errors.message ? "has-error" : ""}`}>
-                      <label htmlFor="message">Message</label>
-                      <textarea
-                        id="message"
-                        name="message"
-                        rows="6"
-                        placeholder="Your Message"
-                        aria-describedby={errors.message ? "message-error" : undefined}
-                        aria-invalid={!!errors.message}
-                        value={formData.message}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                      />
-                      {errors.message && (
-                        <span id="message-error" className="field-error" role="alert">{errors.message}</span>
-                      )}
-                    </div>
-
-                    {isError && (
-                      <p className="contact-error" role="alert">
-                        Something went wrong. Please try again or email directly.
-                      </p>
-                    )}
-
-                    <button
-                      type="submit"
-                      className="contact-submit-btn"
-                      disabled={isSending}
-                      aria-busy={isSending}
-                    >
-                      <FiSend aria-hidden="true" />
-                      {isSending ? "Sending…" : "Send Message"}
-                    </button>
-                  </motion.form>
-                ) : (
-                  <motion.div
-                    key="success"
-                    className="contact-success"
-                    initial={{ opacity: 0, scale: 0.96, y: 16 }}
-                    animate={{ opacity: 1, scale: 1, y: 0 }}
-                    transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                  >
-                    <Confetti active={isSuccess} />
-                    <div className="success-icon" aria-hidden="true">
-                      <FaCheckCircle />
-                    </div>
-                    <h3>Message Sent!</h3>
-                    <p>Thank you for reaching out. I&apos;ll get back to you as soon as possible.</p>
-                    <button
-                      type="button"
-                      className="hero-button hero-btn-secondary"
-                      onClick={() => setStatus("idle")}
-                    >
-                      Send Another
-                    </button>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+              <form className="contact-form" onSubmit={handleSubmit} noValidate>
+                <div className={`form-group ${errors.name ? "has-error" : ""}`}>
+                  <label htmlFor="name">Name</label>
+                  <input
+                    id="name" name="name" type="text" placeholder="Your Name"
+                    autoComplete="name"
+                    aria-describedby={errors.name ? "name-error" : undefined}
+                    aria-invalid={!!errors.name}
+                    value={formData.name} onChange={handleChange} onBlur={handleBlur}
+                  />
+                  {errors.name && <span id="name-error" className="field-error" role="alert">{errors.name}</span>}
+                </div>
+                <div className={`form-group ${errors.email ? "has-error" : ""}`}>
+                  <label htmlFor="email">Email</label>
+                  <input
+                    id="email" name="email" type="email" placeholder="Your Email"
+                    autoComplete="email"
+                    aria-describedby={errors.email ? "email-error" : undefined}
+                    aria-invalid={!!errors.email}
+                    value={formData.email} onChange={handleChange} onBlur={handleBlur}
+                  />
+                  {errors.email && <span id="email-error" className="field-error" role="alert">{errors.email}</span>}
+                </div>
+                <div className={`form-group ${errors.message ? "has-error" : ""}`}>
+                  <label htmlFor="message">Message</label>
+                  <textarea
+                    id="message" name="message" rows="6" placeholder="Your Message"
+                    aria-describedby={errors.message ? "message-error" : undefined}
+                    aria-invalid={!!errors.message}
+                    value={formData.message} onChange={handleChange} onBlur={handleBlur}
+                  />
+                  {errors.message && <span id="message-error" className="field-error" role="alert">{errors.message}</span>}
+                </div>
+                <button type="submit" className="contact-submit-btn" disabled={sending} aria-busy={sending}>
+                  <FiSend aria-hidden="true" />
+                  {sending ? "Sending…" : "Send Message"}
+                </button>
+              </form>
             </motion.div>
           </div>
         </section>

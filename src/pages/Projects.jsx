@@ -1,6 +1,7 @@
-import { useMemo, useState, useEffect } from "react";
+import { useMemo, useState, useEffect, useRef } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { Helmet } from "react-helmet-async";
+import { Link } from "react-router-dom";
 import projects from "../data/projects.js";
 import "../styles/projects.css";
 
@@ -74,13 +75,32 @@ export default function Projects() {
     "in-progress": sortedProjects.filter((p) => p.status === "In Progress").length,
   }), [sortedProjects]);
 
+  const modalRef   = useRef(null);
   const openModal  = (project) => { setSelectedProject(project); document.body.style.overflow = "hidden"; };
   const closeModal = ()         => { setSelectedProject(null);   document.body.style.overflow = "auto"; };
 
   useEffect(() => {
+    if (!selectedProject) return;
     const handleEsc = (e) => { if (e.key === "Escape") closeModal(); };
-    if (selectedProject) window.addEventListener("keydown", handleEsc);
-    return () => { window.removeEventListener("keydown", handleEsc); document.body.style.overflow = "auto"; };
+    window.addEventListener("keydown", handleEsc);
+
+    // Focus trap
+    const modal = modalRef.current;
+    const focusable = modal?.querySelectorAll('button, [href], input, textarea, select, [tabindex]:not([tabindex="-1"])');
+    const first = focusable?.[0];
+    const last  = focusable?.[focusable.length - 1];
+    first?.focus();
+    const trapTab = (e) => {
+      if (e.key !== "Tab") return;
+      if (e.shiftKey) { if (document.activeElement === first) { e.preventDefault(); last?.focus(); } }
+      else            { if (document.activeElement === last)  { e.preventDefault(); first?.focus(); } }
+    };
+    modal?.addEventListener("keydown", trapTab);
+    return () => {
+      window.removeEventListener("keydown", handleEsc);
+      modal?.removeEventListener("keydown", trapTab);
+      document.body.style.overflow = "auto";
+    };
   }, [selectedProject]);
 
   return (
@@ -239,6 +259,7 @@ export default function Projects() {
               initial="hidden"
               animate="visible"
               exit="exit"
+              ref={modalRef}
             >
               <button
                 className="project-modal-close"
@@ -314,6 +335,13 @@ export default function Projects() {
                   ) : (
                     <span className="project-link-disabled">GitHub</span>
                   )}
+                  <Link
+                    to={`/projects/${selectedProject.id}`}
+                    className="project-modal-detail-link"
+                    onClick={closeModal}
+                  >
+                    View Full Page →
+                  </Link>
                 </div>
               </div>
             </motion.div>

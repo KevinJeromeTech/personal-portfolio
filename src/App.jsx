@@ -1,17 +1,21 @@
 import { lazy, Suspense, useEffect, useState } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "motion/react";
+import { Toaster } from "react-hot-toast";
+import { Analytics } from "@vercel/analytics/react";
 import Navbar from "./components/Navbar.jsx";
 import Footer from "./components/Footer.jsx";
 import CustomCursor from "./components/CustomCursor.jsx";
 import ErrorBoundary from "./components/ErrorBoundary.jsx";
+import ScrollToTop from "./components/ScrollToTop.jsx";
 
-const Home     = lazy(() => import("./pages/Home.jsx"));
-const About    = lazy(() => import("./pages/About.jsx"));
-const Skills   = lazy(() => import("./pages/Skills.jsx"));
-const Projects = lazy(() => import("./pages/Projects.jsx"));
-const Contact  = lazy(() => import("./pages/Contact.jsx"));
-const NotFound = lazy(() => import("./pages/NotFound.jsx"));
+const Home          = lazy(() => import("./pages/Home.jsx"));
+const About         = lazy(() => import("./pages/About.jsx"));
+const Skills        = lazy(() => import("./pages/Skills.jsx"));
+const Projects      = lazy(() => import("./pages/Projects.jsx"));
+const ProjectDetail = lazy(() => import("./pages/ProjectDetail.jsx"));
+const Contact       = lazy(() => import("./pages/Contact.jsx"));
+const NotFound      = lazy(() => import("./pages/NotFound.jsx"));
 
 function PageLoader() {
   return (
@@ -102,19 +106,30 @@ function App() {
 
   return (
     <>
+      <Analytics />
+      <Toaster
+        position="bottom-right"
+        toastOptions={{
+          style: { background: "#1f1225", color: "#fff", border: "1px solid rgba(255,255,255,0.12)" },
+          success: { iconTheme: { primary: "#4ade80", secondary: "#1f1225" } },
+          error:   { iconTheme: { primary: "#ef4444", secondary: "#1f1225" } },
+        }}
+      />
       <CustomCursor />
       <ScrollProgressBar />
       <Navbar />
+      <ScrollToTop />
       <ErrorBoundary>
         <Suspense fallback={<PageLoader />}>
           <AnimatePresence mode="wait" initial={false}>
             <Routes location={location} key={location.pathname}>
-              <Route path="/"         element={<Home />} />
-              <Route path="/about"    element={<About />} />
-              <Route path="/skills"   element={<Skills />} />
-              <Route path="/projects" element={<Projects />} />
-              <Route path="/contact"  element={<Contact />} />
-              <Route path="*"         element={<NotFound />} />
+              <Route path="/"              element={<Home />} />
+              <Route path="/about"         element={<About />} />
+              <Route path="/skills"        element={<Skills />} />
+              <Route path="/projects"      element={<Projects />} />
+              <Route path="/projects/:id"  element={<ProjectDetail />} />
+              <Route path="/contact"       element={<Contact />} />
+              <Route path="*"              element={<NotFound />} />
             </Routes>
           </AnimatePresence>
         </Suspense>
