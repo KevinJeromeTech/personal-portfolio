@@ -81,6 +81,14 @@ export default function AboutPreview() {
             reach your goals.
           </p>
         </div>
+
+        <div className="preview-card">
+          <h3>User-First Design</h3>
+          <p>
+            Every interface I build is crafted with the end user in mind —
+            intuitive, accessible, and built to leave a lasting impression.
+          </p>
+        </div>
       </div>
     </section>
   );
