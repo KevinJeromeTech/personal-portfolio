@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "motion/react";
+import { Helmet } from "react-helmet-async";
 import { FiDownload } from "react-icons/fi";
 import {
   FaLightbulb,
@@ -125,7 +126,16 @@ const timeline = [
 
 export default function About() {
   return (
+    <>
+      <Helmet>
+        <title>About | Kevin Jerome</title>
+        <meta name="description" content="Learn about Kevin Jerome — a Full-Stack Developer passionate about React, Node.js, clean UI, and building real-world web products." />
+        <link rel="canonical" href="https://kevinjerome.dev/about" />
+        <meta property="og:title" content="About | Kevin Jerome" />
+        <meta property="og:url" content="https://kevinjerome.dev/about" />
+      </Helmet>
     <motion.main
+      id="main-content"
       className="container page-shell"
       initial={{ opacity: 0, y: 18 }}
       animate={{ opacity: 1, y: 0 }}
@@ -285,5 +295,6 @@ export default function About() {
         </div>
       </motion.section>
     </motion.main>
+    </>
   );
 }
