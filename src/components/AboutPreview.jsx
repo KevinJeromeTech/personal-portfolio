@@ -59,7 +59,7 @@ export default function AboutPreview() {
 
       <h3 className="preview-grid-title">Core Strengths</h3>
 
-      <div className="preview-grid">
+      <div className="preview-grid" style={{ gridTemplateColumns: "repeat(2, 1fr)" }}>
         <div className="preview-card">
           <h3>Innovative Solutions</h3>
           <p>
