@@ -1,14 +1,25 @@
-import { useEffect, useState } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "motion/react";
-import Home from "./pages/Home.jsx";
-import About from "./pages/About.jsx";
-import Skills from "./pages/Skills.jsx";
-import Projects from "./pages/Projects.jsx";
-import Contact from "./pages/Contact.jsx";
 import Navbar from "./components/Navbar.jsx";
 import Footer from "./components/Footer.jsx";
 import CustomCursor from "./components/CustomCursor.jsx";
+import ErrorBoundary from "./components/ErrorBoundary.jsx";
+
+const Home     = lazy(() => import("./pages/Home.jsx"));
+const About    = lazy(() => import("./pages/About.jsx"));
+const Skills   = lazy(() => import("./pages/Skills.jsx"));
+const Projects = lazy(() => import("./pages/Projects.jsx"));
+const Contact  = lazy(() => import("./pages/Contact.jsx"));
+const NotFound = lazy(() => import("./pages/NotFound.jsx"));
+
+function PageLoader() {
+  return (
+    <div className="page-loader" aria-label="Loading page" role="status">
+      <div className="page-loader-bar" />
+    </div>
+  );
+}
 
 function ScrollProgressBar() {
   const [progress, setProgress] = useState(0);
@@ -94,15 +105,20 @@ function App() {
       <CustomCursor />
       <ScrollProgressBar />
       <Navbar />
-      <AnimatePresence mode="wait" initial={false}>
-        <Routes location={location} key={location.pathname}>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/skills" element={<Skills />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
-      </AnimatePresence>
+      <ErrorBoundary>
+        <Suspense fallback={<PageLoader />}>
+          <AnimatePresence mode="wait" initial={false}>
+            <Routes location={location} key={location.pathname}>
+              <Route path="/"         element={<Home />} />
+              <Route path="/about"    element={<About />} />
+              <Route path="/skills"   element={<Skills />} />
+              <Route path="/projects" element={<Projects />} />
+              <Route path="/contact"  element={<Contact />} />
+              <Route path="*"         element={<NotFound />} />
+            </Routes>
+          </AnimatePresence>
+        </Suspense>
+      </ErrorBoundary>
       <Footer />
     </>
   );

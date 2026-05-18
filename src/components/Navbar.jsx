@@ -15,9 +15,11 @@ const navLinks = [
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [darkMode, setDarkMode] = useState(
-    localStorage.getItem("dark-mode") === "true"
-  );
+  const [darkMode, setDarkMode] = useState(() => {
+    const saved = localStorage.getItem("dark-mode");
+    if (saved !== null) return saved === "true";
+    return window.matchMedia("(prefers-color-scheme: dark)").matches;
+  });
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
 

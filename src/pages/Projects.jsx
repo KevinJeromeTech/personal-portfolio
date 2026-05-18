@@ -1,5 +1,6 @@
 import { useMemo, useState, useEffect } from "react";
 import { AnimatePresence, motion } from "motion/react";
+import { Helmet } from "react-helmet-async";
 import projects from "../data/projects.js";
 import "../styles/projects.css";
 
@@ -20,6 +21,37 @@ const filterOptions = [
   { key: "featured",    label: "Featured" },
   { key: "in-progress", label: "In Progress" },
 ];
+
+const projectsJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "Kevin Jerome's Projects",
+  itemListElement: projects.map((p, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    name: p.title,
+    description: p.description,
+    url: p.demo || p.github || "https://kevinjerome.dev/projects",
+  })),
+};
+
+function ProjectImage({ src, alt }) {
+  const [loaded, setLoaded] = useState(false);
+  return (
+    <div className="project-image-inner">
+      {!loaded && <div className="img-skeleton" aria-hidden="true" />}
+      <motion.img
+        src={src}
+        alt={alt}
+        loading="lazy"
+        onLoad={() => setLoaded(true)}
+        style={{ opacity: loaded ? 1 : 0, transition: "opacity 0.3s ease" }}
+        whileHover={{ scale: 1.04 }}
+        transition={{ duration: 0.28 }}
+      />
+    </div>
+  );
+}
 
 export default function Projects() {
   const [filter, setFilter] = useState("all");
@@ -53,7 +85,16 @@ export default function Projects() {
 
   return (
     <>
+      <Helmet>
+        <title>Projects | Kevin Jerome</title>
+        <meta name="description" content="Explore Kevin Jerome's projects — full-stack apps, React dashboards, and web experiences built with modern technologies." />
+        <link rel="canonical" href="https://kevinjerome.dev/projects" />
+        <meta property="og:title" content="Projects | Kevin Jerome" />
+        <meta property="og:url" content="https://kevinjerome.dev/projects" />
+        <script type="application/ld+json">{JSON.stringify(projectsJsonLd)}</script>
+      </Helmet>
       <motion.main
+        id="main-content"
         className="container page-shell"
         initial={{ opacity: 0, y: 18 }}
         animate={{ opacity: 1, y: 0 }}
@@ -110,12 +151,7 @@ export default function Projects() {
                       onClick={() => openModal(project)}
                       aria-label={`Open details for ${project.title}`}
                     >
-                      <motion.img
-                        src={project.image}
-                        alt={project.title}
-                        whileHover={{ scale: 1.04 }}
-                        transition={{ duration: 0.28 }}
-                      />
+                      <ProjectImage src={project.image} alt={project.title} />
                     </button>
 
                     <div className="project-copy">

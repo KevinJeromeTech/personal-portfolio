@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { motion } from "motion/react";
+import { Helmet } from "react-helmet-async";
 import {
   FaPalette,
   FaCode,
@@ -186,7 +187,16 @@ function ProgressBar({ name, percent, color, delay }) {
 
 export default function Skills() {
   return (
+    <>
+      <Helmet>
+        <title>Skills | Kevin Jerome</title>
+        <meta name="description" content="Kevin Jerome's technical skills — React, JavaScript, Node.js, Python, databases, UI/UX, and more." />
+        <link rel="canonical" href="https://kevinjerome.dev/skills" />
+        <meta property="og:title" content="Skills | Kevin Jerome" />
+        <meta property="og:url" content="https://kevinjerome.dev/skills" />
+      </Helmet>
     <motion.main
+      id="main-content"
       className="container page-shell"
       initial={{ opacity: 0, y: 18 }}
       animate={{ opacity: 1, y: 0 }}
@@ -198,7 +208,7 @@ export default function Skills() {
         <div className="skills-hero-orb-1" aria-hidden="true" />
         <div className="skills-hero-orb-2" aria-hidden="true" />
         <div className="skills-hero-inner">
-          <span className="page-eyebrow">Skills & Expertise</span>
+          <span className="page-eyebrow">Skills</span>
           <h1 className="page-hero-title">What I work with</h1>
           <p className="skills-lead">
             A detailed look at my core skills and areas of expertise — spanning
@@ -296,5 +306,6 @@ export default function Skills() {
         </div>
       </motion.section>
     </motion.main>
+    </>
   );
 }
