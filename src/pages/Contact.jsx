@@ -88,6 +88,7 @@ export default function Contact() {
         body: JSON.stringify({
           access_key: WEB3FORMS_KEY,
           subject: `Portfolio contact from ${formData.name}`,
+          botcheck: false,
           ...formData,
         }),
       });
@@ -171,6 +172,8 @@ export default function Contact() {
             {/* ── Right: form ── */}
             <motion.div className="contact-form-col" {...fadeUp(0.18)}>
               <form className="contact-form" onSubmit={handleSubmit} noValidate>
+                {/* Honeypot — hidden from real users, catches bots */}
+                <input type="text" name="_honey" style={{ display: "none" }} tabIndex={-1} autoComplete="off" />
                 <div className={`form-group ${errors.name ? "has-error" : ""}`}>
                   <label htmlFor="name">Name</label>
                   <input

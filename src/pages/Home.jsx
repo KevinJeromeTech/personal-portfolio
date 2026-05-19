@@ -4,6 +4,7 @@ import Hero from "../components/Hero.jsx";
 import AboutPreview from "../components/AboutPreview.jsx";
 import SkillsPreview from "../components/SkillsPreview.jsx";
 import ProjectCarousel from "../components/ProjectCarousel.jsx";
+import Testimonials from "../components/Testimonials.jsx";
 import ContactCTA from "../components/ContactCTA.jsx";
 import Reveal from "../components/Reveal.jsx";
 
@@ -55,7 +56,11 @@ export default function Home() {
         <ProjectCarousel />
       </Reveal>
 
-      <Reveal delay={400}>
+      <Reveal delay={380}>
+        <Testimonials />
+      </Reveal>
+
+      <Reveal delay={440}>
         <ContactCTA />
       </Reveal>
     </motion.main>

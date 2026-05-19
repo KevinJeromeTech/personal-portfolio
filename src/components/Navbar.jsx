@@ -5,12 +5,14 @@ import { BsSun, BsMoon } from "react-icons/bs";
 import { HiMenuAlt3, HiX } from "react-icons/hi";
 import { FaHome, FaUser, FaCode, FaFolder, FaGithub, FaLinkedin } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
+import { FiBookOpen } from "react-icons/fi";
 
 const navLinks = [
   { to: "/",         label: "Home",     icon: <FaHome /> },
   { to: "/about",    label: "About",    icon: <FaUser /> },
   { to: "/skills",   label: "Skills",   icon: <FaCode /> },
   { to: "/projects", label: "Projects", icon: <FaFolder /> },
+  { to: "/blog",     label: "Blog",     icon: <FiBookOpen /> },
 ];
 
 export default function Navbar() {
