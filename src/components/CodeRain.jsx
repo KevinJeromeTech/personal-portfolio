@@ -6,23 +6,24 @@ export default function CodeRain() {
   const canvasRef = useRef(null);
 
   useEffect(() => {
-    if (window.innerWidth < 768) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
+    const isMobile = window.innerWidth < 768;
 
     let animId;
-    const fontSize = 13;
+    const fontSize = isMobile ? 11 : 13;
+    const colSpacing = isMobile ? fontSize * 2 : fontSize;
+    const fps = isMobile ? 20 : 30;
+    const interval = 1000 / fps;
     let cols, drops;
     let lastTime = 0;
-    const FPS = 30;
-    const INTERVAL = 1000 / FPS;
 
     function resize() {
       canvas.width  = window.innerWidth;
       canvas.height = window.innerHeight;
-      cols  = Math.floor(canvas.width / fontSize);
+      cols  = Math.floor(canvas.width / colSpacing);
       drops = Array.from({ length: cols }, () => Math.random() * -100);
     }
 
@@ -33,22 +34,24 @@ export default function CodeRain() {
 
     function draw(timestamp) {
       animId = requestAnimationFrame(draw);
-      if (timestamp - lastTime < INTERVAL) return;
+      if (timestamp - lastTime < interval) return;
       lastTime = timestamp;
 
       const dark = isDark();
       ctx.fillStyle = dark
-        ? "rgba(15, 17, 24, 0.18)"
-        : "rgba(248, 248, 250, 0.18)";
+        ? "rgba(15, 17, 24, 0.2)"
+        : "rgba(248, 248, 250, 0.2)";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       ctx.font = `bold ${fontSize}px monospace`;
 
       drops.forEach((y, i) => {
         const char = CHARS[Math.floor(Math.random() * CHARS.length)];
-        const x = i * fontSize;
+        const x = i * colSpacing;
         const rand = Math.random();
-        const alpha = dark ? 0.6 + rand * 0.4 : 0.45 + rand * 0.35;
+        const alpha = dark
+          ? (isMobile ? 0.18 : 0.22) + rand * 0.12
+          : (isMobile ? 0.12 : 0.16) + rand * 0.08;
 
         ctx.fillStyle = dark
           ? `rgba(220, 20, 60, ${alpha})`
@@ -81,7 +84,7 @@ export default function CodeRain() {
         left: 0,
         width: "100%",
         height: "100%",
-        zIndex: 0,
+        zIndex: 2,
         pointerEvents: "none",
       }}
     />
