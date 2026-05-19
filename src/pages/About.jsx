@@ -107,12 +107,12 @@ const timeline = [
     desc: "Building client websites and web apps using React, Node.js, and modern design principles — from mockups to deployed products.",
   },
   {
-    year: "2024",
+    year: "2023 – Present",
     type: "edu",
     icon: <FaGraduationCap />,
-    title: "Technical Interview Prep",
+    title: "Web Development, iOS & Technical Interview Prep",
     org: "CodePath",
-    desc: "Completed CodePath's competitive technical interview preparation program, sharpening skills in data structures, algorithms, and problem-solving under pressure.",
+    desc: "Currently enrolled in CodePath's program, completing courses in Web Development, iOS Development, and Technical Interview Preparation — building practical skills alongside university studies.",
   },
   {
     year: "2022 – Present",
