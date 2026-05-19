@@ -28,8 +28,8 @@ export default function CodeRain() {
     function draw() {
       const dark = isDark();
       ctx.fillStyle = dark
-        ? "rgba(15, 17, 24, 0.08)"
-        : "rgba(248, 248, 250, 0.08)";
+        ? "rgba(15, 17, 24, 0.12)"
+        : "rgba(248, 248, 250, 0.12)";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       ctx.font = `${fontSize}px monospace`;
@@ -37,11 +37,11 @@ export default function CodeRain() {
       drops.forEach((y, i) => {
         const char = CHARS[Math.floor(Math.random() * CHARS.length)];
         const x = i * fontSize;
-        const alpha = dark ? 0.13 : 0.07;
+        const alpha = dark ? 0.35 : 0.22;
 
         ctx.fillStyle = dark
-          ? `rgba(128, 0, 32, ${alpha + Math.random() * 0.06})`
-          : `rgba(128, 0, 32, ${alpha + Math.random() * 0.04})`;
+          ? `rgba(180, 0, 45, ${alpha + Math.random() * 0.15})`
+          : `rgba(128, 0, 32, ${alpha + Math.random() * 0.1})`;
 
         ctx.fillText(char, x, y * fontSize);
 
