@@ -28,20 +28,21 @@ export default function CodeRain() {
     function draw() {
       const dark = isDark();
       ctx.fillStyle = dark
-        ? "rgba(15, 17, 24, 0.12)"
-        : "rgba(248, 248, 250, 0.12)";
+        ? "rgba(15, 17, 24, 0.18)"
+        : "rgba(248, 248, 250, 0.18)";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      ctx.font = `${fontSize}px monospace`;
+      ctx.font = `bold ${fontSize}px monospace`;
 
       drops.forEach((y, i) => {
         const char = CHARS[Math.floor(Math.random() * CHARS.length)];
         const x = i * fontSize;
-        const alpha = dark ? 0.35 : 0.22;
+        const rand = Math.random();
+        const alpha = dark ? 0.6 + rand * 0.4 : 0.45 + rand * 0.35;
 
         ctx.fillStyle = dark
-          ? `rgba(180, 0, 45, ${alpha + Math.random() * 0.15})`
-          : `rgba(128, 0, 32, ${alpha + Math.random() * 0.1})`;
+          ? `rgba(220, 20, 60, ${alpha})`
+          : `rgba(160, 0, 40, ${alpha})`;
 
         ctx.fillText(char, x, y * fontSize);
 
