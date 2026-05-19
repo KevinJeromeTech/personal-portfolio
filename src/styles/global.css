@@ -70,6 +70,8 @@ a {
 
 .page-shell {
   padding: 2rem 0 5rem;
+  position: relative;
+  z-index: 1;
 }
 
 .section-card {
