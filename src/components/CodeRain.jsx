@@ -38,10 +38,7 @@ export default function CodeRain() {
       lastTime = timestamp;
 
       const dark = isDark();
-      ctx.fillStyle = dark
-        ? "rgba(15, 17, 24, 0.2)"
-        : "rgba(248, 248, 250, 0.2)";
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       ctx.font = `bold ${fontSize}px monospace`;
 
