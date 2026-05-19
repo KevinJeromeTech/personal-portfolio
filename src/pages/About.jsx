@@ -110,9 +110,9 @@ const timeline = [
     year: "2023 – Present",
     type: "edu",
     icon: <FaGraduationCap />,
-    title: "Web Development, iOS & Technical Interview Prep",
+    title: "Web Development, iOS, Technical Interview Prep & Foundations to AI",
     org: "CodePath",
-    desc: "Currently enrolled in CodePath's program, completing courses in Web Development, iOS Development, and Technical Interview Preparation — building practical skills alongside university studies.",
+    desc: "Currently enrolled in CodePath's program, completing courses in Web Development, iOS Development, Technical Interview Preparation, and Foundations to AI — building practical skills alongside university studies.",
   },
   {
     year: "2022 – Present",
