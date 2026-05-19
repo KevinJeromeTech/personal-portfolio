@@ -165,7 +165,7 @@ export default function ProjectCarousel() {
             >
               {/* Card image */}
               <div className="focus-slide-image-wrap">
-                <img src={project.image} alt={project.title} />
+                <img src={project.image} alt={project.title} loading="lazy" decoding="async" />
                 <div className="focus-slide-image-glow" aria-hidden="true" />
               </div>
 

@@ -60,6 +60,7 @@ function ScrollProgressBar() {
 
 function useSpotlight() {
   useEffect(() => {
+    if (window.matchMedia("(pointer: coarse)").matches) return;
     const handle = (e) => {
       const card = e.target.closest(
         ".section-card, .project-showcase-card, .skill-area-card, .tech-group-card, .about-highlight-card, .core-value-card, .soft-skill-card"
@@ -76,6 +77,7 @@ function useSpotlight() {
 
 function useTilt() {
   useEffect(() => {
+    if (window.matchMedia("(pointer: coarse)").matches) return;
     const SEL = ".tilt-card";
     const onMove = (e) => {
       const el = e.target.closest(SEL);

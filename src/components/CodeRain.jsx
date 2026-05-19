@@ -6,12 +6,18 @@ export default function CodeRain() {
   const canvasRef = useRef(null);
 
   useEffect(() => {
+    if (window.innerWidth < 768) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
 
     let animId;
     const fontSize = 13;
     let cols, drops;
+    let lastTime = 0;
+    const FPS = 30;
+    const INTERVAL = 1000 / FPS;
 
     function resize() {
       canvas.width  = window.innerWidth;
@@ -25,7 +31,11 @@ export default function CodeRain() {
 
     const isDark = () => document.body.classList.contains("dark-mode");
 
-    function draw() {
+    function draw(timestamp) {
+      animId = requestAnimationFrame(draw);
+      if (timestamp - lastTime < INTERVAL) return;
+      lastTime = timestamp;
+
       const dark = isDark();
       ctx.fillStyle = dark
         ? "rgba(15, 17, 24, 0.18)"
@@ -51,11 +61,9 @@ export default function CodeRain() {
         }
         drops[i] += 0.4;
       });
-
-      animId = requestAnimationFrame(draw);
     }
 
-    draw();
+    animId = requestAnimationFrame(draw);
 
     return () => {
       cancelAnimationFrame(animId);
