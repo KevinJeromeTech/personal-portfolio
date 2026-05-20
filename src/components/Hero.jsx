@@ -108,7 +108,7 @@ export default function Hero() {
       >
         <div className="hero-avatar-wrap">
           <div className="avatar-glow-ring" aria-hidden="true" />
-          <img src="/Images/Logo.png" alt="Kevin Jerome" className="hero-logo" decoding="async" />
+          <img src="/Images/Logo.webp" alt="Kevin Jerome" className="hero-logo" decoding="async" />
         </div>
         <motion.span
           className="open-badge"
