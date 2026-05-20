@@ -7,7 +7,7 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['Images/Logo.png', 'Images/*.webp'],
+      includeAssets: ['Images/Logo.webp', 'Images/*.webp'],
       manifest: {
         name: 'Kevin Jerome — Full-Stack Developer',
         short_name: 'Kevin Jerome',
@@ -17,8 +17,8 @@ export default defineConfig({
         display: 'standalone',
         start_url: '/',
         icons: [
-          { src: '/Images/Logo.png', sizes: '192x192', type: 'image/png' },
-          { src: '/Images/Logo.png', sizes: '512x512', type: 'image/png' },
+          { src: '/Images/Logo.webp', sizes: '192x192', type: 'image/webp' },
+          { src: '/Images/Logo.webp', sizes: '512x512', type: 'image/webp' },
         ],
       },
       workbox: {
@@ -30,8 +30,26 @@ export default defineConfig({
             handler: 'CacheFirst',
             options: { cacheName: 'google-fonts', expiration: { maxEntries: 10, maxAgeSeconds: 60 * 60 * 24 * 365 } },
           },
+          {
+            urlPattern: /^https:\/\/fonts\.gstatic\.com\/.*/i,
+            handler: 'CacheFirst',
+            options: { cacheName: 'google-fonts-static', expiration: { maxEntries: 20, maxAgeSeconds: 60 * 60 * 24 * 365 } },
+          },
         ],
       },
     }),
   ],
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (id.includes('node_modules/react') || id.includes('node_modules/react-dom') || id.includes('react-router-dom')) {
+            return 'react-vendor';
+          }
+          if (id.includes('motion')) return 'motion';
+          if (id.includes('react-icons')) return 'icons';
+        },
+      },
+    },
+  },
 });

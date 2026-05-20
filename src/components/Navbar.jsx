@@ -53,7 +53,7 @@ export default function Navbar() {
       <header className={`site-header ${scrolled ? "scrolled" : ""}`}>
         <div className="container nav-shell">
           <Link to="/" className="logo-holder" onClick={closeMenu}>
-            <img src="/Images/Logo.png" alt="Kevin Jerome logo" className="logo-image" />
+            <img src="/Images/Logo.webp" alt="Kevin Jerome logo" className="logo-image" />
             <div className="logo-block">
               <span className="logo-text">Kevin Jerome</span>
               <span className="logo-subtext">Full-Stack Developer</span>

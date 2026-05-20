@@ -27,7 +27,7 @@ export default function Footer() {
     <footer className="site-footer">
       <div className="container footer-content">
         <div className="footer-logo">
-          <img src="/Images/Logo.png" alt="Kevin Jerome" className="footer-logo-img" />
+          <img src="/Images/Logo.webp" alt="Kevin Jerome" className="footer-logo-img" />
           <span className="footer-name">Kevin Jerome</span>
         </div>
 
