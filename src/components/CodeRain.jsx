@@ -42,11 +42,11 @@ export default function CodeRain() {
 
       const dark = isDark();
 
-      // Fade the offscreen canvas to create trailing streaks
-      offCtx.fillStyle = dark
-        ? "rgba(0, 0, 0, 0.13)"
-        : "rgba(255, 255, 255, 0.13)";
+      // Fade existing trails to transparent (no colour accumulation)
+      offCtx.globalCompositeOperation = "destination-out";
+      offCtx.fillStyle = "rgba(0, 0, 0, 0.13)";
       offCtx.fillRect(0, 0, off.width, off.height);
+      offCtx.globalCompositeOperation = "source-over";
 
       offCtx.font = `bold ${fontSize}px monospace`;
 

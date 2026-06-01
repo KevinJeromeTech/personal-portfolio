@@ -126,7 +126,7 @@ function App() {
       <ScrollToTop />
       <ErrorBoundary>
         <Suspense fallback={<PageLoader />}>
-          <AnimatePresence mode="wait" initial={false}>
+          <AnimatePresence mode="sync" initial={false}>
             <Routes location={location} key={location.pathname}>
               <Route path="/"              element={<Home />} />
               <Route path="/about"         element={<About />} />

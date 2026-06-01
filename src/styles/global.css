@@ -604,6 +604,10 @@ body.dark-mode span {
   align-items: center;
   justify-content: center;
   z-index: 100;
+  background: #f8f8fa;
+}
+body.dark-mode .page-loader {
+  background: #0f1118;
 }
 .page-loader-bar {
   width: 48px;
