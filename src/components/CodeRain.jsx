@@ -12,17 +12,20 @@ export default function CodeRain() {
     const ctx = canvas.getContext("2d");
     const isMobile = window.innerWidth < 768;
 
-    let animId;
-    const fontSize = isMobile ? 11 : 13;
+    const fontSize   = isMobile ? 11 : 13;
     const colSpacing = isMobile ? fontSize * 2 : fontSize;
-    const fps = isMobile ? 20 : 30;
-    const interval = 1000 / fps;
-    let cols, drops;
-    let lastTime = 0;
+    const fps        = isMobile ? 20 : 30;
+    const interval   = 1000 / fps;
+
+    // Offscreen canvas holds the accumulating trails
+    const off    = document.createElement("canvas");
+    const offCtx = off.getContext("2d");
+
+    let animId, cols, drops, lastTime = 0;
 
     function resize() {
-      canvas.width  = window.innerWidth;
-      canvas.height = window.innerHeight;
+      canvas.width  = off.width  = window.innerWidth;
+      canvas.height = off.height = window.innerHeight;
       cols  = Math.floor(canvas.width / colSpacing);
       drops = Array.from({ length: cols }, () => Math.random() * -100);
     }
@@ -38,29 +41,36 @@ export default function CodeRain() {
       lastTime = timestamp;
 
       const dark = isDark();
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      ctx.font = `bold ${fontSize}px monospace`;
+      // Fade the offscreen canvas to create trailing streaks
+      offCtx.fillStyle = dark
+        ? "rgba(0, 0, 0, 0.13)"
+        : "rgba(255, 255, 255, 0.13)";
+      offCtx.fillRect(0, 0, off.width, off.height);
+
+      offCtx.font = `bold ${fontSize}px monospace`;
 
       drops.forEach((y, i) => {
-        const char = CHARS[Math.floor(Math.random() * CHARS.length)];
-        const x = i * colSpacing;
-        const rand = Math.random();
+        const char  = CHARS[Math.floor(Math.random() * CHARS.length)];
+        const x     = i * colSpacing;
+        const rand  = Math.random();
         const alpha = dark
-          ? (isMobile ? 0.18 : 0.22) + rand * 0.12
-          : (isMobile ? 0.12 : 0.16) + rand * 0.08;
+          ? (isMobile ? 0.55 : 0.7) + rand * 0.3
+          : (isMobile ? 0.35 : 0.5) + rand * 0.25;
 
-        ctx.fillStyle = dark
+        offCtx.fillStyle = dark
           ? `rgba(220, 20, 60, ${alpha})`
           : `rgba(160, 0, 40, ${alpha})`;
 
-        ctx.fillText(char, x, y * fontSize);
+        offCtx.fillText(char, x, y * fontSize);
 
-        if (y * fontSize > canvas.height && Math.random() > 0.975) {
-          drops[i] = 0;
-        }
+        if (y * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
         drops[i] += 0.4;
       });
+
+      // Composite trails onto the transparent overlay canvas
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.drawImage(off, 0, 0);
     }
 
     animId = requestAnimationFrame(draw);
