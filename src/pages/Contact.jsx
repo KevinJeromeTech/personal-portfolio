@@ -119,9 +119,9 @@ export default function Contact() {
       <motion.main
         id="main-content"
         className="container page-shell"
-        initial={{ opacity: 0.6, y: 16 }}
+        initial={{ opacity: 1, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0.6, y: -10 }}
+        exit={{ opacity: 1, y: -10 }}
         transition={{ duration: 0.38, ease: [0.22, 1, 0.36, 1] }}
       >
         <section className="section-card contact-page-card">
