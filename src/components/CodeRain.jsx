@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 
-const CHARS = "{}[]<>()=/*;:.!?01#$%&|~^+-_@\\//=><=!==&&||const let var function return import export class extends async await";
+const CHARS = "{}[]<>()=/*;:.!?01#$%&|~^+-_@=><=!==&&||const let var function return import export class extends async await";
 
 export default function CodeRain() {
   const canvasRef = useRef(null);
@@ -9,15 +9,14 @@ export default function CodeRain() {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     const canvas = canvasRef.current;
-    const ctx = canvas.getContext("2d");
+    const ctx    = canvas.getContext("2d");
     const isMobile = window.innerWidth < 768;
 
     const fontSize   = isMobile ? 11 : 13;
-    const colSpacing = isMobile ? fontSize * 2 : fontSize;
+    const colSpacing = isMobile ? fontSize * 2.5 : fontSize;
     const fps        = isMobile ? 20 : 30;
     const interval   = 1000 / fps;
 
-    // Offscreen canvas holds the accumulating trails
     const off    = document.createElement("canvas");
     const offCtx = off.getContext("2d");
 
@@ -42,25 +41,22 @@ export default function CodeRain() {
 
       const dark = isDark();
 
-      // Fade existing trails to transparent (no colour accumulation)
+      // Fade trails toward transparent
       offCtx.globalCompositeOperation = "destination-out";
-      offCtx.fillStyle = "rgba(0, 0, 0, 0.13)";
+      offCtx.fillStyle = "rgba(0,0,0,0.08)";
       offCtx.fillRect(0, 0, off.width, off.height);
       offCtx.globalCompositeOperation = "source-over";
 
       offCtx.font = `bold ${fontSize}px monospace`;
 
       drops.forEach((y, i) => {
-        const char  = CHARS[Math.floor(Math.random() * CHARS.length)];
-        const x     = i * colSpacing;
-        const rand  = Math.random();
-        const alpha = dark
-          ? (isMobile ? 0.55 : 0.7) + rand * 0.3
-          : (isMobile ? 0.35 : 0.5) + rand * 0.25;
+        const char = CHARS[Math.floor(Math.random() * CHARS.length)];
+        const x    = i * colSpacing;
 
+        // Bright visible colors that contrast against both dark and light backgrounds
         offCtx.fillStyle = dark
-          ? `rgba(220, 20, 60, ${alpha})`
-          : `rgba(160, 0, 40, ${alpha})`;
+          ? `rgba(255, 70, 100, ${0.75 + Math.random() * 0.25})`
+          : `rgba(160, 0,  35,  ${0.65 + Math.random() * 0.25})`;
 
         offCtx.fillText(char, x, y * fontSize);
 
@@ -68,7 +64,6 @@ export default function CodeRain() {
         drops[i] += 0.4;
       });
 
-      // Composite trails onto the transparent overlay canvas
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       ctx.drawImage(off, 0, 0);
     }
@@ -93,6 +88,7 @@ export default function CodeRain() {
         height: "100%",
         zIndex: 2,
         pointerEvents: "none",
+        mixBlendMode: "screen",
       }}
     />
   );
