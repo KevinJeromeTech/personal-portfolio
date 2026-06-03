@@ -32,14 +32,12 @@ export default function CodeRain() {
     resize();
     window.addEventListener("resize", resize);
 
-    const isDark = () => document.body.classList.contains("dark-mode");
 
     function draw(timestamp) {
       animId = requestAnimationFrame(draw);
       if (timestamp - lastTime < interval) return;
       lastTime = timestamp;
 
-      const dark = isDark();
 
       // Fade trails toward transparent
       offCtx.globalCompositeOperation = "destination-out";
