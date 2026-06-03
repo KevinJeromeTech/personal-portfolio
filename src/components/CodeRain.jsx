@@ -53,10 +53,7 @@ export default function CodeRain() {
         const char = CHARS[Math.floor(Math.random() * CHARS.length)];
         const x    = i * colSpacing;
 
-        // Silver/white characters
-        offCtx.fillStyle = dark
-          ? `rgba(200, 210, 220, ${0.75 + Math.random() * 0.25})`
-          : `rgba(140, 150, 160, ${0.65 + Math.random() * 0.25})`;
+        offCtx.fillStyle = `rgba(200, 210, 220, ${0.75 + Math.random() * 0.25})`;
 
         offCtx.fillText(char, x, y * fontSize);
 
