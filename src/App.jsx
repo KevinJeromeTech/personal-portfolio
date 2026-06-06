@@ -16,6 +16,7 @@ const Skills        = lazy(() => import("./pages/Skills.jsx"));
 const Projects      = lazy(() => import("./pages/Projects.jsx"));
 const ProjectDetail = lazy(() => import("./pages/ProjectDetail.jsx"));
 const Blog          = lazy(() => import("./pages/Blog.jsx"));
+const BlogPost      = lazy(() => import("./pages/BlogPost.jsx"));
 const Contact       = lazy(() => import("./pages/Contact.jsx"));
 const NotFound      = lazy(() => import("./pages/NotFound.jsx"));
 
@@ -134,6 +135,7 @@ function App() {
               <Route path="/projects"      element={<Projects />} />
               <Route path="/projects/:id"  element={<ProjectDetail />} />
               <Route path="/blog"          element={<Blog />} />
+              <Route path="/blog/:id"      element={<BlogPost />} />
               <Route path="/contact"       element={<Contact />} />
               <Route path="*"              element={<NotFound />} />
             </Routes>
