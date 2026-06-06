@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 
 const stats = [
-  { value: 5, label: "Projects Built", suffix: "+" },
-  { value: 10, label: "Technologies", suffix: "+" },
-  { value: 2, label: "Years Learning", suffix: "+" },
+  { value: 5,  label: "Projects Built", suffix: "+" },
+  { value: 15, label: "Technologies",   suffix: "+" },
+  { value: 4,  label: "Years Learning", suffix: "+" },
 ];
 
 function StatCounter({ value, label, suffix }) {
@@ -46,9 +46,9 @@ export default function AboutPreview() {
     <section className="about-preview section-card">
       <h2>About Me</h2>
       <p>
-        As a passionate web designer and developer, I&apos;m committed to creating
-        exceptional digital experiences. With a focus on custom solutions, I aim
-        to help you stand out and succeed in today&apos;s digital landscape.
+        Full-Stack Developer and Computer Science student at FIU. I build modern
+        web applications with React, Next.js, TypeScript, and Node.js, with a
+        focus on clean design and real performance.
       </p>
 
       <div className="about-stats">
@@ -59,34 +59,34 @@ export default function AboutPreview() {
 
       <div className="preview-grid" style={{ gridTemplateColumns: "repeat(2, 1fr)" }}>
         <div className="preview-card">
-          <h3>Innovative Solutions</h3>
+          <h3>Full-Stack Builds</h3>
           <p>
-            Utilize creative strategies to provide unique solutions that cater to
-            your specific business needs.
+            From frontend UI to backend APIs, I handle the full stack and ship
+            projects that work in production.
           </p>
         </div>
 
         <div className="preview-card">
-          <h3>My Expertise</h3>
+          <h3>Real Experience</h3>
           <p>
-            I bring real project experience and a passion for delivering
-            excellence to every build.
+            Freelance client work, university projects, and personal builds
+            across React, Node.js, and more.
           </p>
         </div>
 
         <div className="preview-card">
           <h3>Result-Oriented</h3>
           <p>
-            Committed to achieving results that help you grow your presence and
-            reach your goals.
+            Every project has a goal. I stay focused on delivering clean,
+            functional solutions that actually move the needle.
           </p>
         </div>
 
         <div className="preview-card">
           <h3>User-First Design</h3>
           <p>
-            Every interface I build is crafted with the end user in mind —
-            intuitive, accessible, and built to leave a lasting impression.
+            Every interface is crafted with the end user in mind, intuitive,
+            accessible, and built to leave a lasting impression.
           </p>
         </div>
       </div>

@@ -142,8 +142,8 @@ export default function Hero() {
         </motion.div>
 
         <motion.p className="hero-bio" variants={item}>
-          Crafting engaging web experiences with a blend of design, development,
-          and digital strategy. Let me help you bring your online vision to life.
+          Full-Stack Developer and CS student at FIU. I build fast, polished web
+          applications with React, Next.js, TypeScript, and Node.js, and ship them.
         </motion.p>
 
         <motion.div className="hero-actions" variants={item}>

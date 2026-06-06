@@ -5,19 +5,19 @@ const skills = [
     icon: <FaCode />,
     title: "Frontend Engineering",
     description:
-      "Responsive interfaces built with strong layout systems, reusable components, and clean interaction patterns.",
+      "Building responsive, performant interfaces with React, Next.js, TypeScript, and modern CSS.",
   },
   {
     icon: <FaServer />,
-    title: "Backend Foundations",
+    title: "Backend Development",
     description:
-      "APIs, routing, data handling, and application structure designed to support scalable projects.",
+      "REST APIs, server-side logic, and database design using Node.js, Express, and PostgreSQL.",
   },
   {
     icon: <FaPalette />,
-    title: "UI Direction",
+    title: "UI Design",
     description:
-      "Classy, modern visual design with strong hierarchy, spacing, and premium presentation.",
+      "Clean, modern visual design with strong hierarchy, thoughtful spacing, and polished detail.",
   },
 ];
 
