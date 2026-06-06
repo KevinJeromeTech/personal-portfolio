@@ -21,7 +21,7 @@ import {
   FaFigma,
   FaCss3Alt,
 } from "react-icons/fa";
-import { SiExpress, SiTailwindcss, SiVite, SiPostman, SiTypescript, SiNextdotjs } from "react-icons/si";
+import { SiExpress, SiTailwindcss, SiVite, SiPostman, SiTypescript, SiNextdotjs, SiPrisma, SiPostgresql, SiAnthropic } from "react-icons/si";
 import { HiOutlineSpeakerphone } from "react-icons/hi";
 import { MdGroups2, MdOutlineAutoGraph } from "react-icons/md";
 import ScrambleText from "../components/ScrambleText.jsx";
@@ -92,24 +92,25 @@ const techGroups = [
     icon: <FaReact />,
     title: "Frameworks & Libraries",
     items: [
-      { icon: <FaReact />, name: "React.js" },
-      { icon: <SiNextdotjs />, name: "Next.js" },
-      { icon: <FaNodeJs />, name: "Node.js" },
-      { icon: <SiExpress />, name: "Express.js" },
-      { icon: <SiTailwindcss />, name: "Tailwind CSS" },
-      { icon: <FaBootstrap />, name: "Bootstrap" },
+      { icon: <FaReact />,      name: "React.js" },
+      { icon: <SiNextdotjs />,  name: "Next.js" },
+      { icon: <FaNodeJs />,     name: "Node.js" },
+      { icon: <SiExpress />,    name: "Express.js" },
+      { icon: <SiPrisma />,     name: "Prisma" },
+      { icon: <SiTailwindcss />,name: "Tailwind CSS" },
+      { icon: <FaBootstrap />,  name: "Bootstrap" },
     ],
   },
   {
     icon: <MdOutlineAutoGraph />,
     title: "Tools & Platforms",
     items: [
-      { icon: <FaGitAlt />, name: "Git & GitHub" },
-      { icon: <SiVite />, name: "Vite" },
-      { icon: <FaFigma />, name: "Figma" },
-      { icon: <FaDocker />, name: "Docker" },
-      { icon: <SiPostman />, name: "Postman" },
-      { icon: <FaCode />, name: "VS Code" },
+      { icon: <FaGitAlt />,     name: "Git & GitHub" },
+      { icon: <SiPostgresql />, name: "PostgreSQL" },
+      { icon: <SiVite />,       name: "Vite" },
+      { icon: <FaFigma />,      name: "Figma" },
+      { icon: <FaDocker />,     name: "Docker" },
+      { icon: <SiPostman />,    name: "Postman" },
     ],
   },
   {
@@ -117,11 +118,23 @@ const techGroups = [
     title: "Core Concepts",
     items: [
       { icon: null, name: "REST APIs" },
-      { icon: null, name: "Responsive Design" },
-      { icon: null, name: "Auth & JWT" },
+      { icon: null, name: "JWT Auth" },
+      { icon: null, name: "AI Integration" },
       { icon: null, name: "Database Design" },
       { icon: null, name: "State Management" },
-      { icon: null, name: "Version Control" },
+      { icon: null, name: "CI/CD Pipelines" },
+    ],
+  },
+  {
+    icon: <SiAnthropic />,
+    title: "AI & APIs",
+    items: [
+      { icon: <SiAnthropic />, name: "Anthropic Claude" },
+      { icon: null,            name: "TanStack Query" },
+      { icon: null,            name: "Prompt Engineering" },
+      { icon: null,            name: "LLM Integration" },
+      { icon: null,            name: "REST API Design" },
+      { icon: null,            name: "Zod Validation" },
     ],
   },
 ];
@@ -145,13 +158,13 @@ const softSkills = [
 ];
 
 const progressSkills = [
-  { name: "HTML / CSS",          percent: 92, color: "#ff4d7b" },
-  { name: "JavaScript",          percent: 85, color: "#facc15" },
-  { name: "React.js",            percent: 82, color: "#60a5fa" },
-  { name: "Next.js",             percent: 90, color: "#e2e8f0" },
-  { name: "Node.js / Express",   percent: 70, color: "#4ade80" },
-  { name: "Python",              percent: 65, color: "#a78bfa" },
-  { name: "TypeScript",          percent: 90, color: "#38bdf8" },
+  { name: "HTML / CSS",            percent: 92, color: "#ff4d7b" },
+  { name: "JavaScript",            percent: 85, color: "#facc15" },
+  { name: "TypeScript",            percent: 90, color: "#38bdf8" },
+  { name: "React.js",              percent: 82, color: "#60a5fa" },
+  { name: "Next.js",               percent: 90, color: "#e2e8f0" },
+  { name: "Node.js / Express",     percent: 82, color: "#4ade80" },
+  { name: "Python",                percent: 65, color: "#a78bfa" },
   { name: "AI / Machine Learning", percent: 70, color: "#f97316" },
 ];
 
