@@ -1,7 +1,9 @@
 import { motion } from "motion/react";
 import { Helmet } from "react-helmet-async";
-import { FiClock, FiTag } from "react-icons/fi";
+import { Link } from "react-router-dom";
+import { FiClock, FiTag, FiArrowRight } from "react-icons/fi";
 import posts from "../data/posts.js";
+import "../styles/blog.css";
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 24 },
@@ -11,6 +13,49 @@ const fadeUp = (delay = 0) => ({
 
 function formatDate(str) {
   return new Date(str).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
+}
+
+function BlogCard({ post, index }) {
+  const hasContent = Boolean(post.content);
+
+  const cardInner = (
+    <motion.article className="blog-card" {...fadeUp(index * 0.08)}>
+      <div className="blog-card-meta">
+        <time className="blog-date" dateTime={post.date}>{formatDate(post.date)}</time>
+        <span className="blog-read-time">
+          <FiClock aria-hidden="true" />
+          {post.readTime}
+        </span>
+      </div>
+      <h2 className="blog-title">{post.title}</h2>
+      <p className="blog-excerpt">{post.excerpt}</p>
+      <div className="blog-tags">
+        {post.tags.map((tag) => (
+          <span key={tag} className="blog-tag">
+            <FiTag aria-hidden="true" />
+            {tag}
+          </span>
+        ))}
+      </div>
+      {hasContent ? (
+        <span className="blog-read-link">
+          Read post <FiArrowRight aria-hidden="true" />
+        </span>
+      ) : (
+        <span className="blog-coming-soon">Full post coming soon</span>
+      )}
+    </motion.article>
+  );
+
+  if (hasContent) {
+    return (
+      <Link to={`/blog/${post.id}`} className="blog-card-link">
+        {cardInner}
+      </Link>
+    );
+  }
+
+  return cardInner;
 }
 
 export default function Blog() {
@@ -48,26 +93,7 @@ export default function Blog() {
         <section className="section-card">
           <div className="blog-list">
             {posts.map((post, i) => (
-              <motion.article key={post.id} className="blog-card" {...fadeUp(i * 0.08)}>
-                <div className="blog-card-meta">
-                  <time className="blog-date" dateTime={post.date}>{formatDate(post.date)}</time>
-                  <span className="blog-read-time">
-                    <FiClock aria-hidden="true" />
-                    {post.readTime}
-                  </span>
-                </div>
-                <h2 className="blog-title">{post.title}</h2>
-                <p className="blog-excerpt">{post.excerpt}</p>
-                <div className="blog-tags">
-                  {post.tags.map((tag) => (
-                    <span key={tag} className="blog-tag">
-                      <FiTag aria-hidden="true" />
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-                <span className="blog-coming-soon">Full post coming soon</span>
-              </motion.article>
+              <BlogCard key={post.id} post={post} index={i} />
             ))}
           </div>
         </section>
