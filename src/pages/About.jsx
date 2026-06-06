@@ -62,17 +62,17 @@ const highlights = [
   {
     icon: <FaCode />,
     title: "Web Development",
-    desc: "Experience building responsive, high-quality websites using modern HTML, CSS, JavaScript, and frameworks.",
+    desc: "Building responsive, production-ready web apps with React, Next.js, TypeScript, and Node.js from concept to deployment.",
   },
   {
     icon: <FaFolder />,
     title: "Project Management",
-    desc: "Skilled at taking concepts from idea to shipped product — executing cleanly and staying on track.",
+    desc: "Taking projects from idea to shipped product with clear execution, attention to detail, and consistent delivery.",
   },
   {
     icon: <FaBookOpen />,
     title: "Continuous Learning",
-    desc: "Committed to growth, always sharpening skills and keeping pace with evolving tools and best practices.",
+    desc: "Currently deepening expertise in AI and machine learning through CodePath while staying sharp across the full stack.",
   },
 ];
 
@@ -81,19 +81,19 @@ const coreValues = [
     icon: <FaLightbulb />,
     color: "#f59e0b",
     title: "Passion",
-    desc: "Driven by genuine curiosity and the desire to solve real-world problems through elegant technical solutions.",
+    desc: "Genuinely excited about building things that work well and look great. That enthusiasm shows up in every line of code.",
   },
   {
     icon: <FaUsers />,
     color: "#3b82f6",
     title: "Collaboration",
-    desc: "I believe in open communication and teamwork to push projects toward their best possible outcome.",
+    desc: "Strong communicator who thrives in team environments, keeping everyone aligned and moving toward the same goal.",
   },
   {
     icon: <FaRocket />,
     color: "#ec4899",
     title: "Innovation",
-    desc: "Staying on top of the latest trends and bringing forward-thinking ideas to every project I touch.",
+    desc: "Always exploring new tools and approaches, from AI integrations to modern frameworks, to deliver smarter solutions.",
   },
 ];
 
@@ -104,7 +104,7 @@ const timeline = [
     icon: <FaBriefcase />,
     title: "Freelance Full-Stack Developer",
     org: "Self-employed",
-    desc: "Building client websites and web apps using React, Node.js, and modern design principles — from mockups to deployed products.",
+    desc: "Designing and building client websites and web applications using React, Next.js, Node.js, and TypeScript. Handling everything from UI design to deployment.",
   },
   {
     year: "2023 – Present",
@@ -112,7 +112,7 @@ const timeline = [
     icon: <FaGraduationCap />,
     title: "Web Development, iOS, Technical Interview Prep & Foundations to AI",
     org: "CodePath",
-    desc: "Currently enrolled in CodePath's program, completing courses in Web Development, iOS Development, Technical Interview Preparation, and Foundations to AI — building practical skills alongside university studies.",
+    desc: "Completed courses in Web Development, iOS Development, and Technical Interview Preparation. Currently enrolled in Foundations to AI, building hands-on skills alongside university coursework.",
   },
   {
     year: "2022 – Present",
@@ -120,7 +120,7 @@ const timeline = [
     icon: <FaGraduationCap />,
     title: "B.A. Computer Science",
     org: "Florida International University",
-    desc: "Studying data structures, algorithms, software engineering, systems programming, and full-stack web development.",
+    desc: "Studying data structures, algorithms, software engineering, systems programming, and full-stack web development at FIU.",
   },
   {
     year: "2022",
@@ -128,7 +128,7 @@ const timeline = [
     icon: <FaStar />,
     title: "First Line of Code",
     org: "Self-taught",
-    desc: "Discovered web development, built my first projects, and found a genuine passion for crafting intuitive user interfaces.",
+    desc: "Discovered programming through self-study, built my first projects, and developed a genuine passion for crafting clean and intuitive user experiences.",
   },
 ];
 
@@ -175,15 +175,15 @@ export default function About() {
               Turning ideas into<br />digital reality
             </h1>
             <p className="about-bio-text">
-              Hi! I&apos;m Kevin Jerome, a passionate web designer and software developer
-              committed to creating exceptional digital experiences. My journey in technology
-              started out of curiosity, which quickly evolved into a deep passion for building
-              and designing engaging websites.
+              Hi, I&apos;m Kevin Jerome, a Full-Stack Developer and Computer Science student
+              at Florida International University. I build modern web applications using
+              React, Next.js, TypeScript, and Node.js, with a focus on clean design and
+              real-world performance.
             </p>
             <p className="about-bio-text">
-              I focus on crafting solutions that are not only visually appealing but also
-              provide a smooth and intuitive user experience, always pushing toward work
-              that meets and exceeds expectations.
+              From freelance client work to personal projects, I bring ideas to life end
+              to end. Currently expanding into AI and machine learning through CodePath,
+              always looking for the next challenge worth solving.
             </p>
             <div className="about-intro-actions">
               <Link to="/projects" className="hero-button hero-btn-primary">
@@ -206,9 +206,9 @@ export default function About() {
       <motion.section className="section-card about-stats-section" {...fadeUp(0)}>
         <div className="about-stats">
           <StatCounter value={5} label="Projects Built" />
-          <StatCounter value={10} label="Technologies" />
-          <StatCounter value={2} label="Years Learning" />
-          <StatCounter value={100} label="Commits Pushed" />
+          <StatCounter value={15} label="Technologies" />
+          <StatCounter value={4} label="Years Learning" />
+          <StatCounter value={200} label="Commits Pushed" />
         </div>
       </motion.section>
 
