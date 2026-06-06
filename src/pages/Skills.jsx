@@ -145,13 +145,14 @@ const softSkills = [
 ];
 
 const progressSkills = [
-  { name: "HTML / CSS",       percent: 92, color: "#ff4d7b" },
-  { name: "JavaScript",       percent: 85, color: "#facc15" },
-  { name: "React.js",         percent: 82, color: "#60a5fa" },
-  { name: "Next.js",          percent: 90, color: "#e2e8f0" },
-  { name: "Node.js / Express",percent: 70, color: "#4ade80" },
-  { name: "Python",           percent: 65, color: "#a78bfa" },
-  { name: "TypeScript",       percent: 90, color: "#38bdf8" },
+  { name: "HTML / CSS",          percent: 92, color: "#ff4d7b" },
+  { name: "JavaScript",          percent: 85, color: "#facc15" },
+  { name: "React.js",            percent: 82, color: "#60a5fa" },
+  { name: "Next.js",             percent: 90, color: "#e2e8f0" },
+  { name: "Node.js / Express",   percent: 70, color: "#4ade80" },
+  { name: "Python",              percent: 65, color: "#a78bfa" },
+  { name: "TypeScript",          percent: 90, color: "#38bdf8" },
+  { name: "AI / Machine Learning", percent: 70, color: "#f97316" },
 ];
 
 function ProgressBar({ name, percent, color, delay }) {
