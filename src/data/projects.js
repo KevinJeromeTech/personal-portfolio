@@ -3,20 +3,21 @@ const projects = [
     id: 1,
     title: "ExpenseIQ",
     description:
-      "Full-stack expense tracking dashboard with analytics, transaction history, and smart spending insights.",
+      "Full-stack expense tracker with React 19, TypeScript, Node.js/Express, PostgreSQL, and Claude AI for smart spending insights and auto-categorization.",
     longDescription:
-      "ExpenseIQ is a full-stack expense intelligence dashboard built to help users track spending, review transactions, and understand financial behavior through a clean, data-driven interface. Designed with a fintech aesthetic that balances data density with visual clarity.",
+      "ExpenseIQ is a production-grade full-stack expense intelligence dashboard built with React 19, TypeScript, and Node.js/Express. It features a complete JWT auth system, AI-powered spending insights via the Anthropic Claude API, real-time data visualization with Recharts, and is deployed on Vercel and Render with a Neon PostgreSQL database.",
     image: "/Images/ExpenseIQ.webp",
     imageFallback: "/Images/ExpenseIQ.png",
     github: "https://github.com/KevinJeromeTech/ExpenseIQ",
     demo: "https://expense-iq-lilac.vercel.app/",
     featured: true,
-    stack: ["React", "TypeScript", "Node.js"],
+    stack: ["React 19", "TypeScript", "Node.js", "PostgreSQL", "Claude AI"],
     highlights: [
-      "Built a polished fintech-style dashboard for real-time expense tracking.",
-      "Structured data presentation around modern analytics patterns.",
-      "Implemented fully responsive layouts across desktop and mobile.",
-      "Focused on clean UI, readability, and production-level polish.",
+      "Built full JWT auth system with bcrypt password hashing, rate limiting, and password reset via Nodemailer.",
+      "Integrated Anthropic Claude API (claude-haiku-4-5) for AI-generated spending insights and transaction auto-categorization.",
+      "React 19 with TanStack Query v5 and Recharts for real-time data visualization and intelligent caching.",
+      "Prisma ORM with PostgreSQL (Neon) in production and SQLite locally, validated with Zod on all auth endpoints.",
+      "Deployed on Vercel and Render with GitHub Actions CI, Vitest unit tests, and Playwright E2E coverage.",
     ],
   },
   {
