@@ -213,7 +213,7 @@ export default function Skills() {
           <span className="page-eyebrow">Skills</span>
           <h1 className="page-hero-title">What I work with</h1>
           <p className="skills-lead">
-            A detailed look at my core skills and areas of expertise — spanning
+            A detailed look at my core skills and areas of expertise spanning
             web development, design, digital strategy, and backend thinking.
           </p>
         </div>
