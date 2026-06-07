@@ -9,13 +9,19 @@
   gap: 0.45rem;
   font-size: 0.875rem;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.72);
+  color: var(--dark);
+  opacity: 0.65;
   text-decoration: none;
-  transition: color 0.2s;
+  transition: color 0.2s, opacity 0.2s;
 }
 
 .bp-back-link:hover {
   color: var(--burgundy);
+  opacity: 1;
+}
+
+body.dark-mode .bp-back-link {
+  color: #f3f4f6;
 }
 
 /* ── Header card ── */

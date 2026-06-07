@@ -61,7 +61,7 @@ export default function AboutPreview() {
         ))}
       </div>
 
-      <div className="preview-grid" style={{ gridTemplateColumns: "repeat(2, 1fr)" }}>
+      <div className="preview-grid">
         <div className="preview-card">
           <h3>Full-Stack Builds</h3>
           <p>
