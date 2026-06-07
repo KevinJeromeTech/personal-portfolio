@@ -63,11 +63,46 @@ export default function Navbar() {
           {/* ── Desktop nav ── */}
           <nav className="desktop-nav" aria-label="Desktop Navigation">
             <div className="nav-links">
-              {navLinks.map(({ to, label }) => (
-                <NavLink key={to} to={to}>{label}</NavLink>
-              ))}
+              {navLinks.map(({ to, label, icon }) => {
+                const isActive = to === "/" ? location.pathname === "/" : location.pathname.startsWith(to);
+                return (
+                  <NavLink key={to} to={to} className="nav-link-item">
+                    {isActive && (
+                      <motion.span
+                        layoutId="nav-active-pill"
+                        className="nav-active-pill"
+                        transition={{ type: "spring", stiffness: 380, damping: 32 }}
+                      />
+                    )}
+                    <span className="nav-link-icon" aria-hidden="true">{icon}</span>
+                    <span className="nav-link-label">{label}</span>
+                  </NavLink>
+                );
+              })}
               <NavLink to="/contact" className="button-contact">Contact</NavLink>
             </div>
+
+            <div className="nav-socials">
+              <a
+                href="https://github.com/KevinJeromeTech"
+                target="_blank"
+                rel="noreferrer"
+                className="nav-social-btn"
+                aria-label="GitHub"
+              >
+                <FaGithub />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/kevinjerome-kj/"
+                target="_blank"
+                rel="noreferrer"
+                className="nav-social-btn"
+                aria-label="LinkedIn"
+              >
+                <FaLinkedin />
+              </a>
+            </div>
+
             <button
               className="dark-toggle"
               type="button"
