@@ -85,8 +85,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, var(--burgundy), #c2184c);
-  box-shadow: 0 10px 24px rgba(128, 0, 32, 0.28);
+  background: linear-gradient(135deg, var(--burgundy), #5f8099);
+  box-shadow: 0 10px 24px rgba(143, 175, 192, 0.28);
   margin-bottom: 1rem;
 }
 

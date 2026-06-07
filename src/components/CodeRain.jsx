@@ -51,7 +51,7 @@ export default function CodeRain() {
         const char = CHARS[Math.floor(Math.random() * CHARS.length)];
         const x    = i * colSpacing;
 
-        offCtx.fillStyle = `rgba(200, 210, 220, ${0.75 + Math.random() * 0.25})`;
+        offCtx.fillStyle = `rgba(192, 30, 60, ${0.75 + Math.random() * 0.25})`;
 
         offCtx.fillText(char, x, y * fontSize);
 

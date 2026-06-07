@@ -9,13 +9,13 @@
   gap: 0.45rem;
   font-size: 0.875rem;
   font-weight: 500;
-  color: var(--text-secondary);
+  color: rgba(255, 255, 255, 0.72);
   text-decoration: none;
   transition: color 0.2s;
 }
 
 .bp-back-link:hover {
-  color: var(--accent);
+  color: var(--burgundy);
 }
 
 /* ── Header card ── */
@@ -38,7 +38,7 @@
   height: 340px;
   top: -120px;
   right: -80px;
-  background: radial-gradient(circle, rgba(128, 0, 32, 0.22) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(143, 175, 192, 0.22) 0%, transparent 70%);
 }
 
 .bp-header-orb-2 {
@@ -46,7 +46,7 @@
   height: 260px;
   bottom: -80px;
   left: -60px;
-  background: radial-gradient(circle, rgba(255, 77, 123, 0.12) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(143, 175, 192, 0.12) 0%, transparent 70%);
 }
 
 .bp-header-inner {
@@ -68,13 +68,13 @@
   font-weight: 800;
   line-height: 1.2;
   letter-spacing: -0.02em;
-  color: var(--text-primary);
+  color: #ffffff;
   margin: 0 0 1rem;
 }
 
 .bp-excerpt {
   font-size: 1.05rem;
-  color: var(--text-secondary);
+  color: rgba(255, 255, 255, 0.72);
   line-height: 1.65;
   margin: 0 0 1.5rem;
 }
@@ -97,7 +97,7 @@
 .bp-h2 {
   font-size: clamp(1.15rem, 2.5vw, 1.4rem);
   font-weight: 700;
-  color: var(--text-primary);
+  color: #ffffff;
   margin: 2.5rem 0 0.75rem;
   padding-bottom: 0.4rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.07);
@@ -110,7 +110,7 @@
 .bp-p {
   font-size: 1rem;
   line-height: 1.8;
-  color: var(--text-secondary);
+  color: rgba(255, 255, 255, 0.72);
   margin: 0 0 1.25rem;
 }
 
@@ -126,7 +126,7 @@
 .bp-list li {
   font-size: 0.97rem;
   line-height: 1.7;
-  color: var(--text-secondary);
+  color: rgba(255, 255, 255, 0.72);
   list-style: disc;
   padding-left: 0.25rem;
 }
@@ -157,14 +157,14 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  color: var(--accent);
+  color: var(--burgundy);
   min-width: 96px;
   flex-shrink: 0;
 }
 
 .bp-stack-value {
   font-size: 0.92rem;
-  color: var(--text-secondary);
+  color: rgba(255, 255, 255, 0.72);
   line-height: 1.5;
 }
 
@@ -184,7 +184,7 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--accent);
+  color: var(--burgundy);
   padding: 0.55rem 1rem 0;
   opacity: 0.8;
 }
@@ -211,8 +211,8 @@
   margin: 0 0 1.75rem;
   padding: 1rem 1.25rem;
   border-radius: 10px;
-  border: 1px solid rgba(255, 77, 123, 0.22);
-  background: rgba(255, 77, 123, 0.06);
+  border: 1px solid rgba(143, 175, 192, 0.28);
+  background: rgba(143, 175, 192, 0.07);
 }
 
 .bp-callout-icon {
@@ -225,7 +225,7 @@
   margin: 0;
   font-size: 0.95rem;
   line-height: 1.7;
-  color: var(--text-secondary);
+  color: rgba(255, 255, 255, 0.72);
 }
 
 /* ── Footer nav ── */
@@ -254,7 +254,7 @@
 }
 
 .blog-card-link:hover .blog-coming-soon {
-  color: var(--accent);
+  color: var(--burgundy);
 }
 
 /* ── Read more link ── */
@@ -264,7 +264,7 @@
   gap: 0.35rem;
   font-size: 0.85rem;
   font-weight: 600;
-  color: var(--accent);
+  color: var(--burgundy);
   text-decoration: none;
   margin-top: 0.25rem;
   transition: gap 0.2s;

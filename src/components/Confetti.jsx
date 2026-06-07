@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import { motion, AnimatePresence } from "motion/react";
 
-const COLORS = ["#ffffff", "#ff4d7b", "#800020", "#ffbfd0", "#4ade80", "#facc15", "#60a5fa"];
+const COLORS = ["#ffffff", "#8fafc0", "#5f8099", "#c8dce8", "#4ade80", "#facc15", "#60a5fa"];
 
 export default function Confetti({ active }) {
   const particles = useMemo(
