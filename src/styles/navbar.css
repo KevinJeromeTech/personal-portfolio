@@ -40,7 +40,7 @@
   height: 48px;
   object-fit: cover;
   border-radius: 14px;
-  box-shadow: 0 10px 24px rgba(128, 0, 32, 0.28);
+  box-shadow: 0 10px 24px rgba(143, 175, 192, 0.28);
   flex-shrink: 0;
 }
 
@@ -127,7 +127,7 @@
   font-weight: 800;
   font-size: 0.93rem;
   line-height: 1;
-  box-shadow: 0 10px 26px rgba(128, 0, 32, 0.2);
+  box-shadow: 0 10px 26px rgba(143, 175, 192, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.7);
   transition: transform 0.22s ease, box-shadow 0.22s ease, opacity 0.22s ease;
   margin-left: 0.5rem;
@@ -135,7 +135,7 @@
 
 .button-contact:hover {
   transform: translateY(-2px);
-  box-shadow: 0 14px 32px rgba(128, 0, 32, 0.28);
+  box-shadow: 0 14px 32px rgba(143, 175, 192, 0.28);
 }
 
 .button-contact.active {
@@ -247,9 +247,9 @@
 }
 
 .mobile-nav-link.active {
-  background: rgba(128, 0, 32, 0.22);
+  background: rgba(143, 175, 192, 0.22);
   color: #ffffff;
-  border-color: rgba(128, 0, 32, 0.35);
+  border-color: rgba(143, 175, 192, 0.35);
 }
 
 .mobile-contact-link {
@@ -280,7 +280,7 @@
 }
 
 .mobile-nav-link.active .mobile-nav-icon {
-  background: rgba(128, 0, 32, 0.45);
+  background: rgba(143, 175, 192, 0.45);
   color: #ffffff;
 }
 
