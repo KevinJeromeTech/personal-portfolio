@@ -46,9 +46,13 @@ export default function AboutPreview() {
     <section className="about-preview section-card">
       <h2>About Me</h2>
       <p>
-        Full-Stack Developer and Computer Science student at FIU. I build modern
-        web applications with React, Next.js, TypeScript, and Node.js, with a
-        focus on clean design and real performance.
+        Full-Stack Developer and Computer Science student at Florida International
+        University. I design and build modern web applications end to end with
+        React, Next.js, TypeScript, Node.js, and PostgreSQL, integrating AI
+        through the Anthropic Claude API and shipping everything through real
+        CI/CD pipelines on Vercel and Render. My focus is clean architecture,
+        accessible interfaces, and performance that holds up in production, not
+        just in a demo.
       </p>
 
       <div className="about-stats">
@@ -61,32 +65,43 @@ export default function AboutPreview() {
         <div className="preview-card">
           <h3>Full-Stack Builds</h3>
           <p>
-            From frontend UI to backend APIs, I handle the full stack and ship
-            projects that work in production.
+            I work across the entire stack, from React and TypeScript interfaces
+            to Node.js and Express APIs backed by PostgreSQL and Prisma. That
+            means designing the database schema, building the auth and business
+            logic, and wiring it all into a polished UI, then deploying and
+            monitoring it like a real product.
           </p>
         </div>
 
         <div className="preview-card">
           <h3>Real Experience</h3>
           <p>
-            Freelance client work, university projects, and personal builds
-            across React, Node.js, and more.
+            My experience spans freelance client work like the StoreLens retail
+            dashboard for Classic Menswear, university coursework at FIU, and
+            self-directed builds like ExpenseIQ and this portfolio. Each project
+            pushed me to learn a new layer of the stack, from JWT auth and rate
+            limiting to AI integration and automated testing.
           </p>
         </div>
 
         <div className="preview-card">
           <h3>Result-Oriented</h3>
           <p>
-            Every project has a goal. I stay focused on delivering clean,
-            functional solutions that actually move the needle.
+            I treat every project like it has a real stakeholder, because most
+            of mine have. That means defining a clear goal up front, scoping the
+            work realistically, and shipping something that actually solves the
+            problem rather than something that just looks good in a screenshot.
           </p>
         </div>
 
         <div className="preview-card">
           <h3>User-First Design</h3>
           <p>
-            Every interface is crafted with the end user in mind, intuitive,
-            accessible, and built to leave a lasting impression.
+            I design interfaces around how people actually use them: clear
+            visual hierarchy, fast load times, keyboard and screen-reader
+            support, and thoughtful micro-interactions. Accessibility and
+            performance aren't an afterthought, they're part of the same design
+            decisions from the start.
           </p>
         </div>
       </div>
