@@ -165,6 +165,7 @@ const progressSkills = [
   { name: "Next.js",               percent: 90, color: "#e2e8f0" },
   { name: "Node.js / Express",     percent: 82, color: "#4ade80" },
   { name: "Python",                percent: 65, color: "#a78bfa" },
+  { name: "C Programming",         percent: 60, color: "#8fafc0" },
   { name: "AI / Machine Learning", percent: 70, color: "#f97316" },
 ];
 
