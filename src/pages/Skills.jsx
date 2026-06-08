@@ -84,7 +84,7 @@ const techGroups = [
       { icon: <SiTypescript />, name: "TypeScript" },
       { icon: <FaPython />, name: "Python" },
       { icon: <FaDatabase />, name: "SQL" },
-      { icon: <FaCuttlefish />, name: "C" },
+      { icon: <FaCuttlefish />, name: "C Programming" },
       { icon: <FaJava />, name: "Java" },
     ],
   },
