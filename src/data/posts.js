@@ -2,7 +2,7 @@ const posts = [
   {
     id: "building-auralith-systems",
     title: "Auralith Systems: A Full-Stack Tech Consulting Platform from Scratch",
-    logo: "/AuralithLogo/AuralithLogo.png",
+    logo: "/Logo/AuralithLogo.png",
     date: "2026-06-20",
     tags: ["Next.js", "Spring Boot", "TypeScript", "Java", "PostgreSQL"],
     excerpt:
@@ -142,6 +142,7 @@ const posts = [
   },
   {
     id: "building-expenseiq",
+    logo: "/Logo/ExpenseIQ.png",
     title: "Building ExpenseIQ: Full-Stack Expense Tracking with React 19 & Claude AI",
     date: "2025-03-12",
     tags: ["React 19", "TypeScript", "Node.js", "Claude AI", "PostgreSQL"],
