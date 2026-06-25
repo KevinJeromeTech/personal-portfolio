@@ -131,7 +131,12 @@ const posts = [
       },
       {
         type: "p",
-        text: "Auralith Systems is live at auralith-systems.vercel.app. If you are interested in working together or want to know more about the technical architecture, reach out through the site.",
+        text: "Auralith Systems is live and accepting clients. If you are interested in working together or want to know more about the technical architecture, reach out through the site.",
+      },
+      {
+        type: "link",
+        text: "Visit Auralith Systems",
+        url: "https://auralith-systems.vercel.app",
       },
     ],
   },

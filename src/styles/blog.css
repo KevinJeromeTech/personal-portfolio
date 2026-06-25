@@ -290,6 +290,29 @@ body.dark-mode .bp-back-link {
   gap: 0.55rem;
 }
 
+/* ── Blog post link button ── */
+.bp-link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.5rem;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #ffffff, #f3f4f6);
+  color: var(--burgundy) !important;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0 10px 26px rgba(143, 175, 192, 0.2);
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+  margin-top: 0.5rem;
+}
+
+.bp-link-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 32px rgba(143, 175, 192, 0.3);
+}
+
 /* ── Responsive ── */
 @media (max-width: 600px) {
   .bp-stack-label {

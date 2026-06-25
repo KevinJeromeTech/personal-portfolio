@@ -58,6 +58,13 @@ function ContentBlock({ block }) {
         </aside>
       );
 
+    case "link":
+      return (
+        <a href={block.url} target="_blank" rel="noreferrer" className="bp-link-btn">
+          {block.text}
+        </a>
+      );
+
     default:
       return null;
   }
