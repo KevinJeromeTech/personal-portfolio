@@ -1,7 +1,8 @@
 const posts = [
   {
     id: "building-auralith-systems",
-    title: "Building Auralith Systems: A Full-Stack Tech Consulting Platform from Scratch",
+    title: "Auralith Systems: A Full-Stack Tech Consulting Platform from Scratch",
+    logo: "/AuralithLogo/AuralithLogo.png",
     date: "2025-06-20",
     tags: ["Next.js", "Spring Boot", "TypeScript", "Java", "PostgreSQL"],
     excerpt:

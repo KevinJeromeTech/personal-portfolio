@@ -108,6 +108,9 @@ export default function BlogPost() {
           <div className="bp-header-orb-2" aria-hidden="true" />
 
           <div className="bp-header-inner">
+            {post.logo && (
+              <img src={post.logo} alt="" className="bp-header-logo" aria-hidden="true" />
+            )}
             <div className="bp-meta">
               <time className="blog-date" dateTime={post.date}>
                 {formatDate(post.date)}
