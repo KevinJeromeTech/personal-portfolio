@@ -3,7 +3,7 @@ const posts = [
     id: "building-auralith-systems",
     title: "Auralith Systems: A Full-Stack Tech Consulting Platform from Scratch",
     logo: "/AuralithLogo/AuralithLogo.png",
-    date: "2025-06-20",
+    date: "2026-06-20",
     tags: ["Next.js", "Spring Boot", "TypeScript", "Java", "PostgreSQL"],
     excerpt:
       "How I designed and built the entire digital infrastructure for my tech consulting company, from a public-facing site and client dashboard to an admin portal with role-based access, PDF generation, and transactional email.",
@@ -56,7 +56,7 @@ const posts = [
       {
         type: "bullets",
         items: [
-          "The public site at auralithsystems.com is the marketing front. It covers services, company information, and a contact pipeline. SEO and page speed matter here, so it leans heavily on Next.js static generation and server-side rendering.",
+          "The public site at auralith-systems.vercel.app is the marketing front. It covers services, company information, and a contact pipeline. SEO and page speed matter here, so it leans heavily on Next.js static generation and server-side rendering.",
           "The client dashboard lets customers log in, view project status, track milestones, and access deliverables. This is a fully authenticated SPA-style experience inside the Next.js app, gated by NextAuth.js sessions with role checks.",
           "The admin portal is where I manage projects, clients, invoices, and internal operations. It has elevated permissions, bulk actions, and reporting tools. Same Next.js app, different route group, different authorization layer.",
         ],
@@ -131,7 +131,7 @@ const posts = [
       },
       {
         type: "p",
-        text: "Auralith Systems is live at auralithsystems.com. If you are interested in working together or want to know more about the technical architecture, reach out through the site.",
+        text: "Auralith Systems is live at auralith-systems.vercel.app. If you are interested in working together or want to know more about the technical architecture, reach out through the site.",
       },
     ],
   },
