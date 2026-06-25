@@ -65,6 +65,14 @@ function ContentBlock({ block }) {
         </a>
       );
 
+    case "image":
+      return (
+        <figure className="bp-figure">
+          <img src={block.src} alt={block.alt || ""} className="bp-image" loading="lazy" />
+          {block.caption && <figcaption className="bp-caption">{block.caption}</figcaption>}
+        </figure>
+      );
+
     default:
       return null;
   }

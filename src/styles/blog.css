@@ -290,6 +290,26 @@ body.dark-mode .bp-back-link {
   gap: 0.55rem;
 }
 
+/* ── Blog post image ── */
+.bp-figure {
+  margin: 1.5rem 0;
+}
+
+.bp-image {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+.bp-caption {
+  margin-top: 0.6rem;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.55);
+  text-align: center;
+  font-style: italic;
+}
+
 /* ── Blog post link button ── */
 .bp-link-btn {
   display: inline-flex;
