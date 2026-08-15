@@ -9,6 +9,7 @@ import CustomCursor from "./components/CustomCursor.jsx";
 import ErrorBoundary from "./components/ErrorBoundary.jsx";
 import ScrollToTop from "./components/ScrollToTop.jsx";
 import CodeRain from "./components/CodeRain.jsx";
+const ThreeBackground = lazy(() => import("./components/ThreeBackground.jsx"));
 
 const Home          = lazy(() => import("./pages/Home.jsx"));
 const About         = lazy(() => import("./pages/About.jsx"));
@@ -112,6 +113,9 @@ function App() {
   return (
     <>
       <Analytics />
+      <Suspense fallback={null}>
+        <ThreeBackground />
+      </Suspense>
       <CodeRain />
       <Toaster
         position="bottom-right"
