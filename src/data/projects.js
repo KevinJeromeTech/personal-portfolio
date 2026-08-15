@@ -1,11 +1,32 @@
 const projects = [
   {
+    id: 6,
+    title: "Auralith Systems",
+    description:
+      "My tech consulting company — client-facing site, multi-role admin and client dashboards, and internal tools built to manage real consulting engagements in production.",
+    longDescription:
+      "Auralith Systems is my own tech consulting company, and this platform is its operational backbone. It includes the public company site, a secure multi-role dashboard for managing clients and active projects, and is designed to scale with the business. Built with Next.js and TypeScript on the frontend, Tailwind CSS for design, Spring Boot handling the API and role-based access, and PostgreSQL as the single source of truth.",
+    image: "/Images/Auralith.webp",
+    imageFallback: "/Images/Auralith.png",
+    github: "#",
+    demo: "https://auralith-systems.vercel.app",
+    featured: true,
+    stack: ["Next.js", "TypeScript", "Tailwind CSS", "Spring Boot", "PostgreSQL"],
+    highlights: [
+      "Built the full company site and multi-role dashboard serving both admin and client views from a single codebase.",
+      "Spring Boot API handles role-based access control (RBAC), authentication, and all business logic.",
+      "PostgreSQL database manages clients, projects, contacts, and company data across all platform surfaces.",
+      "Next.js with TypeScript and Tailwind CSS — fully responsive, fast, and built to match the company brand.",
+      "Live in production at auralith-systems.vercel.app — actively used for real consulting engagements.",
+    ],
+  },
+  {
     id: 1,
     title: "ExpenseIQ",
     description:
-      "Full-stack expense tracker with React 19, TypeScript, Node.js/Express, PostgreSQL, and Claude AI for smart spending insights and auto-categorization.",
+      "Full-stack expense intelligence dashboard with React 19, TypeScript, JWT auth, AI-powered spending insights via Claude, and real-time data visualization.",
     longDescription:
-      "ExpenseIQ is a production-grade full-stack expense intelligence dashboard built with React 19, TypeScript, and Node.js/Express. It features a complete JWT auth system, AI-powered spending insights via the Anthropic Claude API, real-time data visualization with Recharts, and is deployed on Vercel and Render with a Neon PostgreSQL database.",
+      "ExpenseIQ is a production-grade full-stack expense tracker that goes beyond logging — it actively helps you understand your spending. Built with React 19, TypeScript, and Node.js/Express, it features a complete JWT authentication system, AI-powered insights and transaction auto-categorization via the Anthropic Claude API, optimistic UI updates with TanStack Query v5, and real-time charts with Recharts. Deployed on Vercel and Render with a full CI/CD pipeline.",
     image: "/Images/ExpenseIQ.webp",
     imageFallback: "/Images/ExpenseIQ.png",
     github: "https://github.com/KevinJeromeTech/ExpenseIQ",
@@ -13,11 +34,11 @@ const projects = [
     featured: true,
     stack: ["React 19", "TypeScript", "Node.js", "PostgreSQL", "Claude AI"],
     highlights: [
-      "Built full JWT auth system with bcrypt password hashing, rate limiting, and password reset via Nodemailer.",
-      "Integrated Anthropic Claude API (claude-haiku-4-5) for AI-generated spending insights and transaction auto-categorization.",
-      "React 19 with TanStack Query v5 and Recharts for real-time data visualization and intelligent caching.",
-      "Prisma ORM with PostgreSQL (Neon) in production and SQLite locally, validated with Zod on all auth endpoints.",
-      "Deployed on Vercel and Render with GitHub Actions CI, Vitest unit tests, and Playwright E2E coverage.",
+      "JWT auth built from scratch — bcrypt hashing, rate limiting, httpOnly refresh tokens, and password reset via Nodemailer.",
+      "Anthropic Claude API (claude-haiku-4-5) auto-categorizes transactions and generates plain-English spending insights in real time.",
+      "TanStack Query v5 powers all server state — optimistic updates, 5-minute stale windows, and automatic rollback on failure.",
+      "Recharts dashboard with a spending-by-category donut, month-over-month bar chart, and daily trend line — all feel instant.",
+      "GitHub Actions CI runs ESLint, Vitest unit tests, and Playwright E2E across the full auth flow on every push.",
     ],
   },
   {
@@ -64,9 +85,9 @@ const projects = [
     id: 4,
     title: "StoreLens",
     description:
-      "Retail intelligence platform embedded into a live storefront — real-time inventory, sales analytics, and AI-powered forecasting for store managers and staff.",
+      "Retail intelligence platform embedded into a live storefront — real-time inventory tracking, sales analytics, and AI-driven forecasting for store managers and staff.",
     longDescription:
-      "StoreLens is a production retail intelligence platform built for Classic Menswear, embedded directly into the storefront at /dashboard. It gives managers and staff real-time visibility into inventory, sales performance, and tailor productivity through a multi-service architecture spanning a Next.js frontend, Spring Boot API, and a Python FastAPI service for AI-driven analytics.",
+      "StoreLens is a production retail intelligence platform built for Classic Menswear, embedded directly into the live storefront at /dashboard. It gives managers and staff real-time visibility into inventory levels, sales performance, and tailor productivity through a multi-service architecture: a Next.js frontend, a Spring Boot REST API for business logic and RBAC, and a Python FastAPI service powering AI-driven analytics, sales forecasting, and dead stock detection.",
     image: "/Images/StoreLens.webp",
     imageFallback: "/Images/StoreLens.png",
     github: "#",
@@ -75,11 +96,11 @@ const projects = [
     status: "In Progress",
     stack: ["Next.js", "Spring Boot", "Python", "PostgreSQL", "FastAPI"],
     highlights: [
-      "Multi-service architecture: Next.js 16 + TypeScript + Tailwind v4 frontend, Spring Boot (Java) API, and Python FastAPI analytics service.",
-      "Python AI layer handles sales forecasting, velocity analysis, and dead stock detection.",
-      "Spring Boot manages RBAC, REST endpoints, inventory writes, and webhook triggers for on-demand Next.js cache revalidation.",
-      "Physical-to-digital inventory input via phone camera QR scanning and optional USB barcode scanner.",
-      "PostgreSQL as a single source of truth for products, inventory, orders, and staff across all services.",
+      "Three-service architecture: Next.js 16 + TypeScript + Tailwind v4 frontend, Spring Boot Java API, and Python FastAPI analytics layer.",
+      "Python AI service handles sales velocity analysis, demand forecasting, and automatic dead stock detection.",
+      "Spring Boot manages RBAC, all REST endpoints, inventory writes, and webhook triggers for Next.js cache revalidation.",
+      "Physical-to-digital inventory input via phone camera QR scanning and optional USB barcode scanner support.",
+      "PostgreSQL as a single source of truth across products, inventory, orders, and staff for all three services.",
     ],
   },
   {
@@ -92,7 +113,7 @@ const projects = [
     image: "/Images/nportfolio.webp",
     imageFallback: "/Images/nportfolio.png",
     github: "https://github.com/KevinJeromeTech/personal-portfolio",
-    demo: "https://personal-portfolio-liard-xi-32.vercel.app/",
+    demo: "https://kevinjerome.dev/",
     featured: true,
     stack: ["React", "Vite", "PWA", "CSS"],
     highlights: [
