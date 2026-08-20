@@ -27,7 +27,7 @@
   font-family: 'Playfair Display', Georgia, serif;
   font-size: 0.9rem;
   font-weight: 700;
-  color: #c0392b;
+  color: #8b1a2a;
   letter-spacing: 0.08em;
   opacity: 0.7;
   flex-shrink: 0;
@@ -45,7 +45,7 @@
 .hp-title-accent {
   flex: 1;
   height: 2px;
-  background: linear-gradient(90deg, #c0392b 0%, transparent 100%);
+  background: linear-gradient(90deg, #8b1a2a 0%, transparent 100%);
   min-width: 48px;
   max-width: 120px;
   border-radius: 2px;
@@ -83,8 +83,8 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background: rgba(192, 57, 43, 0.08);
-  border: 1px solid rgba(192, 57, 43, 0.22);
+  background: rgba(139, 26, 42, 0.08);
+  border: 1px solid rgba(139, 26, 42, 0.22);
   border-radius: 999px;
   padding: 0.35rem 0.9rem;
   font-size: 0.78rem;
@@ -134,7 +134,7 @@
 }
 
 .hp-name-last {
-  color: #c0392b;
+  color: #8b1a2a;
   display: block;
 }
 
@@ -147,7 +147,7 @@
 }
 
 .hp-accent-text {
-  color: #c0392b;
+  color: #8b1a2a;
   font-weight: 600;
 }
 
@@ -171,7 +171,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background: #c0392b;
+  background: #8b1a2a;
   color: #fff;
   font-weight: 600;
   font-size: 0.92rem;
@@ -180,13 +180,13 @@
   text-decoration: none;
   letter-spacing: 0.02em;
   transition: background 0.18s, transform 0.15s, box-shadow 0.18s;
-  box-shadow: 0 4px 18px rgba(192, 57, 43, 0.28);
+  box-shadow: 0 4px 18px rgba(139, 26, 42, 0.28);
 }
 
 .hp-btn-primary:hover {
-  background: #9b2d20;
+  background: #6b1422;
   transform: translateY(-2px);
-  box-shadow: 0 8px 28px rgba(192, 57, 43, 0.4);
+  box-shadow: 0 8px 28px rgba(139, 26, 42, 0.4);
 }
 
 .hp-btn-secondary {
@@ -206,10 +206,10 @@
 }
 
 .hp-btn-secondary:hover {
-  border-color: #c0392b;
-  color: #c0392b;
+  border-color: #8b1a2a;
+  color: #8b1a2a;
   transform: translateY(-2px);
-  background: rgba(192, 57, 43, 0.06);
+  background: rgba(139, 26, 42, 0.06);
 }
 
 .hp-resume-link {
@@ -225,7 +225,7 @@
 }
 
 .hp-resume-link:hover {
-  color: #c0392b;
+  color: #8b1a2a;
 }
 
 /* Scroll hint */
@@ -250,7 +250,7 @@
 .hp-scroll-line {
   width: 1px;
   height: 48px;
-  background: linear-gradient(to bottom, #c0392b 0%, transparent 100%);
+  background: linear-gradient(to bottom, #8b1a2a 0%, transparent 100%);
   animation: scroll-line 2s ease-in-out infinite;
   transform-origin: top;
 }
@@ -274,7 +274,7 @@
 .orbital-ring {
   position: absolute;
   border-radius: 50%;
-  border: 1.5px dashed rgba(192, 57, 43, 0.22);
+  border: 1.5px dashed rgba(139, 26, 42, 0.22);
 }
 
 .orbital-ring-lg {
@@ -287,7 +287,7 @@
   width: 60%;
   height: 60%;
   animation: orbit-spin-rev 16s linear infinite;
-  border-color: rgba(192, 57, 43, 0.14);
+  border-color: rgba(139, 26, 42, 0.14);
 }
 
 @keyframes orbit-spin {
@@ -305,8 +305,8 @@
   width: 9px;
   height: 9px;
   border-radius: 50%;
-  background: #c0392b;
-  box-shadow: 0 0 10px #c0392b, 0 0 20px rgba(192, 57, 43, 0.5);
+  background: #8b1a2a;
+  box-shadow: 0 0 10px #8b1a2a, 0 0 20px rgba(139, 26, 42, 0.5);
 }
 
 .od-1 {
@@ -332,21 +332,21 @@
   width: 120px;
   height: 120px;
   border-radius: 50%;
-  background: radial-gradient(circle at 35% 35%, rgba(192, 57, 43, 0.18) 0%, rgba(15, 18, 28, 0.85) 70%);
+  background: radial-gradient(circle at 35% 35%, rgba(139, 26, 42, 0.18) 0%, rgba(15, 18, 28, 0.85) 70%);
   border: 1px solid rgba(192, 57, 43, 0.3);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 0 40px rgba(192, 57, 43, 0.12), inset 0 0 30px rgba(192, 57, 43, 0.06);
+  box-shadow: 0 0 40px rgba(139, 26, 42, 0.12), inset 0 0 30px rgba(139, 26, 42, 0.06);
 }
 
 .orbital-monogram {
   font-family: 'Playfair Display', Georgia, serif;
   font-size: 2.2rem;
   font-weight: 900;
-  color: #c0392b;
+  color: #8b1a2a;
   letter-spacing: -0.02em;
-  text-shadow: 0 0 20px rgba(192, 57, 43, 0.6);
+  text-shadow: 0 0 20px rgba(139, 26, 42, 0.6);
 }
 
 /* ── About ── */
@@ -386,7 +386,7 @@
   font-size: 0.72rem;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  color: #c0392b;
+  color: #8b1a2a;
   font-weight: 600;
 }
 
@@ -434,7 +434,7 @@
 
 .hp-highlight-val {
   font-weight: 700;
-  color: #c0392b;
+  color: #8b1a2a;
   font-size: 0.95rem;
 }
 
@@ -455,8 +455,8 @@
 }
 
 .hp-skill-group-card:hover {
-  border-color: rgba(192, 57, 43, 0.22);
-  box-shadow: 0 4px 24px rgba(192, 57, 43, 0.07);
+  border-color: rgba(139, 26, 42, 0.22);
+  box-shadow: 0 4px 24px rgba(139, 26, 42, 0.07);
 }
 
 .hp-skill-group-header {
@@ -505,7 +505,7 @@
 
 .hp-specialty-card {
   background: rgba(79, 142, 247, 0.05);
-  border: 1px solid rgba(192, 57, 43, 0.12);
+  border: 1px solid rgba(139, 26, 42, 0.12);
   border-radius: 14px;
   padding: 1.4rem 1.2rem;
   text-align: center;
@@ -554,8 +554,8 @@
 }
 
 .hp-exp-card:hover {
-  border-color: rgba(192, 57, 43, 0.22);
-  box-shadow: 0 6px 30px rgba(192, 57, 43, 0.08);
+  border-color: rgba(139, 26, 42, 0.22);
+  box-shadow: 0 6px 30px rgba(139, 26, 42, 0.08);
 }
 
 .hp-exp-header {
@@ -614,7 +614,7 @@
   padding: 0.25rem 0.65rem;
   border-radius: 6px;
   background: rgba(192, 57, 43, 0.1);
-  border: 1px solid rgba(192, 57, 43, 0.18);
+  border: 1px solid rgba(139, 26, 42, 0.18);
   color: rgba(79, 142, 247, 0.85);
   font-weight: 500;
 }
@@ -638,8 +638,8 @@
 }
 
 .hp-project-card:hover {
-  border-color: rgba(192, 57, 43, 0.22);
-  box-shadow: 0 8px 32px rgba(192, 57, 43, 0.09);
+  border-color: rgba(139, 26, 42, 0.22);
+  box-shadow: 0 8px 32px rgba(139, 26, 42, 0.09);
 }
 
 .hp-project-img-wrap {
@@ -697,7 +697,7 @@
 }
 
 .hp-project-link:hover {
-  color: #c0392b;
+  color: #8b1a2a;
 }
 
 .hp-project-desc {
@@ -731,19 +731,19 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  color: #c0392b;
+  color: #8b1a2a;
   font-size: 0.92rem;
   font-weight: 600;
   text-decoration: none;
   padding: 0.6rem 1.4rem;
-  border: 1px solid rgba(192, 57, 43, 0.25);
+  border: 1px solid rgba(139, 26, 42, 0.25);
   border-radius: 8px;
   transition: background 0.18s, border-color 0.18s, transform 0.15s;
 }
 
 .hp-view-all:hover {
-  background: rgba(192, 57, 43, 0.08);
-  border-color: rgba(192, 57, 43, 0.5);
+  background: rgba(139, 26, 42, 0.08);
+  border-color: rgba(139, 26, 42, 0.5);
   transform: translateY(-2px);
 }
 
@@ -784,7 +784,7 @@
 }
 
 .hp-social-link:hover {
-  color: #c0392b;
+  color: #8b1a2a;
 }
 
 /* ── Responsive ── */

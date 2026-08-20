@@ -7,21 +7,22 @@ import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 
 const navLinks = [
-  { href: "#about",      label: "About" },
-  { href: "#skills",     label: "Skills" },
-  { href: "#experience", label: "Experience" },
-  { href: "#work",       label: "Projects" },
-  { href: "#contact",    label: "Contact" },
+  { href: "#about",      label: "About",      id: "about" },
+  { href: "#skills",     label: "Skills",     id: "skills" },
+  { href: "#experience", label: "Experience", id: "experience" },
+  { href: "#work",       label: "Projects",   id: "work" },
+  { href: "#contact",    label: "Contact",    id: "contact" },
 ];
 
 export default function Navbar() {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [darkMode, setDarkMode] = useState(() => {
+  const [menuOpen, setMenuOpen]       = useState(false);
+  const [activeSection, setActive]    = useState("");
+  const [scrolled, setScrolled]       = useState(false);
+  const [darkMode, setDarkMode]       = useState(() => {
     const saved = localStorage.getItem("dark-mode");
     if (saved !== null) return saved === "true";
     return window.matchMedia("(prefers-color-scheme: dark)").matches;
   });
-  const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -44,13 +45,31 @@ export default function Navbar() {
     return () => { document.body.style.overflow = ""; };
   }, [menuOpen]);
 
-  const closeMenu = () => setMenuOpen(false);
-  const toggleDark = () => setDarkMode((prev) => !prev);
+  /* track which section is in view */
+  useEffect(() => {
+    const ids = navLinks.map((l) => l.id);
+    const observers = ids.map((id) => {
+      const el = document.getElementById(id);
+      if (!el) return null;
+      const obs = new IntersectionObserver(
+        ([entry]) => { if (entry.isIntersecting) setActive(id); },
+        { threshold: 0.25 }
+      );
+      obs.observe(el);
+      return obs;
+    });
+    return () => observers.forEach((o) => o?.disconnect());
+  }, [location.pathname]);
+
+  const closeMenu  = () => setMenuOpen(false);
+  const toggleDark = () => setDarkMode((p) => !p);
 
   return (
     <>
       <header className={`site-header ${scrolled ? "scrolled" : ""}`}>
         <div className="container nav-shell">
+
+          {/* Logo */}
           <Link to="/" className="logo-holder" onClick={closeMenu}>
             <img src="/Images/Logo.webp" alt="Kevin Jerome logo" className="logo-image" />
             <div className="logo-block">
@@ -59,64 +78,53 @@ export default function Navbar() {
             </div>
           </Link>
 
-          {/* ── Desktop nav ── */}
+          {/* Desktop nav */}
           <nav className="desktop-nav" aria-label="Desktop Navigation">
             <div className="nav-links">
-              {navLinks.map(({ href, label }) => (
-                <a key={href} href={href} className="nav-link-item">
-                  <span className="nav-link-label">{label}</span>
-                </a>
-              ))}
+              {navLinks.map(({ href, label, id }) => {
+                const active = activeSection === id;
+                return (
+                  <a key={href} href={href} className={`nav-link-item ${active ? "is-active" : ""}`}>
+                    {active && (
+                      <motion.span
+                        layoutId="nav-active-pill"
+                        className="nav-active-pill"
+                        transition={{ type: "spring", stiffness: 380, damping: 32 }}
+                      />
+                    )}
+                    <span className="nav-link-label">{label}</span>
+                  </a>
+                );
+              })}
             </div>
 
+            <div className="nav-sep" aria-hidden="true" />
+
             <div className="nav-socials">
-              <a
-                href="https://github.com/KevinJeromeTech"
-                target="_blank"
-                rel="noreferrer"
-                className="nav-social-btn"
-                aria-label="GitHub"
-              >
+              <a href="https://github.com/KevinJeromeTech" target="_blank" rel="noreferrer" className="nav-social-btn" aria-label="GitHub">
                 <FaGithub />
               </a>
-              <a
-                href="https://www.linkedin.com/in/kevinjerome-kj/"
-                target="_blank"
-                rel="noreferrer"
-                className="nav-social-btn"
-                aria-label="LinkedIn"
-              >
+              <a href="https://www.linkedin.com/in/kevinjerome-kj/" target="_blank" rel="noreferrer" className="nav-social-btn" aria-label="LinkedIn">
                 <FaLinkedin />
               </a>
             </div>
 
-            <button
-              className="dark-toggle"
-              type="button"
-              aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}
-              onClick={toggleDark}
-            >
+            <button className="dark-toggle" type="button" aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"} onClick={toggleDark}>
               {darkMode ? <BsSun /> : <BsMoon />}
             </button>
           </nav>
 
-          {/* ── Mobile controls ── */}
+          {/* Mobile controls */}
           <div className="mobile-controls">
-            <button
-              className="dark-toggle"
-              type="button"
-              aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}
-              onClick={toggleDark}
-            >
+            <button className="dark-toggle" type="button" aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"} onClick={toggleDark}>
               {darkMode ? <BsSun /> : <BsMoon />}
             </button>
-
             <button
               className="mobile-toggle"
               type="button"
               aria-expanded={menuOpen}
               aria-label={menuOpen ? "Close menu" : "Open menu"}
-              onClick={() => setMenuOpen((prev) => !prev)}
+              onClick={() => setMenuOpen((p) => !p)}
             >
               <AnimatePresence mode="wait" initial={false}>
                 <motion.span
@@ -132,10 +140,11 @@ export default function Navbar() {
               </AnimatePresence>
             </button>
           </div>
+
         </div>
       </header>
 
-      {/* ── Backdrop ── */}
+      {/* Backdrop */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div
@@ -150,7 +159,7 @@ export default function Navbar() {
         )}
       </AnimatePresence>
 
-      {/* ── Mobile drawer ── */}
+      {/* Mobile drawer */}
       <AnimatePresence>
         {menuOpen && (
           <motion.nav
@@ -162,14 +171,18 @@ export default function Navbar() {
             aria-label="Mobile Navigation"
           >
             <div className="mobile-nav-links">
-              {navLinks.map(({ href, label }, i) => (
+              {navLinks.map(({ href, label, id }, i) => (
                 <motion.div
                   key={href}
                   initial={{ opacity: 0, x: -14 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.2, delay: 0.05 + i * 0.05 }}
                 >
-                  <a href={href} className="mobile-nav-link" onClick={closeMenu}>
+                  <a
+                    href={href}
+                    className={`mobile-nav-link ${activeSection === id ? "is-active" : ""}`}
+                    onClick={closeMenu}
+                  >
                     {label}
                   </a>
                 </motion.div>
@@ -180,34 +193,12 @@ export default function Navbar() {
               className="mobile-menu-footer"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 0.2, delay: 0.28 }}
+              transition={{ duration: 0.2, delay: 0.3 }}
             >
               <div className="mobile-socials">
-                <a
-                  href="https://github.com/KevinJeromeTech"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="mobile-social-btn"
-                  aria-label="GitHub"
-                >
-                  <FaGithub />
-                </a>
-                <a
-                  href="https://www.linkedin.com/in/kevinjerome-kj/"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="mobile-social-btn"
-                  aria-label="LinkedIn"
-                >
-                  <FaLinkedin />
-                </a>
-                <a
-                  href="mailto:kevinjerome.dev@gmail.com"
-                  className="mobile-social-btn"
-                  aria-label="Email"
-                >
-                  <MdEmail />
-                </a>
+                <a href="https://github.com/KevinJeromeTech" target="_blank" rel="noreferrer" className="mobile-social-btn" aria-label="GitHub"><FaGithub /></a>
+                <a href="https://www.linkedin.com/in/kevinjerome-kj/" target="_blank" rel="noreferrer" className="mobile-social-btn" aria-label="LinkedIn"><FaLinkedin /></a>
+                <a href="mailto:kevinjerome.dev@gmail.com" className="mobile-social-btn" aria-label="Email"><MdEmail /></a>
               </div>
               <span className="mobile-menu-tag">kevinjerome.dev</span>
             </motion.div>
