@@ -18,9 +18,6 @@
   --radius-md: 22px;
   --radius-lg: 28px;
   --max-width: 1100px;
-  --accent: #8b1a2a;
-  --accent-dark: #6b1422;
-  --accent-glow: rgba(139, 26, 42, 0.22);
 }
 
 * {
@@ -50,9 +47,9 @@ body {
 
 body.dark-mode {
   background:
-    radial-gradient(circle at top left, rgba(139, 26, 42, 0.12), transparent 28%),
-    radial-gradient(circle at bottom right, rgba(107, 20, 34, 0.08), transparent 24%),
-    linear-gradient(180deg, #0d0a0b 0%, #110c0e 100%);
+    radial-gradient(circle at top left, rgba(143, 175, 192, 0.16), transparent 28%),
+    radial-gradient(circle at bottom right, rgba(192, 210, 224, 0.12), transparent 24%),
+    linear-gradient(180deg, #0f1118 0%, #131c24 100%);
   color: #f3f4f6;
 }
 
@@ -335,10 +332,7 @@ section h2 {
 
 .section-heading-block h2 {
   font-size: clamp(1.8rem, 3vw, 2.5rem);
-  background: linear-gradient(135deg, #ffffff 20%, #c8dce8 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #ffffff;
   margin: 0 0 0.45rem;
   letter-spacing: -0.03em;
 }
@@ -358,10 +352,7 @@ section h2 {
 .tech-group-card,
 .about-highlight-card,
 .core-value-card,
-.soft-skill-card,
-.preview-card,
-.info-card,
-.blog-card {
+.soft-skill-card {
   --mx: 50%;
   --my: 50%;
 }
@@ -372,17 +363,14 @@ section h2 {
 .tech-group-card::after,
 .about-highlight-card::after,
 .core-value-card::after,
-.soft-skill-card::after,
-.preview-card::after,
-.info-card::after,
-.blog-card::after {
+.soft-skill-card::after {
   content: "";
   position: absolute;
   inset: 0;
   border-radius: inherit;
   background: radial-gradient(
-    450px circle at var(--mx) var(--my),
-    rgba(143, 175, 192, 0.18),
+    280px circle at var(--mx) var(--my),
+    rgba(255, 255, 255, 0.055),
     transparent 70%
   );
   opacity: 0;
@@ -397,10 +385,7 @@ section h2 {
 .tech-group-card:hover::after,
 .about-highlight-card:hover::after,
 .core-value-card:hover::after,
-.soft-skill-card:hover::after,
-.preview-card:hover::after,
-.info-card:hover::after,
-.blog-card:hover::after {
+.soft-skill-card:hover::after {
   opacity: 1;
 }
 
@@ -417,31 +402,35 @@ section h2 {
   transition-duration: 0.08s !important;
 }
 
-/* ── Shimmer removed — preview/info cards now use the shared spotlight ::after ── */
-
-/* ── Enhanced card hover glow ── */
-.section-card:hover {
-  border-color: rgba(143, 175, 192, 0.28);
-  box-shadow:
-    0 28px 56px rgba(0, 0, 0, 0.32),
-    0 0 0 1px rgba(143, 175, 192, 0.12),
-    0 0 70px rgba(143, 175, 192, 0.12),
-    inset 0 1px 0 rgba(255, 255, 255, 0.12);
-  transition: border-color 0.35s ease, box-shadow 0.35s ease;
+/* ── Shimmer sweep on preview/info card hover ── */
+.info-card::after,
+.preview-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.05) 50%,
+    transparent 70%
+  );
+  background-size: 200% 100%;
+  background-position: 200% 0;
+  transition: background-position 0.55s ease;
+  pointer-events: none;
+  border-radius: inherit;
 }
 
+.info-card:hover::after,
+.preview-card:hover::after {
+  background-position: -50% 0;
+}
+
+/* ── Enhanced card hover glow ── */
 .about-highlight-card:hover,
 .core-value-card:hover,
 .soft-skill-card:hover {
-  box-shadow: var(--shadow-lg), 0 0 50px rgba(143, 175, 192, 0.22);
-  border-color: rgba(143, 175, 192, 0.25);
-}
-
-.preview-card:hover,
-.info-card:hover {
-  border-color: rgba(143, 175, 192, 0.22);
-  box-shadow: 0 20px 44px rgba(0, 0, 0, 0.28), 0 0 40px rgba(143, 175, 192, 0.14);
-  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg), 0 0 40px rgba(143, 175, 192, 0.18);
 }
 
 body.dark-mode .section-card,
@@ -509,19 +498,16 @@ body.dark-mode span {
   position: fixed;
   top: 0;
   left: 0;
-  width: 48px;
-  height: 48px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   background: radial-gradient(
     circle,
-    rgba(143, 175, 192, 0.9) 0%,
-    rgba(200, 220, 235, 0.5) 45%,
+    rgba(143, 175, 192, 0.75) 0%,
+    rgba(200, 220, 235, 0.35) 55%,
     transparent 70%
   );
-  box-shadow:
-    0 0 24px rgba(143, 175, 192, 0.75),
-    0 0 60px rgba(200, 220, 235, 0.35),
-    0 0 100px rgba(143, 175, 192, 0.15);
+  box-shadow: 0 0 18px rgba(143, 175, 192, 0.55), 0 0 48px rgba(200, 220, 235, 0.18);
   pointer-events: none;
   z-index: 99999;
   transform: translate(-50%, -50%);

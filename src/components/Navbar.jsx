@@ -1,27 +1,28 @@
 import { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "motion/react";
 import { BsSun, BsMoon } from "react-icons/bs";
-import { HiX, HiMenu } from "react-icons/hi";
-import { FaGithub } from "react-icons/fa";
+import { HiMenuAlt3, HiX } from "react-icons/hi";
+import { FaHome, FaUser, FaCode, FaFolder, FaGithub, FaLinkedin } from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
+import { FiBookOpen } from "react-icons/fi";
 
 const navLinks = [
-  { href: "#about",      label: "About",      num: "01", id: "about" },
-  { href: "#skills",     label: "Skills",     num: "02", id: "skills" },
-  { href: "#experience", label: "Experience", num: "03", id: "experience" },
-  { href: "#work",       label: "Projects",   num: "04", id: "work" },
-  { href: "#contact",    label: "Contact",    num: "05", id: "contact" },
+  { to: "/",         label: "Home",     icon: <FaHome /> },
+  { to: "/about",    label: "About",    icon: <FaUser /> },
+  { to: "/skills",   label: "Skills",   icon: <FaCode /> },
+  { to: "/projects", label: "Projects", icon: <FaFolder /> },
+  { to: "/blog",     label: "Blog",     icon: <FiBookOpen /> },
 ];
 
 export default function Navbar() {
-  const [menuOpen, setMenuOpen]  = useState(false);
-  const [activeSection, setActive] = useState("");
-  const [scrolled, setScrolled]  = useState(false);
-  const [darkMode, setDarkMode]  = useState(() => {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [darkMode, setDarkMode] = useState(() => {
     const saved = localStorage.getItem("dark-mode");
     if (saved !== null) return saved === "true";
     return window.matchMedia("(prefers-color-scheme: dark)").matches;
   });
+  const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -30,87 +31,89 @@ export default function Navbar() {
   }, [darkMode]);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 30);
+    const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  useEffect(() => { setMenuOpen(false); }, [location.pathname]);
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [location.pathname]);
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
   }, [menuOpen]);
 
-  /* track active section via IntersectionObserver */
-  useEffect(() => {
-    const obs = navLinks.map(({ id }) => {
-      const el = document.getElementById(id);
-      if (!el) return null;
-      const o = new IntersectionObserver(
-        ([entry]) => { if (entry.isIntersecting) setActive(id); },
-        { threshold: 0.25 }
-      );
-      o.observe(el);
-      return o;
-    });
-    return () => obs.forEach((o) => o?.disconnect());
-  }, [location.pathname]);
-
-  const close = () => setMenuOpen(false);
-  const toggleDark = () => setDarkMode((p) => !p);
+  const closeMenu = () => setMenuOpen(false);
+  const toggleDark = () => setDarkMode((prev) => !prev);
 
   return (
     <>
-      <header className={`site-header${scrolled ? " scrolled" : ""}`}>
-        <div className="nav-shell">
-
-          {/* Logo */}
-          <Link to="/" className="logo-holder" onClick={close}>
-            <img src="/Images/Logo.webp" alt="" className="logo-image" aria-hidden="true" />
+      <header className={`site-header ${scrolled ? "scrolled" : ""}`}>
+        <div className="container nav-shell">
+          <Link to="/" className="logo-holder" onClick={closeMenu}>
+            <img src="/Images/Logo.webp" alt="Kevin Jerome logo" className="logo-image" />
             <div className="logo-block">
-              <span className="logo-text">
-                <span className="logo-kj">KJ</span> · Kevin Jerome
-              </span>
+              <span className="logo-text">Kevin Jerome</span>
               <span className="logo-subtext">Full-Stack Developer</span>
             </div>
           </Link>
 
-          {/* Desktop nav */}
-          <nav className="desktop-nav" aria-label="Main navigation">
+          {/* ── Desktop nav ── */}
+          <nav className="desktop-nav" aria-label="Desktop Navigation">
             <div className="nav-links">
-              {navLinks.map(({ href, label, id }) => (
-                <a
-                  key={href}
-                  href={href}
-                  className={`nav-link-item${activeSection === id ? " is-active" : ""}`}
-                >
-                  {label}
-                </a>
-              ))}
+              {navLinks.map(({ to, label, icon }) => {
+                const isActive = to === "/" ? location.pathname === "/" : location.pathname.startsWith(to);
+                return (
+                  <NavLink key={to} to={to} className="nav-link-item">
+                    {isActive && (
+                      <motion.span
+                        layoutId="nav-active-pill"
+                        className="nav-active-pill"
+                        transition={{ type: "spring", stiffness: 380, damping: 32 }}
+                      />
+                    )}
+                    <span className="nav-link-icon" aria-hidden="true">{icon}</span>
+                    <span className="nav-link-label">{label}</span>
+                  </NavLink>
+                );
+              })}
+              <NavLink to="/contact" className="button-contact">Contact</NavLink>
             </div>
-            <div className="nav-actions">
+
+            <div className="nav-socials">
               <a
                 href="https://github.com/KevinJeromeTech"
                 target="_blank"
                 rel="noreferrer"
-                className="nav-gh-link"
+                className="nav-social-btn"
                 aria-label="GitHub"
               >
-                <FaGithub /> GitHub
+                <FaGithub />
               </a>
-              <button
-                className="dark-toggle"
-                type="button"
-                aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}
-                onClick={toggleDark}
+              <a
+                href="https://www.linkedin.com/in/kevinjerome-kj/"
+                target="_blank"
+                rel="noreferrer"
+                className="nav-social-btn"
+                aria-label="LinkedIn"
               >
-                {darkMode ? <BsSun /> : <BsMoon />}
-              </button>
+                <FaLinkedin />
+              </a>
             </div>
+
+            <button
+              className="dark-toggle"
+              type="button"
+              aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}
+              onClick={toggleDark}
+            >
+              {darkMode ? <BsSun /> : <BsMoon />}
+            </button>
           </nav>
 
-          {/* Mobile controls */}
+          {/* ── Mobile / tablet controls ── */}
           <div className="mobile-controls">
             <button
               className="dark-toggle"
@@ -120,21 +123,32 @@ export default function Navbar() {
             >
               {darkMode ? <BsSun /> : <BsMoon />}
             </button>
+
             <button
               className="mobile-toggle"
               type="button"
               aria-expanded={menuOpen}
               aria-label={menuOpen ? "Close menu" : "Open menu"}
-              onClick={() => setMenuOpen((p) => !p)}
+              onClick={() => setMenuOpen((prev) => !prev)}
             >
-              <HiMenu />
+              <AnimatePresence mode="wait" initial={false}>
+                <motion.span
+                  key={menuOpen ? "close" : "open"}
+                  initial={{ rotate: -90, opacity: 0 }}
+                  animate={{ rotate: 0,   opacity: 1 }}
+                  exit={{    rotate:  90, opacity: 0 }}
+                  transition={{ duration: 0.16 }}
+                  style={{ display: "inline-flex" }}
+                >
+                  {menuOpen ? <HiX /> : <HiMenuAlt3 />}
+                </motion.span>
+              </AnimatePresence>
             </button>
           </div>
-
         </div>
       </header>
 
-      {/* Backdrop */}
+      {/* ── Backdrop ── */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div
@@ -142,55 +156,83 @@ export default function Navbar() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.25 }}
-            onClick={close}
+            transition={{ duration: 0.22 }}
+            onClick={closeMenu}
             aria-hidden="true"
           />
         )}
       </AnimatePresence>
 
-      {/* Side drawer */}
+      {/* ── Mobile drawer ── */}
       <AnimatePresence>
         {menuOpen && (
           <motion.nav
             className="mobile-menu"
-            initial={{ x: "100%" }}
-            animate={{ x: 0 }}
-            exit={{ x: "100%" }}
-            transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
-            aria-label="Mobile navigation"
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
+            aria-label="Mobile Navigation"
           >
-            <div className="mobile-menu-top">
-              <button className="mobile-close" onClick={close} aria-label="Close menu">
-                <HiX />
-              </button>
-            </div>
-
             <div className="mobile-nav-links">
-              {navLinks.map(({ href, label, num, id }) => (
-                <a
-                  key={href}
-                  href={href}
-                  className={`mobile-nav-link${activeSection === id ? " is-active" : ""}`}
-                  onClick={close}
+              {navLinks.map(({ to, label, icon }, i) => (
+                <motion.div
+                  key={to}
+                  initial={{ opacity: 0, x: -14 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.2, delay: 0.05 + i * 0.05 }}
                 >
-                  <span className="mobile-link-num">{num}</span>
-                  <span className="mobile-link-label">{label}</span>
-                </a>
+                  <NavLink to={to} className="mobile-nav-link" onClick={closeMenu}>
+                    <span className="mobile-nav-icon" aria-hidden="true">{icon}</span>
+                    {label}
+                  </NavLink>
+                </motion.div>
               ))}
+
+              <motion.div
+                initial={{ opacity: 0, x: -14 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.2, delay: 0.05 + navLinks.length * 0.05 }}
+              >
+                <NavLink
+                  to="/contact"
+                  className="mobile-nav-link mobile-contact-link"
+                  onClick={closeMenu}
+                >
+                  <span className="mobile-nav-icon" aria-hidden="true"><MdEmail /></span>
+                  Contact
+                </NavLink>
+              </motion.div>
             </div>
 
-            <div className="mobile-menu-footer">
-              <a href="https://github.com/KevinJeromeTech" target="_blank" rel="noreferrer" className="mobile-footer-link">
-                GitHub ↗
-              </a>
-              <a href="https://www.linkedin.com/in/kevinjerome-kj/" target="_blank" rel="noreferrer" className="mobile-footer-link">
-                LinkedIn ↗
-              </a>
-              <a href="mailto:kevinjerome.dev@gmail.com" className="mobile-footer-link">
-                kevinjerome.dev@gmail.com
-              </a>
-            </div>
+            <motion.div
+              className="mobile-menu-footer"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.2, delay: 0.28 }}
+            >
+              <div className="mobile-socials">
+                <a
+                  href="https://github.com/KevinJeromeTech"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mobile-social-btn"
+                  aria-label="GitHub"
+                >
+                  <FaGithub />
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/kevinjerome-kj/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mobile-social-btn"
+                  aria-label="LinkedIn"
+                >
+                  <FaLinkedin />
+                </a>
+              </div>
+              <span className="mobile-menu-tag">kevinjerome.dev</span>
+            </motion.div>
           </motion.nav>
         )}
       </AnimatePresence>

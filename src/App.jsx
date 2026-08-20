@@ -8,6 +8,7 @@ import Footer from "./components/Footer.jsx";
 import CustomCursor from "./components/CustomCursor.jsx";
 import ErrorBoundary from "./components/ErrorBoundary.jsx";
 import ScrollToTop from "./components/ScrollToTop.jsx";
+import CodeRain from "./components/CodeRain.jsx";
 const ThreeBackground = lazy(() => import("./components/ThreeBackground.jsx"));
 
 const Home          = lazy(() => import("./pages/Home.jsx"));
@@ -49,7 +50,7 @@ function ScrollProgressBar() {
         left: 0,
         height: "3px",
         width: `${progress}%`,
-        background: "linear-gradient(90deg, #6b1422, #8b1a2a, #b03050)",
+        background: "linear-gradient(90deg, #5f8099, #8fafc0, #ffffff)",
         zIndex: 9999,
         transition: "width 0.08s linear",
         pointerEvents: "none",
@@ -64,7 +65,7 @@ function useSpotlight() {
     if (window.matchMedia("(pointer: coarse)").matches) return;
     const handle = (e) => {
       const card = e.target.closest(
-        ".section-card, .project-showcase-card, .skill-area-card, .tech-group-card, .about-highlight-card, .core-value-card, .soft-skill-card, .preview-card, .info-card, .blog-card"
+        ".section-card, .project-showcase-card, .skill-area-card, .tech-group-card, .about-highlight-card, .core-value-card, .soft-skill-card"
       );
       if (!card) return;
       const rect = card.getBoundingClientRect();
@@ -115,6 +116,7 @@ function App() {
       <Suspense fallback={null}>
         <ThreeBackground />
       </Suspense>
+      <CodeRain />
       <Toaster
         position="bottom-right"
         toastOptions={{
