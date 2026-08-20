@@ -18,6 +18,9 @@
   --radius-md: 22px;
   --radius-lg: 28px;
   --max-width: 1100px;
+  --accent: #4f8ef7;
+  --accent-dark: #3a7ae0;
+  --accent-glow: rgba(79, 142, 247, 0.22);
 }
 
 * {

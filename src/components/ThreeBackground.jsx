@@ -28,22 +28,22 @@ function CameraParallax() {
   return null;
 }
 
-function Particles({ count = 200 }) {
+function Particles({ count = 280 }) {
   const mesh = useRef();
 
   const positions = useMemo(() => {
     const arr = new Float32Array(count * 3);
     for (let i = 0; i < count; i++) {
-      arr[i * 3]     = (Math.random() - 0.5) * 90;
-      arr[i * 3 + 1] = (Math.random() - 0.5) * 90;
-      arr[i * 3 + 2] = (Math.random() - 0.5) * 50;
+      arr[i * 3]     = (Math.random() - 0.5) * 120;
+      arr[i * 3 + 1] = (Math.random() - 0.5) * 120;
+      arr[i * 3 + 2] = (Math.random() - 0.5) * 60;
     }
     return arr;
   }, [count]);
 
   const sizes = useMemo(() => {
     const arr = new Float32Array(count);
-    for (let i = 0; i < count; i++) arr[i] = Math.random() * 0.8 + 0.2;
+    for (let i = 0; i < count; i++) arr[i] = Math.random() * 0.6 + 0.15;
     return arr;
   }, [count]);
 
@@ -59,66 +59,14 @@ function Particles({ count = 200 }) {
         <bufferAttribute attach="attributes-size" args={[sizes, 1]} />
       </bufferGeometry>
       <pointsMaterial
-        size={0.18}
-        color="#8fafc0"
+        size={0.12}
+        color="#4f8ef7"
         transparent
-        opacity={0.45}
+        opacity={0.25}
         sizeAttenuation
         depthWrite={false}
       />
     </points>
-  );
-}
-
-const SHAPES_CONFIG = [
-  { pos: [-16,  6, -12], scale: 3.2,  speed: 0.35, offset: 0.0  },
-  { pos: [ 18, -9, -18], scale: 2.4,  speed: 0.28, offset: 1.2  },
-  { pos: [  6, 13, -22], scale: 4.0,  speed: 0.18, offset: 2.4  },
-  { pos: [-22,-13,  -6], scale: 1.8,  speed: 0.50, offset: 0.8  },
-  { pos: [ 14,  7, -10], scale: 1.4,  speed: 0.60, offset: 3.1  },
-  { pos: [ -4,-16, -14], scale: 2.0,  speed: 0.22, offset: 1.8  },
-];
-
-function FloatingShape({ pos, scale, speed, offset }) {
-  const mesh = useRef();
-
-  useFrame((state) => {
-    const t = state.clock.elapsedTime;
-    mesh.current.rotation.x = t * speed * 0.38 + offset;
-    mesh.current.rotation.y = t * speed * 0.62 + offset;
-    mesh.current.position.y = pos[1] + Math.sin(t * speed * 0.28 + offset) * 1.8;
-  });
-
-  return (
-    <mesh ref={mesh} position={pos} scale={scale}>
-      <icosahedronGeometry args={[1, 1]} />
-      <meshBasicMaterial
-        color="#8fafc0"
-        wireframe
-        transparent
-        opacity={0.1}
-      />
-    </mesh>
-  );
-}
-
-// Slowly drifting ring
-function FloatingRing() {
-  const mesh = useRef();
-
-  useFrame((state) => {
-    const t = state.clock.elapsedTime;
-    mesh.current.rotation.x = t * 0.12;
-    mesh.current.rotation.z = t * 0.07;
-    mesh.current.position.y = Math.sin(t * 0.2) * 3;
-    mesh.current.position.x = Math.cos(t * 0.15) * 2;
-  });
-
-  return (
-    <mesh ref={mesh} position={[8, 0, -8]}>
-      <torusGeometry args={[4, 0.05, 8, 60]} />
-      <meshBasicMaterial color="#ffffff" transparent opacity={0.06} />
-    </mesh>
   );
 }
 
@@ -145,11 +93,7 @@ export default function ThreeBackground() {
       dpr={[1, 1.5]}
     >
       <CameraParallax />
-      <Particles count={180} />
-      <FloatingRing />
-      {SHAPES_CONFIG.map((cfg, i) => (
-        <FloatingShape key={i} {...cfg} />
-      ))}
+      <Particles count={280} />
     </Canvas>
   );
 }
