@@ -333,7 +333,7 @@
   height: 120px;
   border-radius: 50%;
   background: radial-gradient(circle at 35% 35%, rgba(139, 26, 42, 0.18) 0%, rgba(15, 18, 28, 0.85) 70%);
-  border: 1px solid rgba(192, 57, 43, 0.3);
+  border: 1px solid rgba(139, 26, 42, 0.3);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -513,9 +513,9 @@
 }
 
 .hp-specialty-card:hover {
-  border-color: rgba(192, 57, 43, 0.3);
+  border-color: rgba(139, 26, 42, 0.3);
   transform: translateY(-3px);
-  box-shadow: 0 8px 24px rgba(192, 57, 43, 0.1);
+  box-shadow: 0 8px 24px rgba(139, 26, 42, 0.1);
 }
 
 .hp-specialty-icon {
@@ -613,7 +613,7 @@
   font-size: 0.75rem;
   padding: 0.25rem 0.65rem;
   border-radius: 6px;
-  background: rgba(192, 57, 43, 0.1);
+  background: rgba(139, 26, 42, 0.1);
   border: 1px solid rgba(139, 26, 42, 0.18);
   color: rgba(79, 142, 247, 0.85);
   font-weight: 500;
