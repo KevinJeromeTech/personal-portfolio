@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 export default function ContactCTA() {
   return (
     <section className="contact-cta section-card">
-      <h2>Let&apos;s Build Something Great</h2>
+      <h2>Have something worth building?</h2>
       <p>
-        Open to freelance work, full-time roles, and interesting collaborations.
-        If you have a project or opportunity in mind, reach out.
+        I&apos;m open to full-time roles and consulting work through Auralith Systems.
+        If you have a real problem that needs a real engineer — not a template — let&apos;s talk.
       </p>
       <Link to="/contact" className="hero-button">
         Get In Touch

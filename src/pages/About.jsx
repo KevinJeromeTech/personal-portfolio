@@ -60,40 +60,40 @@ function StatCounter({ value, label, suffix = "+" }) {
 
 const highlights = [
   {
-    icon: <FaCode />,
-    title: "Web Development",
-    desc: "Building responsive, production-ready web apps with React, Next.js, TypeScript, and Node.js from concept to deployment.",
-  },
-  {
     icon: <FaFolder />,
-    title: "Project Management",
-    desc: "Taking projects from idea to shipped product with clear execution, attention to detail, and consistent delivery.",
+    title: "Client Delivery",
+    desc: "I've taken a real client from contract to launched product through Auralith Systems — scoped, built, and shipped. I know what it takes to own a project end to end, not just contribute to one.",
   },
   {
-    icon: <FaBookOpen />,
-    title: "Continuous Learning",
-    desc: "Currently deepening expertise in AI and machine learning through CodePath while staying sharp across the full stack.",
+    icon: <FaCode />,
+    title: "AI-Native Development",
+    desc: "I integrate LLM APIs as a core part of the stack, not an afterthought. ExpenseIQ uses Claude to auto-categorize transactions and generate plain-English spending insights in real time.",
+  },
+  {
+    icon: <FaRocket />,
+    title: "Full-Stack Ownership",
+    desc: "From database schema to deployed UI, I own the whole thing. No handoffs, no gaps — just a working product in production with real users.",
   },
 ];
 
 const coreValues = [
   {
-    icon: <FaLightbulb />,
+    icon: <FaRocket />,
     color: "#f59e0b",
-    title: "Passion",
-    desc: "Genuinely excited about building things that work well and look great. That enthusiasm shows up in every line of code.",
+    title: "Ship first",
+    desc: "I'd rather put something real in front of users and iterate than spend weeks perfecting something no one has seen. Done beats perfect — then you improve from there.",
+  },
+  {
+    icon: <FaLightbulb />,
+    color: "#3b82f6",
+    title: "Own the outcome",
+    desc: "When I take on a project, I care whether it actually works — not just whether my code compiles. I stay involved from the first commit to the last deployment.",
   },
   {
     icon: <FaUsers />,
-    color: "#3b82f6",
-    title: "Collaboration",
-    desc: "Strong communicator who thrives in team environments, keeping everyone aligned and moving toward the same goal.",
-  },
-  {
-    icon: <FaRocket />,
     color: "#ec4899",
-    title: "Innovation",
-    desc: "Always exploring new tools and approaches, from AI integrations to modern frameworks, to deliver smarter solutions.",
+    title: "Build for people",
+    desc: "The best technical decisions come from understanding the problem, not just the spec. I read user feedback, think about who's clicking the button, and build accordingly.",
   },
 ];
 
@@ -172,18 +172,18 @@ export default function About() {
           <div className="about-text-col">
             <span className="page-eyebrow">About Me</span>
             <h1 className="page-hero-title">
-              Turning ideas into<br />digital reality
+              Engineer by degree.<br />Founder by choice.
             </h1>
             <p className="about-bio-text">
-              Hi, I&apos;m Kevin Jerome, a Full-Stack Developer and CS graduate from
-              Florida International University. I build modern web applications using
-              React, Next.js, TypeScript, and Node.js, with a focus on clean design and
-              real-world performance.
+              I&apos;m Kevin Jerome — I graduated from FIU in August 2026 with a CS degree
+              and a company already running. Auralith Systems, the consultancy I founded in
+              December 2025, had its first client delivery before I walked across the stage.
             </p>
             <p className="about-bio-text">
-              I founded Auralith Systems, a software consultancy where I deliver full-stack
-              engineering solutions for small businesses end to end. I&apos;m always looking
-              for the next challenge worth solving.
+              I build full-stack applications with React, Next.js, TypeScript, and Node.js,
+              and I&apos;ve been integrating LLM APIs into production software since before
+              it was a resume buzzword. Based in Miami — open to full-time roles, contract
+              work, and problems that don&apos;t have a clean answer yet.
             </p>
             <div className="about-intro-actions">
               <Link to="/projects" className="hero-button hero-btn-primary">
@@ -205,9 +205,9 @@ export default function About() {
       {/* ── Stats ── */}
       <motion.section className="section-card about-stats-section" {...fadeUp(0)}>
         <div className="about-stats">
-          <StatCounter value={5} label="Projects Built" />
+          <StatCounter value={5} label="Projects Shipped" />
           <StatCounter value={15} label="Technologies" />
-          <StatCounter value={4} label="Years Learning" />
+          <StatCounter value={1} label="Live Client" suffix="" />
           <StatCounter value={200} label="Commits Pushed" />
         </div>
       </motion.section>
@@ -264,7 +264,7 @@ export default function About() {
       {/* ── Core Values ── */}
       <motion.section className="section-card" {...fadeUp(0)}>
         <div className="section-heading-block">
-          <ScrambleText text="Core Values" as="h2" />
+          <ScrambleText text="How I Work" as="h2" />
           <div className="heading-accent" />
         </div>
         <div className="three-column-grid">

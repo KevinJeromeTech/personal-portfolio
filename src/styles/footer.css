@@ -13,6 +13,13 @@
   text-align: center;
 }
 
+.footer-identity {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+}
+
 .footer-logo {
   display: flex;
   align-items: center;
@@ -27,11 +34,36 @@
   opacity: 0.85;
 }
 
+.footer-name-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  text-align: left;
+}
+
 .footer-name {
   color: rgba(255, 255, 255, 0.9);
   font-weight: 800;
   font-size: 1rem;
   letter-spacing: -0.02em;
+}
+
+.footer-tagline {
+  color: rgba(255, 255, 255, 0.38);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+.footer-availability {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: rgba(255, 255, 255, 0.42);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
 .social-links {

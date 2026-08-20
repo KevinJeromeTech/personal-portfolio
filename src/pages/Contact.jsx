@@ -130,10 +130,11 @@ export default function Contact() {
 
           <div className="contact-page-header">
             <span className="page-eyebrow">Get In Touch</span>
-            <h1 className="page-hero-title">Let&apos;s Connect</h1>
+            <h1 className="page-hero-title">Let&apos;s work together</h1>
             <p className="contact-lead">
-              I&apos;d love to hear from you. Reach out through the form or any of the
-              channels below.
+              Open to full-time roles in Miami or remote. Also taking on consulting
+              engagements through Auralith Systems for small businesses that need a
+              real engineer, not a template. If you have something worth building, reach out.
             </p>
           </div>
 
