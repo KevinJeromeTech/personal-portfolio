@@ -7,8 +7,8 @@ import MagneticButton from "./MagneticButton.jsx";
 
 const roles = [
   "Full-Stack Developer",
-  "React Engineer",
-  "UI/UX Enthusiast",
+  "Founder, Auralith Systems",
+  "React & Next.js Engineer",
   "Problem Solver",
 ];
 
@@ -142,14 +142,15 @@ export default function Hero() {
         </motion.div>
 
         <motion.p className="hero-bio" variants={item}>
-          Full-Stack Developer and CS graduate from FIU. I build fast, polished web
-          applications with React, Next.js, TypeScript, and Node.js, and ship them.
+          CS graduate from FIU and founder of Auralith Systems. I build and ship
+          full-stack applications with React, Next.js, TypeScript, and Node.js —
+          for real clients and real users.
         </motion.p>
 
         <motion.div className="hero-actions" variants={item}>
           <MagneticButton>
-            <Link to="/skills" className="hero-button hero-btn-primary">
-              Explore Skills
+            <Link to="/projects" className="hero-button hero-btn-primary">
+              View Projects
             </Link>
           </MagneticButton>
           <MagneticButton>

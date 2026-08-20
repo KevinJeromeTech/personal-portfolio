@@ -3,27 +3,27 @@ const projects = [
     id: 6,
     title: "Auralith Systems",
     description:
-      "My software consultancy — founded to deliver full-stack engineering solutions for small businesses, owning the full lifecycle from architecture to deployment.",
+      "Software consultancy I founded in Dec 2025 — delivered a full storefront redesign and custom admin dashboard for a live client (Classic Menswear) as sole engineer.",
     longDescription:
-      "Auralith Systems is the software consultancy I founded in December 2025. I own the full engineering lifecycle for every engagement — architecture, frontend, backend, admin tooling, and deployment — as a sole engineer. The company site is live at auralith-systems.vercel.app. The first client delivery under Auralith is the Classic Menswear storefront redesign and StoreLens admin dashboard.",
-    image: "/Images/Auralith.webp",
-    imageFallback: "/Images/Auralith.png",
+      "Auralith Systems is the software consultancy I founded in December 2025. I own the full engineering lifecycle for every engagement — architecture, frontend, backend, admin tooling, and deployment — as a sole engineer. First client delivery: a complete storefront redesign and StoreLens admin dashboard for Classic Menswear, replacing a manual spreadsheet-based operation with a live site and centralized content management. Site is live at classicmenswear.org.",
+    image: "/Images/StoreLens.webp",
+    imageFallback: "/Images/StoreLens.png",
     github: "#",
-    demo: "https://auralith-systems.vercel.app",
+    demo: "https://classicmenswear.org",
     featured: true,
     stack: ["Next.js", "TypeScript", "Tailwind CSS", "React", "Vercel"],
     highlights: [
-      "Founded Dec 2025 — delivering full-stack engineering solutions for small business clients as a solo engineer.",
-      "First client engagement: Classic Menswear storefront redesign and StoreLens custom admin dashboard.",
-      "Owns the complete engineering lifecycle: architecture decisions, frontend, admin tooling, and production deployment.",
-      "Company site live at auralith-systems.vercel.app, built with Next.js, TypeScript, and Tailwind CSS.",
+      "Founded Dec 2025 — sole engineer delivering full-stack solutions for real clients.",
+      "First client: Classic Menswear — storefront redesign + StoreLens admin dashboard shipped to production.",
+      "Replaced manual spreadsheet management with a centralized, live content system.",
+      "Owns the complete engineering lifecycle: architecture, frontend, admin tooling, and Vercel deployment.",
     ],
   },
   {
     id: 1,
     title: "ExpenseIQ",
     description:
-      "Full-stack expense intelligence dashboard with React 19, TypeScript, JWT auth, AI-powered spending insights via Claude, and real-time data visualization.",
+      "Full-stack expense tracker with JWT auth, AI-powered spending insights via Claude, and real-time charts — deployed to production with a full CI/CD pipeline.",
     longDescription:
       "ExpenseIQ is a production-grade full-stack expense tracker that goes beyond logging — it actively helps you understand your spending. Built with React 19, TypeScript, and Node.js/Express, it features a complete JWT authentication system, AI-powered insights and transaction auto-categorization via the Anthropic Claude API, optimistic UI updates with TanStack Query v5, and real-time charts with Recharts. Deployed on Vercel and Render with a full CI/CD pipeline.",
     image: "/Images/ExpenseIQ.webp",
@@ -51,7 +51,7 @@ const projects = [
     imageFallback: "/Images/UEE.png",
     github: "https://github.com/KevinJeromeTech/UEE",
     demo: "https://spiketek241.github.io/Universal-Educational-Empowerment/",
-    featured: true,
+    featured: false,
     stack: ["HTML", "CSS", "JavaScript"],
     highlights: [
       "Designed a visually engaging layout around a strong educational mission.",
@@ -92,7 +92,6 @@ const projects = [
     github: "#",
     demo: "https://classicmenswear.org",
     featured: false,
-    status: "In Progress",
     stack: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
     highlights: [
       "Designed and deployed a mobile-first storefront with inquiry and reservation functionality, replacing an outdated web presence.",
@@ -112,7 +111,7 @@ const projects = [
     imageFallback: "/Images/nportfolio.png",
     github: "https://github.com/KevinJeromeTech/personal-portfolio",
     demo: "https://kevinjerome.dev/",
-    featured: true,
+    featured: false,
     stack: ["React", "Vite", "PWA", "CSS"],
     highlights: [
       "Built with React, Vite, PWA support, and a full CI/CD pipeline via GitHub Actions.",

@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import {} from "react";
 import { motion } from "motion/react";
 import { Helmet } from "react-helmet-async";
 import {
@@ -157,50 +157,6 @@ const softSkills = [
   },
 ];
 
-const progressSkills = [
-  { name: "HTML / CSS",            percent: 92, color: "#ff4d7b" },
-  { name: "JavaScript",            percent: 85, color: "#facc15" },
-  { name: "TypeScript",            percent: 90, color: "#38bdf8" },
-  { name: "React.js",              percent: 82, color: "#60a5fa" },
-  { name: "Next.js",               percent: 90, color: "#e2e8f0" },
-  { name: "Node.js / Express",     percent: 82, color: "#4ade80" },
-  { name: "Python",                percent: 65, color: "#a78bfa" },
-  { name: "C Programming",         percent: 60, color: "#8fafc0" },
-  { name: "LLM API Integration",   percent: 70, color: "#f97316" },
-];
-
-function ProgressBar({ name, percent, color, delay }) {
-  const ref = useRef(null);
-
-  useEffect(() => {
-    const node = ref.current;
-    if (!node) return;
-    const fill = node.querySelector(".progress-fill");
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry.isIntersecting) return;
-        observer.unobserve(node);
-        fill.style.transition = `width 1.2s cubic-bezier(0.22, 1, 0.36, 1) ${delay}s`;
-        fill.style.width = `${percent}%`;
-      },
-      { threshold: 0.4 }
-    );
-    observer.observe(node);
-    return () => observer.disconnect();
-  }, [percent, delay]);
-
-  return (
-    <div className="progress-item" ref={ref}>
-      <div className="progress-label">
-        <span>{name}</span>
-        <span className="progress-percent">{percent}%</span>
-      </div>
-      <div className="progress-track">
-        <div className="progress-fill" style={{ background: color, width: 0 }} />
-      </div>
-    </div>
-  );
-}
 
 export default function Skills() {
   return (
@@ -231,19 +187,6 @@ export default function Skills() {
             A detailed look at my core skills and areas of expertise spanning
             web development, design, digital strategy, and backend thinking.
           </p>
-        </div>
-      </motion.section>
-
-      {/* ── Proficiency bars ── */}
-      <motion.section className="section-card" {...fadeUp(0)}>
-        <div className="section-heading-block">
-          <ScrambleText text="Proficiency" as="h2" />
-          <div className="heading-accent" />
-        </div>
-        <div className="progress-list">
-          {progressSkills.map((skill, i) => (
-            <ProgressBar key={skill.name} {...skill} delay={i * 0.1} />
-          ))}
         </div>
       </motion.section>
 

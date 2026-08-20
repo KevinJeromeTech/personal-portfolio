@@ -1,6 +1,27 @@
-import { useEffect, useRef, useMemo } from "react";
+import { useEffect, useRef } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import * as THREE from "three";
+
+const PARTICLE_COUNT = 200;
+
+function buildPositions() {
+  const arr = new Float32Array(PARTICLE_COUNT * 3);
+  for (let i = 0; i < PARTICLE_COUNT; i++) {
+    arr[i * 3]     = (Math.random() - 0.5) * 90;
+    arr[i * 3 + 1] = (Math.random() - 0.5) * 90;
+    arr[i * 3 + 2] = (Math.random() - 0.5) * 50;
+  }
+  return arr;
+}
+
+function buildSizes() {
+  const arr = new Float32Array(PARTICLE_COUNT);
+  for (let i = 0; i < PARTICLE_COUNT; i++) arr[i] = Math.random() * 0.8 + 0.2;
+  return arr;
+}
+
+const POSITIONS = buildPositions();
+const SIZES = buildSizes();
 
 function CameraParallax() {
   const { camera } = useThree();
@@ -28,24 +49,10 @@ function CameraParallax() {
   return null;
 }
 
-function Particles({ count = 200 }) {
+function Particles() {
   const mesh = useRef();
-
-  const positions = useMemo(() => {
-    const arr = new Float32Array(count * 3);
-    for (let i = 0; i < count; i++) {
-      arr[i * 3]     = (Math.random() - 0.5) * 90;
-      arr[i * 3 + 1] = (Math.random() - 0.5) * 90;
-      arr[i * 3 + 2] = (Math.random() - 0.5) * 50;
-    }
-    return arr;
-  }, [count]);
-
-  const sizes = useMemo(() => {
-    const arr = new Float32Array(count);
-    for (let i = 0; i < count; i++) arr[i] = Math.random() * 0.8 + 0.2;
-    return arr;
-  }, [count]);
+  const positions = POSITIONS;
+  const sizes = SIZES;
 
   useFrame((state) => {
     mesh.current.rotation.y = state.clock.elapsedTime * 0.018;
@@ -145,7 +152,7 @@ export default function ThreeBackground() {
       dpr={[1, 1.5]}
     >
       <CameraParallax />
-      <Particles count={180} />
+      <Particles />
       <FloatingRing />
       {SHAPES_CONFIG.map((cfg, i) => (
         <FloatingShape key={i} {...cfg} />

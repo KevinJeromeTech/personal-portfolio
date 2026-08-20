@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 
 const stats = [
-  { value: 5,  label: "Projects Built", suffix: "+" },
-  { value: 15, label: "Technologies",   suffix: "+" },
-  { value: 4,  label: "Years Learning", suffix: "+" },
+  { value: 5,  label: "Projects Shipped", suffix: "+" },
+  { value: 15, label: "Technologies",     suffix: "+" },
+  { value: 1,  label: "Live Client",      suffix: "" },
 ];
 
 function StatCounter({ value, label, suffix }) {
