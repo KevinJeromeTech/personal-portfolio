@@ -166,7 +166,7 @@ const progressSkills = [
   { name: "Node.js / Express",     percent: 82, color: "#4ade80" },
   { name: "Python",                percent: 65, color: "#a78bfa" },
   { name: "C Programming",         percent: 60, color: "#8fafc0" },
-  { name: "AI / Machine Learning", percent: 70, color: "#f97316" },
+  { name: "LLM API Integration",   percent: 70, color: "#f97316" },
 ];
 
 function ProgressBar({ name, percent, color, delay }) {

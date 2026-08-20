@@ -75,7 +75,7 @@ const contentItem = {
 };
 
 export default function ProjectCarousel() {
-  const featuredProjects = projects;
+  const featuredProjects = projects.filter((p) => p.featured);
   const [index, setIndex] = useState(0);
   const [dir, setDir] = useState(1);
   const [isPaused, setIsPaused] = useState(false);

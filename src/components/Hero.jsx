@@ -142,7 +142,7 @@ export default function Hero() {
         </motion.div>
 
         <motion.p className="hero-bio" variants={item}>
-          Full-Stack Developer and CS student at FIU. I build fast, polished web
+          Full-Stack Developer and CS graduate from FIU. I build fast, polished web
           applications with React, Next.js, TypeScript, and Node.js, and ship them.
         </motion.p>
 

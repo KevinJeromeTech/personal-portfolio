@@ -99,12 +99,12 @@ const coreValues = [
 
 const timeline = [
   {
-    year: "2024 – Present",
+    year: "Dec 2025 – Present",
     type: "work",
     icon: <FaBriefcase />,
-    title: "Freelance Full-Stack Developer",
-    org: "Self-employed",
-    desc: "Designing and building client websites and web applications using React, Next.js, Node.js, and TypeScript. Handling everything from UI design to deployment.",
+    title: "Founder & Software Engineer",
+    org: "Auralith Systems",
+    desc: "Founded a software consultancy delivering full-stack engineering solutions for small businesses. First engagement: Classic Menswear storefront redesign and StoreLens admin dashboard. Solo engineer across architecture, frontend, admin tooling, and deployment.",
   },
   {
     year: "2023 – Present",
@@ -112,15 +112,15 @@ const timeline = [
     icon: <FaGraduationCap />,
     title: "Web Development, iOS, Technical Interview Prep & Foundations to AI",
     org: "CodePath",
-    desc: "Completed courses in Web Development, iOS Development, and Technical Interview Preparation. Currently enrolled in Foundations to AI, building hands-on skills alongside university coursework.",
+    desc: "Completed intensive training in Web Development, iOS Development (SwiftUI), Technical Interview Preparation, and Foundations to AI. Capstone: Kairos, a collaborative task management app built with a 3-person team.",
   },
   {
-    year: "2022 – Present",
+    year: "Jan 2022 – Aug 2026",
     type: "edu",
     icon: <FaGraduationCap />,
-    title: "B.A. Computer Science",
+    title: "B.A. Computer Science | Minor: Entrepreneurship",
     org: "Florida International University",
-    desc: "Studying data structures, algorithms, software engineering, systems programming, and full-stack web development at FIU.",
+    desc: "Studied data structures, algorithms, software engineering, operating systems, and database systems. Graduated August 2026.",
   },
   {
     year: "2022",
@@ -175,15 +175,15 @@ export default function About() {
               Turning ideas into<br />digital reality
             </h1>
             <p className="about-bio-text">
-              Hi, I&apos;m Kevin Jerome, a Full-Stack Developer and Computer Science student
-              at Florida International University. I build modern web applications using
+              Hi, I&apos;m Kevin Jerome, a Full-Stack Developer and CS graduate from
+              Florida International University. I build modern web applications using
               React, Next.js, TypeScript, and Node.js, with a focus on clean design and
               real-world performance.
             </p>
             <p className="about-bio-text">
-              From freelance client work to personal projects, I bring ideas to life end
-              to end. Currently expanding into AI and machine learning through CodePath,
-              always looking for the next challenge worth solving.
+              I founded Auralith Systems, a software consultancy where I deliver full-stack
+              engineering solutions for small businesses end to end. I&apos;m always looking
+              for the next challenge worth solving.
             </p>
             <div className="about-intro-actions">
               <Link to="/projects" className="hero-button hero-btn-primary">

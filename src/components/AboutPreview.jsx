@@ -46,13 +46,12 @@ export default function AboutPreview() {
     <section className="about-preview section-card">
       <h2>About Me</h2>
       <p>
-        Full-Stack Developer and Computer Science student at Florida International
-        University. I design and build modern web applications end to end with
-        React, Next.js, TypeScript, Node.js, and PostgreSQL, integrating AI
-        through the Anthropic Claude API and shipping everything through real
-        CI/CD pipelines on Vercel and Render. My focus is clean architecture,
-        accessible interfaces, and performance that holds up in production, not
-        just in a demo.
+        Full-Stack Developer and CS graduate from Florida International University.
+        I design and build modern web applications end to end with React, Next.js,
+        TypeScript, Node.js, and PostgreSQL, integrating LLM APIs through Anthropic
+        Claude and shipping everything through real CI/CD pipelines on Vercel and
+        Render. My focus is clean architecture, accessible interfaces, and performance
+        that holds up in production, not just in a demo.
       </p>
 
       <div className="about-stats">
@@ -76,11 +75,11 @@ export default function AboutPreview() {
         <div className="preview-card">
           <h3>Real Experience</h3>
           <p>
-            My experience spans freelance client work like the StoreLens retail
-            dashboard for Classic Menswear, university coursework at FIU, and
+            My experience spans client work through Auralith Systems — including
+            the StoreLens admin dashboard for Classic Menswear — alongside
             self-directed builds like ExpenseIQ and this portfolio. Each project
-            pushed me to learn a new layer of the stack, from JWT auth and rate
-            limiting to AI integration and automated testing.
+            pushed me to learn a new layer of the stack, from LLM API integration
+            to automated testing and production deployment.
           </p>
         </div>
 
