@@ -1,373 +1,431 @@
 import { useRef } from "react";
+import { Link } from "react-router-dom";
 import { motion, useInView } from "motion/react";
 import { Helmet } from "react-helmet-async";
-import { Link } from "react-router-dom";
-import {
-  FiDownload,
-  FiArrowRight,
-  FiExternalLink,
-  FiGithub,
-  FiMail,
-  FiArrowDown,
-} from "react-icons/fi";
+import { FiDownload, FiArrowRight, FiExternalLink, FiGithub, FiMapPin } from "react-icons/fi";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
 import projects from "../data/projects.js";
-import MagneticButton from "../components/MagneticButton.jsx";
 import "../styles/home.css";
 
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Person",
-  name: "Kevin Jerome",
-  url: "https://kevinjerome.dev",
-  jobTitle: "Full-Stack Developer",
-  sameAs: [
-    "https://github.com/KevinJeromeTech",
-    "https://www.linkedin.com/in/kevinjerome-kj/",
-  ],
-  email: "kevinjerome.dev@gmail.com",
-};
+const featuredProjects = projects.filter((p) => p.featured).slice(0, 3);
 
-const fadeUp = (delay = 0) => ({
-  initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] },
-});
+const skillGroups = [
+  {
+    dot: "#4f8ef7",
+    title: "Languages & Frameworks",
+    items: ["JavaScript", "TypeScript", "Python", "Java", "SQL", "C", "HTML/CSS"],
+  },
+  {
+    dot: "#22c55e",
+    title: "Frontend & UI",
+    items: ["React", "Next.js", "Tailwind CSS", "Vite", "Framer Motion"],
+  },
+  {
+    dot: "#a78bfa",
+    title: "Backend & Databases",
+    items: ["Node.js", "Express", "Spring Boot", "Prisma ORM", "PostgreSQL", "Supabase"],
+  },
+];
 
-function SectionReveal({ children, className }) {
+const specialtyCards = [
+  { icon: "⚡", title: "Full-Stack Dev",    sub: "React, Node.js, APIs" },
+  { icon: "🤖", title: "LLM Integration",  sub: "Claude API, Prompt Engineering" },
+  { icon: "☁️", title: "Cloud & DevOps",   sub: "Vercel, Render, GitHub Actions" },
+  { icon: "🏢", title: "Consulting",        sub: "Auralith Systems" },
+];
+
+function OrbitalRing() {
+  return (
+    <div className="orbital-wrap">
+      <div className="orbital-ring orbital-ring-lg">
+        <span className="orbital-dot od-1" />
+        <span className="orbital-dot od-2" />
+        <span className="orbital-dot od-3" />
+      </div>
+      <div className="orbital-ring orbital-ring-sm" />
+      <div className="orbital-center">
+        <span className="orbital-monogram">KJ</span>
+      </div>
+    </div>
+  );
+}
+
+function SectionHeader({ num, title }) {
+  return (
+    <div className="hp-section-header">
+      <span className="hp-section-num">{num}</span>
+      <h2 className="hp-section-title">{title}</h2>
+      <div className="hp-title-accent" />
+    </div>
+  );
+}
+
+function FadeUp({ children, delay = 0 }) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
-
   return (
     <motion.div
       ref={ref}
       initial={{ opacity: 0, y: 28 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-      className={className}
+      transition={{ duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] }}
     >
       {children}
     </motion.div>
   );
 }
 
-const featuredProjects = projects.filter((p) => p.featured).slice(0, 3);
-
-const techGroups = [
-  {
-    label: "Languages",
-    items: ["JavaScript", "TypeScript", "Python", "Java", "SQL", "C"],
-  },
-  {
-    label: "Frontend",
-    items: ["React", "Next.js", "Tailwind CSS", "Vite", "HTML/CSS"],
-  },
-  {
-    label: "Backend",
-    items: ["Node.js", "Express", "Spring Boot", "Prisma ORM"],
-  },
-  {
-    label: "Tools",
-    items: ["PostgreSQL", "Supabase", "Docker", "GitHub Actions", "Vercel"],
-  },
-];
-
-const stats = [
-  { num: "6–10", label: "Active Users" },
-  { num: "4", label: "Deployed Projects" },
-  { num: "CS Graduate", label: "FIU" },
-];
-
 export default function Home() {
   return (
     <>
       <Helmet>
-        <title>Kevin Jerome | Full-Stack Developer</title>
-        <meta
-          name="description"
-          content="Kevin Jerome — Full-Stack Developer specialising in React, Node.js, and modern web experiences. View projects, skills, and get in touch."
-        />
+        <title>Kevin Jerome — Full-Stack Developer</title>
+        <meta name="description" content="Full-Stack Developer and CS graduate from FIU. Founder of Auralith Systems. Building production software with React, TypeScript, Node.js, and AI." />
         <link rel="canonical" href="https://kevinjerome.dev/" />
-        <meta property="og:title" content="Kevin Jerome | Full-Stack Developer" />
+        <meta property="og:title" content="Kevin Jerome — Full-Stack Developer" />
+        <meta property="og:description" content="Full-Stack Developer and CS graduate from FIU. Founder of Auralith Systems." />
         <meta property="og:url" content="https://kevinjerome.dev/" />
-        <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
       </Helmet>
 
-      <motion.main
-        id="main-content"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 0.35 }}
-      >
-        {/* ══════════════════════════════════
-            HERO
-        ══════════════════════════════════ */}
-        <section className="hp-hero" aria-label="Introduction">
-          <motion.span className="hp-hero-badge" {...fadeUp(0.1)}>
-            <span className="hp-badge-dot" aria-hidden="true" />
-            Open to opportunities
-          </motion.span>
+      <main id="main-content" className="hp-main">
 
-          <motion.h1 className="hp-hero-name" {...fadeUp(0.22)}>
-            <span className="hp-name-first">Kevin</span>
-            <span className="hp-name-last">Jerome</span>
-          </motion.h1>
+        {/* ── Hero ── */}
+        <section className="hp-hero">
+          <div className="hp-hero-content">
+            <motion.div
+              className="hp-badge"
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+            >
+              <span className="hp-badge-dot" />
+              Open to opportunities
+              <span className="hp-badge-sep" />
+              <FiMapPin size={11} />
+              Miami, FL
+            </motion.div>
 
-          <motion.p className="hp-hero-role" {...fadeUp(0.34)}>
-            Full-Stack Developer
-          </motion.p>
+            <motion.h1
+              className="hp-hero-name"
+              initial={{ opacity: 0, y: 28 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+            >
+              <span className="hp-name-first">Kevin</span>
+              <span className="hp-name-last">Jerome</span>
+            </motion.h1>
 
-          <motion.p className="hp-hero-tagline" {...fadeUp(0.44)}>
-            I build production software that ships, scales, and solves real
-            problems.
-          </motion.p>
+            <motion.p
+              className="hp-hero-role"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.35 }}
+            >
+              I&apos;m a <span className="hp-accent-text">Full-Stack Developer</span>
+            </motion.p>
 
-          <motion.div className="hp-hero-ctas" {...fadeUp(0.54)}>
-            <MagneticButton>
-              <a href="#work" className="hp-btn-primary">
-                See My Work <FiArrowDown aria-hidden="true" />
-              </a>
-            </MagneticButton>
-            <MagneticButton>
-              <a
-                href="/Documents/KevinJeromeSoftwareEngineerResume.pdf"
-                download
-                className="hp-btn-secondary"
-              >
-                <FiDownload aria-hidden="true" /> Resume
-              </a>
-            </MagneticButton>
-          </motion.div>
+            <motion.p
+              className="hp-hero-bio"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.45 }}
+            >
+              Software engineer building production apps with real users.
+              Founder of Auralith Systems. CS graduate from Florida International University.
+            </motion.p>
 
-          <motion.div className="hp-hero-socials" {...fadeUp(0.62)}>
-            <MagneticButton strength={0.4}>
-              <a
-                href="https://github.com/KevinJeromeTech"
-                target="_blank"
-                rel="noreferrer"
-                className="hp-social-btn"
-                aria-label="GitHub"
-              >
-                <FaGithub />
-              </a>
-            </MagneticButton>
-            <MagneticButton strength={0.4}>
+            <motion.div
+              className="hp-hero-actions"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.55 }}
+            >
               <a
                 href="https://www.linkedin.com/in/kevinjerome-kj/"
                 target="_blank"
                 rel="noreferrer"
-                className="hp-social-btn"
-                aria-label="LinkedIn"
+                className="hp-btn-primary"
               >
-                <FaLinkedin />
+                <FaLinkedin /> LinkedIn
               </a>
-            </MagneticButton>
-            <MagneticButton strength={0.4}>
               <a
-                href="mailto:kevinjerome.dev@gmail.com"
-                className="hp-social-btn"
-                aria-label="Email"
+                href="https://github.com/KevinJeromeTech"
+                target="_blank"
+                rel="noreferrer"
+                className="hp-btn-secondary"
               >
-                <FiMail />
+                <FaGithub /> GitHub
               </a>
-            </MagneticButton>
+            </motion.div>
+
+            <motion.a
+              href="/Documents/KevinJeromeSoftwareEngineerResume.pdf"
+              download
+              className="hp-resume-link"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.7 }}
+            >
+              <FiDownload size={13} /> Download Resume
+            </motion.a>
+          </div>
+
+          <motion.div
+            className="hp-hero-visual"
+            initial={{ opacity: 0, scale: 0.88 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <OrbitalRing />
           </motion.div>
-        </section>
 
-        <hr className="hp-section-divider" />
-
-        {/* ══════════════════════════════════
-            FEATURED WORK
-        ══════════════════════════════════ */}
-        <section id="work" className="hp-work" aria-label="Featured Work">
-          <div className="hp-section-container">
-            <SectionReveal>
-              <div className="hp-work-header">
-                <span className="hp-eyebrow">Featured Work</span>
-                <h2 className="hp-section-heading">What I&apos;ve shipped</h2>
-              </div>
-            </SectionReveal>
-
-            <div className="hp-project-grid">
-              {featuredProjects.map((project, i) => (
-                <SectionReveal key={project.id}>
-                  <article className="hp-project-card">
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="hp-project-img"
-                      loading="lazy"
-                      decoding="async"
-                    />
-                    <div className="hp-project-body">
-                      <h3 className="hp-project-title">{project.title}</h3>
-                      <p className="hp-project-desc">
-                        {project.description.slice(0, 120)}
-                        {project.description.length > 120 ? "…" : ""}
-                      </p>
-                      <div className="hp-project-stack">
-                        {project.stack.slice(0, 4).map((tag) => (
-                          <span key={tag} className="hp-stack-tag">
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                      <div className="hp-project-links">
-                        {project.demo && (
-                          <a
-                            href={project.demo}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="hp-link-demo"
-                            aria-label={`${project.title} live demo`}
-                          >
-                            <FiExternalLink aria-hidden="true" /> Live
-                          </a>
-                        )}
-                        <a
-                          href={project.github || "#"}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="hp-link-github"
-                          aria-label={`${project.title} GitHub`}
-                        >
-                          <FiGithub aria-hidden="true" /> Code
-                        </a>
-                      </div>
-                    </div>
-                  </article>
-                </SectionReveal>
-              ))}
-            </div>
-
-            <SectionReveal>
-              <div className="hp-work-footer">
-                <Link to="/projects" className="hp-all-projects-link">
-                  View All Projects <FiArrowRight aria-hidden="true" />
-                </Link>
-              </div>
-            </SectionReveal>
+          <div className="hp-scroll-hint" aria-hidden="true">
+            <span className="hp-scroll-label">SCROLL</span>
+            <div className="hp-scroll-line" />
           </div>
         </section>
 
-        <hr className="hp-section-divider" />
-
-        {/* ══════════════════════════════════
-            ABOUT SNAPSHOT
-        ══════════════════════════════════ */}
-        <section className="hp-about" aria-label="About">
-          <div className="hp-section-container">
-            <SectionReveal>
-              <div className="hp-about-grid">
-                {/* Photo + stats */}
-                <div className="hp-about-photo-col">
-                  <img
-                    src="/Images/LinkedInPhoto.webp"
-                    alt="Kevin Jerome"
-                    className="hp-about-photo"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  <div className="hp-about-stats">
-                    {stats.map((s) => (
-                      <div key={s.label} className="hp-stat-pill">
-                        <span className="hp-stat-num">{s.num}</span>
-                        <span className="hp-stat-label">{s.label}</span>
+        {/* ── About ── */}
+        <section className="hp-section" id="about">
+          <div className="hp-container">
+            <FadeUp><SectionHeader num="01" title="About Me" /></FadeUp>
+            <div className="hp-about-grid">
+              <FadeUp delay={0.1}>
+                <div className="hp-about-text">
+                  <p>
+                    I&apos;m a Full-Stack Developer and CS graduate from Florida International University
+                    with hands-on experience building and deploying production applications — including
+                    an AI-powered analytics platform with real beta users and a custom storefront and
+                    admin system for a live retail business.
+                  </p>
+                  <p>
+                    I founded Auralith Systems, a software consultancy where I deliver full-stack
+                    engineering solutions for small businesses, owning the complete lifecycle from
+                    architecture to deployment as a sole engineer.
+                  </p>
+                  <div className="hp-about-meta">
+                    <div>
+                      <span className="hp-meta-label">Education</span>
+                      <span className="hp-meta-val">B.A. Computer Science · FIU · 2026</span>
+                      <span className="hp-meta-val">Minor: Entrepreneurship</span>
+                    </div>
+                    <div>
+                      <span className="hp-meta-label">Activities</span>
+                      <span className="hp-meta-val">CodePath E3 Program · Honors</span>
+                      <span className="hp-meta-val">Foundations to AI</span>
+                    </div>
+                  </div>
+                </div>
+              </FadeUp>
+              <FadeUp delay={0.2}>
+                <div className="hp-highlights-card">
+                  <h3 className="hp-highlights-title">Highlights</h3>
+                  <div className="hp-highlights-list">
+                    {[
+                      ["Beta Users on ExpenseIQ", "6–10"],
+                      ["Deployed Projects",        "4+"],
+                      ["Client Engagements",       "1 Live"],
+                      ["CI/CD on Every Build",     "✓"],
+                      ["Technologies",             "15+"],
+                    ].map(([label, val]) => (
+                      <div className="hp-highlight-row" key={label}>
+                        <span>{label}</span>
+                        <span className="hp-highlight-val">{val}</span>
                       </div>
                     ))}
                   </div>
                 </div>
-
-                {/* Text */}
-                <div className="hp-about-text-col">
-                  <span className="hp-eyebrow">About</span>
-                  <h2 className="hp-about-heading">Built to ship.</h2>
-                  <p className="hp-about-bio">
-                    I&apos;m Kevin Jerome — a Full-Stack Developer and CS
-                    graduate from Florida International University. I founded
-                    Auralith Systems, a software consultancy where I deliver
-                    full-stack engineering solutions for small businesses end to
-                    end.
-                  </p>
-                  <p className="hp-about-bio">
-                    My work spans AI-powered analytics, custom admin systems for
-                    retail clients, and my own consulting company — all shipped
-                    to production with real users.
-                  </p>
-                  <Link to="/about" className="hp-about-link">
-                    More about me <FiArrowRight aria-hidden="true" />
-                  </Link>
-                </div>
-              </div>
-            </SectionReveal>
+              </FadeUp>
+            </div>
           </div>
         </section>
 
-        <hr className="hp-section-divider" />
-
-        {/* ══════════════════════════════════
-            TECH STACK
-        ══════════════════════════════════ */}
-        <section className="hp-tech" aria-label="Tech Stack">
-          <div className="hp-section-container">
-            <SectionReveal>
-              <div className="hp-tech-header">
-                <span className="hp-eyebrow">Tech Stack</span>
-                <h2 className="hp-section-heading">What I build with</h2>
-              </div>
-              <div className="hp-tech-groups">
-                {techGroups.map((group) => (
-                  <div key={group.label} className="hp-tech-group">
-                    <span className="hp-tech-group-label">{group.label}</span>
-                    <div className="hp-tech-badges">
+        {/* ── Skills ── */}
+        <section className="hp-section" id="skills">
+          <div className="hp-container">
+            <FadeUp><SectionHeader num="02" title="Skills & Tech" /></FadeUp>
+            <FadeUp delay={0.1}>
+              <div className="hp-skill-groups">
+                {skillGroups.map((group) => (
+                  <div key={group.title} className="hp-skill-group-card">
+                    <div className="hp-skill-group-header">
+                      <span className="hp-skill-dot" style={{ background: group.dot }} />
+                      <h3>{group.title}</h3>
+                    </div>
+                    <div className="hp-skill-badges">
                       {group.items.map((item) => (
-                        <span key={item} className="hp-tech-badge">
-                          {item}
-                        </span>
+                        <span key={item} className="hp-skill-badge">{item}</span>
                       ))}
                     </div>
                   </div>
                 ))}
               </div>
-            </SectionReveal>
-          </div>
-        </section>
-
-        <hr className="hp-section-divider" />
-
-        {/* ══════════════════════════════════
-            CONTACT CTA
-        ══════════════════════════════════ */}
-        <section className="hp-contact-cta" aria-label="Contact">
-          <div className="hp-section-container">
-            <SectionReveal>
-              <span className="hp-eyebrow">Let&apos;s Work Together</span>
-              <h2 className="hp-contact-heading">Have a project in mind?</h2>
-              <p className="hp-contact-sub">
-                I&apos;m currently open to full-stack engineering roles and
-                freelance consulting engagements.
-              </p>
-              <div className="hp-contact-btns">
-                <MagneticButton>
-                  <Link to="/contact" className="hp-btn-primary">
-                    Get in Touch <FiArrowRight aria-hidden="true" />
-                  </Link>
-                </MagneticButton>
-                <MagneticButton>
-                  <a
-                    href="/Documents/KevinJeromeSoftwareEngineerResume.pdf"
-                    download
-                    className="hp-btn-secondary"
-                  >
-                    <FiDownload aria-hidden="true" /> Resume
-                  </a>
-                </MagneticButton>
+            </FadeUp>
+            <FadeUp delay={0.2}>
+              <div className="hp-specialty-grid">
+                {specialtyCards.map((card) => (
+                  <div key={card.title} className="hp-specialty-card">
+                    <span className="hp-specialty-icon">{card.icon}</span>
+                    <h4>{card.title}</h4>
+                    <p>{card.sub}</p>
+                  </div>
+                ))}
               </div>
-            </SectionReveal>
+            </FadeUp>
           </div>
         </section>
-      </motion.main>
+
+        {/* ── Experience ── */}
+        <section className="hp-section" id="experience">
+          <div className="hp-container">
+            <FadeUp><SectionHeader num="03" title="Experience" /></FadeUp>
+            <div className="hp-exp-list">
+              <FadeUp delay={0.1}>
+                <div className="hp-exp-card">
+                  <div className="hp-exp-header">
+                    <div>
+                      <h3 className="hp-exp-title">Founder &amp; Software Engineer</h3>
+                      <p className="hp-exp-company">
+                        <span className="hp-accent-text">Auralith Systems</span> · Miami, FL
+                      </p>
+                    </div>
+                    <span className="hp-exp-date">Dec 2025 – Present</span>
+                  </div>
+                  <ul className="hp-exp-bullets">
+                    <li>Founded a software consultancy delivering full-stack engineering solutions for small businesses, owning the complete lifecycle as a sole engineer.</li>
+                    <li>Designed and deployed a mobile-first storefront with inquiry and reservation functionality for Classic Menswear Inc., replacing an outdated web presence.</li>
+                    <li>Built StoreLens, a custom admin dashboard giving the client centralized control over inventory, content, and product tracking — replacing manual spreadsheet management.</li>
+                  </ul>
+                  <div className="hp-exp-tags">
+                    {["Next.js", "TypeScript", "Tailwind CSS", "React", "Vercel"].map((t) => (
+                      <span key={t} className="hp-exp-tag">{t}</span>
+                    ))}
+                  </div>
+                </div>
+              </FadeUp>
+
+              <FadeUp delay={0.15}>
+                <div className="hp-exp-card">
+                  <div className="hp-exp-header">
+                    <div>
+                      <h3 className="hp-exp-title">Sales Associate / Floor Lead</h3>
+                      <p className="hp-exp-company">
+                        <span className="hp-accent-text">Classic Menswear Inc.</span> · Miami, FL
+                      </p>
+                    </div>
+                    <span className="hp-exp-date">Dec 2019 – Present</span>
+                  </div>
+                  <ul className="hp-exp-bullets">
+                    <li>Managed high-volume customer interactions, consistently recognized among top associates for customer satisfaction.</li>
+                    <li>Onboarded and trained 5+ new employees on POS systems, cutting ramp-up time by ~30%.</li>
+                  </ul>
+                  <div className="hp-exp-tags">
+                    {["Leadership", "Training", "Operations"].map((t) => (
+                      <span key={t} className="hp-exp-tag">{t}</span>
+                    ))}
+                  </div>
+                </div>
+              </FadeUp>
+            </div>
+          </div>
+        </section>
+
+        {/* ── Projects ── */}
+        <section className="hp-section" id="work">
+          <div className="hp-container">
+            <FadeUp><SectionHeader num="04" title="Projects" /></FadeUp>
+            <div className="hp-projects-list">
+              {featuredProjects.map((project, i) => (
+                <FadeUp key={project.id} delay={i * 0.08}>
+                  <div className="hp-project-card">
+                    {project.image && (
+                      <div className="hp-project-img-wrap">
+                        <img
+                          src={project.image}
+                          alt={project.title}
+                          loading="lazy"
+                          className="hp-project-img"
+                        />
+                      </div>
+                    )}
+                    <div className="hp-project-body">
+                      <div className="hp-project-top">
+                        <h3 className="hp-project-title">{project.title}</h3>
+                        <div className="hp-project-links">
+                          {project.demo && (
+                            <a href={project.demo} target="_blank" rel="noreferrer" className="hp-project-link" aria-label="Live demo">
+                              <FiExternalLink size={16} />
+                            </a>
+                          )}
+                          {project.github && project.github !== "#" && (
+                            <a href={project.github} target="_blank" rel="noreferrer" className="hp-project-link" aria-label="GitHub">
+                              <FiGithub size={16} />
+                            </a>
+                          )}
+                        </div>
+                      </div>
+                      <p className="hp-project-desc">{project.description}</p>
+                      <div className="hp-project-tags">
+                        {project.stack.slice(0, 4).map((t) => (
+                          <span key={t} className="hp-project-tag">{t}</span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </FadeUp>
+              ))}
+            </div>
+            <FadeUp delay={0.2}>
+              <div className="hp-all-projects">
+                <Link to="/projects" className="hp-view-all">
+                  View All Projects <FiArrowRight />
+                </Link>
+              </div>
+            </FadeUp>
+          </div>
+        </section>
+
+        {/* ── Contact ── */}
+        <section className="hp-section hp-contact-section" id="contact">
+          <div className="hp-container">
+            <FadeUp><SectionHeader num="05" title="Contact" /></FadeUp>
+            <FadeUp delay={0.1}>
+              <p className="hp-contact-sub">
+                Open to full-stack engineering roles and freelance consulting engagements.
+              </p>
+            </FadeUp>
+            <FadeUp delay={0.2}>
+              <div className="hp-contact-actions">
+                <a href="mailto:kevinjerome.dev@gmail.com" className="hp-btn-primary">
+                  <MdEmail /> Get in Touch
+                </a>
+                <a
+                  href="/Documents/KevinJeromeSoftwareEngineerResume.pdf"
+                  download
+                  className="hp-btn-secondary"
+                >
+                  <FiDownload /> Resume
+                </a>
+              </div>
+            </FadeUp>
+            <FadeUp delay={0.3}>
+              <div className="hp-contact-links">
+                <a href="https://github.com/KevinJeromeTech" target="_blank" rel="noreferrer" className="hp-social-link">
+                  <FaGithub /> GitHub
+                </a>
+                <a href="https://www.linkedin.com/in/kevinjerome-kj/" target="_blank" rel="noreferrer" className="hp-social-link">
+                  <FaLinkedin /> LinkedIn
+                </a>
+                <a href="mailto:kevinjerome.dev@gmail.com" className="hp-social-link">
+                  <MdEmail /> kevinjerome.dev@gmail.com
+                </a>
+              </div>
+            </FadeUp>
+          </div>
+        </section>
+
+      </main>
     </>
   );
 }
