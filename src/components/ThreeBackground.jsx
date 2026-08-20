@@ -1,6 +1,27 @@
-import { useEffect, useRef, useMemo } from "react";
+import { useEffect, useRef } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import * as THREE from "three";
+
+const PARTICLE_COUNT = 280;
+
+function buildPositions() {
+  const arr = new Float32Array(PARTICLE_COUNT * 3);
+  for (let i = 0; i < PARTICLE_COUNT; i++) {
+    arr[i * 3]     = (Math.random() - 0.5) * 120;
+    arr[i * 3 + 1] = (Math.random() - 0.5) * 120;
+    arr[i * 3 + 2] = (Math.random() - 0.5) * 60;
+  }
+  return arr;
+}
+
+function buildSizes() {
+  const arr = new Float32Array(PARTICLE_COUNT);
+  for (let i = 0; i < PARTICLE_COUNT; i++) arr[i] = Math.random() * 0.6 + 0.15;
+  return arr;
+}
+
+const POSITIONS = buildPositions();
+const SIZES = buildSizes();
 
 function CameraParallax() {
   const { camera } = useThree();
@@ -28,24 +49,8 @@ function CameraParallax() {
   return null;
 }
 
-function Particles({ count = 280 }) {
+function Particles() {
   const mesh = useRef();
-
-  const positions = useMemo(() => {
-    const arr = new Float32Array(count * 3);
-    for (let i = 0; i < count; i++) {
-      arr[i * 3]     = (Math.random() - 0.5) * 120;
-      arr[i * 3 + 1] = (Math.random() - 0.5) * 120;
-      arr[i * 3 + 2] = (Math.random() - 0.5) * 60;
-    }
-    return arr;
-  }, [count]);
-
-  const sizes = useMemo(() => {
-    const arr = new Float32Array(count);
-    for (let i = 0; i < count; i++) arr[i] = Math.random() * 0.6 + 0.15;
-    return arr;
-  }, [count]);
 
   useFrame((state) => {
     mesh.current.rotation.y = state.clock.elapsedTime * 0.018;
@@ -55,8 +60,8 @@ function Particles({ count = 280 }) {
   return (
     <points ref={mesh}>
       <bufferGeometry>
-        <bufferAttribute attach="attributes-position" args={[positions, 3]} />
-        <bufferAttribute attach="attributes-size" args={[sizes, 1]} />
+        <bufferAttribute attach="attributes-position" args={[POSITIONS, 3]} />
+        <bufferAttribute attach="attributes-size" args={[SIZES, 1]} />
       </bufferGeometry>
       <pointsMaterial
         size={0.12}
@@ -93,7 +98,7 @@ export default function ThreeBackground() {
       dpr={[1, 1.5]}
     >
       <CameraParallax />
-      <Particles count={280} />
+      <Particles />
     </Canvas>
   );
 }
