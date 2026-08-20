@@ -18,9 +18,9 @@
   --radius-md: 22px;
   --radius-lg: 28px;
   --max-width: 1100px;
-  --accent: #4f8ef7;
-  --accent-dark: #3a7ae0;
-  --accent-glow: rgba(79, 142, 247, 0.22);
+  --accent: #c0392b;
+  --accent-dark: #9b2d20;
+  --accent-glow: rgba(192, 57, 43, 0.22);
 }
 
 * {
@@ -50,9 +50,9 @@ body {
 
 body.dark-mode {
   background:
-    radial-gradient(circle at top left, rgba(143, 175, 192, 0.16), transparent 28%),
-    radial-gradient(circle at bottom right, rgba(192, 210, 224, 0.12), transparent 24%),
-    linear-gradient(180deg, #0f1118 0%, #131c24 100%);
+    radial-gradient(circle at top left, rgba(192, 57, 43, 0.10), transparent 28%),
+    radial-gradient(circle at bottom right, rgba(155, 45, 32, 0.08), transparent 24%),
+    linear-gradient(180deg, #0f0d0d 0%, #130e0e 100%);
   color: #f3f4f6;
 }
 

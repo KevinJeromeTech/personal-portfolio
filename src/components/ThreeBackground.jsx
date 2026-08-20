@@ -60,7 +60,7 @@ function Particles({ count = 280 }) {
       </bufferGeometry>
       <pointsMaterial
         size={0.12}
-        color="#4f8ef7"
+        color="#c0392b"
         transparent
         opacity={0.25}
         sizeAttenuation

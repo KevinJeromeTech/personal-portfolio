@@ -1,18 +1,17 @@
 import { useEffect, useState } from "react";
-import { Link, NavLink, useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "motion/react";
 import { BsSun, BsMoon } from "react-icons/bs";
 import { HiMenuAlt3, HiX } from "react-icons/hi";
-import { FaHome, FaUser, FaCode, FaFolder, FaGithub, FaLinkedin } from "react-icons/fa";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
-import { FiBookOpen } from "react-icons/fi";
 
 const navLinks = [
-  { to: "/",         label: "Home",     icon: <FaHome /> },
-  { to: "/about",    label: "About",    icon: <FaUser /> },
-  { to: "/skills",   label: "Skills",   icon: <FaCode /> },
-  { to: "/projects", label: "Projects", icon: <FaFolder /> },
-  { to: "/blog",     label: "Blog",     icon: <FiBookOpen /> },
+  { href: "#about",      label: "About" },
+  { href: "#skills",     label: "Skills" },
+  { href: "#experience", label: "Experience" },
+  { href: "#work",       label: "Projects" },
+  { href: "#contact",    label: "Contact" },
 ];
 
 export default function Navbar() {
@@ -63,23 +62,11 @@ export default function Navbar() {
           {/* ── Desktop nav ── */}
           <nav className="desktop-nav" aria-label="Desktop Navigation">
             <div className="nav-links">
-              {navLinks.map(({ to, label, icon }) => {
-                const isActive = to === "/" ? location.pathname === "/" : location.pathname.startsWith(to);
-                return (
-                  <NavLink key={to} to={to} className="nav-link-item">
-                    {isActive && (
-                      <motion.span
-                        layoutId="nav-active-pill"
-                        className="nav-active-pill"
-                        transition={{ type: "spring", stiffness: 380, damping: 32 }}
-                      />
-                    )}
-                    <span className="nav-link-icon" aria-hidden="true">{icon}</span>
-                    <span className="nav-link-label">{label}</span>
-                  </NavLink>
-                );
-              })}
-              <NavLink to="/contact" className="button-contact">Contact</NavLink>
+              {navLinks.map(({ href, label }) => (
+                <a key={href} href={href} className="nav-link-item">
+                  <span className="nav-link-label">{label}</span>
+                </a>
+              ))}
             </div>
 
             <div className="nav-socials">
@@ -113,7 +100,7 @@ export default function Navbar() {
             </button>
           </nav>
 
-          {/* ── Mobile / tablet controls ── */}
+          {/* ── Mobile controls ── */}
           <div className="mobile-controls">
             <button
               className="dark-toggle"
@@ -175,34 +162,18 @@ export default function Navbar() {
             aria-label="Mobile Navigation"
           >
             <div className="mobile-nav-links">
-              {navLinks.map(({ to, label, icon }, i) => (
+              {navLinks.map(({ href, label }, i) => (
                 <motion.div
-                  key={to}
+                  key={href}
                   initial={{ opacity: 0, x: -14 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.2, delay: 0.05 + i * 0.05 }}
                 >
-                  <NavLink to={to} className="mobile-nav-link" onClick={closeMenu}>
-                    <span className="mobile-nav-icon" aria-hidden="true">{icon}</span>
+                  <a href={href} className="mobile-nav-link" onClick={closeMenu}>
                     {label}
-                  </NavLink>
+                  </a>
                 </motion.div>
               ))}
-
-              <motion.div
-                initial={{ opacity: 0, x: -14 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.2, delay: 0.05 + navLinks.length * 0.05 }}
-              >
-                <NavLink
-                  to="/contact"
-                  className="mobile-nav-link mobile-contact-link"
-                  onClick={closeMenu}
-                >
-                  <span className="mobile-nav-icon" aria-hidden="true"><MdEmail /></span>
-                  Contact
-                </NavLink>
-              </motion.div>
             </div>
 
             <motion.div
@@ -229,6 +200,13 @@ export default function Navbar() {
                   aria-label="LinkedIn"
                 >
                   <FaLinkedin />
+                </a>
+                <a
+                  href="mailto:kevinjerome.dev@gmail.com"
+                  className="mobile-social-btn"
+                  aria-label="Email"
+                >
+                  <MdEmail />
                 </a>
               </div>
               <span className="mobile-menu-tag">kevinjerome.dev</span>
