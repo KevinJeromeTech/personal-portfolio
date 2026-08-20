@@ -332,7 +332,10 @@ section h2 {
 
 .section-heading-block h2 {
   font-size: clamp(1.8rem, 3vw, 2.5rem);
-  color: #ffffff;
+  background: linear-gradient(135deg, #ffffff 20%, #c8dce8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   margin: 0 0 0.45rem;
   letter-spacing: -0.03em;
 }
@@ -352,7 +355,10 @@ section h2 {
 .tech-group-card,
 .about-highlight-card,
 .core-value-card,
-.soft-skill-card {
+.soft-skill-card,
+.preview-card,
+.info-card,
+.blog-card {
   --mx: 50%;
   --my: 50%;
 }
@@ -363,14 +369,17 @@ section h2 {
 .tech-group-card::after,
 .about-highlight-card::after,
 .core-value-card::after,
-.soft-skill-card::after {
+.soft-skill-card::after,
+.preview-card::after,
+.info-card::after,
+.blog-card::after {
   content: "";
   position: absolute;
   inset: 0;
   border-radius: inherit;
   background: radial-gradient(
-    280px circle at var(--mx) var(--my),
-    rgba(255, 255, 255, 0.055),
+    450px circle at var(--mx) var(--my),
+    rgba(143, 175, 192, 0.18),
     transparent 70%
   );
   opacity: 0;
@@ -385,7 +394,10 @@ section h2 {
 .tech-group-card:hover::after,
 .about-highlight-card:hover::after,
 .core-value-card:hover::after,
-.soft-skill-card:hover::after {
+.soft-skill-card:hover::after,
+.preview-card:hover::after,
+.info-card:hover::after,
+.blog-card:hover::after {
   opacity: 1;
 }
 
@@ -402,35 +414,31 @@ section h2 {
   transition-duration: 0.08s !important;
 }
 
-/* ── Shimmer sweep on preview/info card hover ── */
-.info-card::after,
-.preview-card::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    105deg,
-    transparent 30%,
-    rgba(255, 255, 255, 0.05) 50%,
-    transparent 70%
-  );
-  background-size: 200% 100%;
-  background-position: 200% 0;
-  transition: background-position 0.55s ease;
-  pointer-events: none;
-  border-radius: inherit;
-}
-
-.info-card:hover::after,
-.preview-card:hover::after {
-  background-position: -50% 0;
-}
+/* ── Shimmer removed — preview/info cards now use the shared spotlight ::after ── */
 
 /* ── Enhanced card hover glow ── */
+.section-card:hover {
+  border-color: rgba(143, 175, 192, 0.28);
+  box-shadow:
+    0 28px 56px rgba(0, 0, 0, 0.32),
+    0 0 0 1px rgba(143, 175, 192, 0.12),
+    0 0 70px rgba(143, 175, 192, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  transition: border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
 .about-highlight-card:hover,
 .core-value-card:hover,
 .soft-skill-card:hover {
-  box-shadow: var(--shadow-lg), 0 0 40px rgba(143, 175, 192, 0.18);
+  box-shadow: var(--shadow-lg), 0 0 50px rgba(143, 175, 192, 0.22);
+  border-color: rgba(143, 175, 192, 0.25);
+}
+
+.preview-card:hover,
+.info-card:hover {
+  border-color: rgba(143, 175, 192, 0.22);
+  box-shadow: 0 20px 44px rgba(0, 0, 0, 0.28), 0 0 40px rgba(143, 175, 192, 0.14);
+  transform: translateY(-4px);
 }
 
 body.dark-mode .section-card,
@@ -498,16 +506,19 @@ body.dark-mode span {
   position: fixed;
   top: 0;
   left: 0;
-  width: 30px;
-  height: 30px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   background: radial-gradient(
     circle,
-    rgba(143, 175, 192, 0.75) 0%,
-    rgba(200, 220, 235, 0.35) 55%,
+    rgba(143, 175, 192, 0.9) 0%,
+    rgba(200, 220, 235, 0.5) 45%,
     transparent 70%
   );
-  box-shadow: 0 0 18px rgba(143, 175, 192, 0.55), 0 0 48px rgba(200, 220, 235, 0.18);
+  box-shadow:
+    0 0 24px rgba(143, 175, 192, 0.75),
+    0 0 60px rgba(200, 220, 235, 0.35),
+    0 0 100px rgba(143, 175, 192, 0.15);
   pointer-events: none;
   z-index: 99999;
   transform: translate(-50%, -50%);

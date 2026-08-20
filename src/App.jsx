@@ -65,7 +65,7 @@ function useSpotlight() {
     if (window.matchMedia("(pointer: coarse)").matches) return;
     const handle = (e) => {
       const card = e.target.closest(
-        ".section-card, .project-showcase-card, .skill-area-card, .tech-group-card, .about-highlight-card, .core-value-card, .soft-skill-card"
+        ".section-card, .project-showcase-card, .skill-area-card, .tech-group-card, .about-highlight-card, .core-value-card, .soft-skill-card, .preview-card, .info-card, .blog-card"
       );
       if (!card) return;
       const rect = card.getBoundingClientRect();
