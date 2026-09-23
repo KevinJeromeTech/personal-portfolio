@@ -143,7 +143,7 @@ export default function Hero() {
 
         <motion.p className="hero-bio" variants={item}>
           CS graduate from FIU and founder of Auralith Systems. I build and ship
-          full-stack applications with React, Next.js, TypeScript, and Node.js —
+          full-stack applications with React, Next.js, TypeScript, and Node.js,
           for real clients and real users.
         </motion.p>
 

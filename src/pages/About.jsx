@@ -62,7 +62,7 @@ const highlights = [
   {
     icon: <FaFolder />,
     title: "Client Delivery",
-    desc: "I've taken a real client from contract to launched product through Auralith Systems — scoped, built, and shipped. I know what it takes to own a project end to end, not just contribute to one.",
+    desc: "I've taken a real client from contract to launched product through Auralith Systems. Scoped, built, and shipped. I know what it takes to own a project end to end, not just contribute to one.",
   },
   {
     icon: <FaCode />,
@@ -72,7 +72,7 @@ const highlights = [
   {
     icon: <FaRocket />,
     title: "Full-Stack Ownership",
-    desc: "From database schema to deployed UI, I own the whole thing. No handoffs, no gaps — just a working product in production with real users.",
+    desc: "From database schema to deployed UI, I own the whole thing. No handoffs, no gaps. Just a working product in production with real users.",
   },
 ];
 
@@ -81,13 +81,13 @@ const coreValues = [
     icon: <FaRocket />,
     color: "#f59e0b",
     title: "Ship first",
-    desc: "I'd rather put something real in front of users and iterate than spend weeks perfecting something no one has seen. Done beats perfect — then you improve from there.",
+    desc: "I'd rather put something real in front of users and iterate than spend weeks perfecting something no one has seen. Done beats perfect. Then you improve from there.",
   },
   {
     icon: <FaLightbulb />,
     color: "#3b82f6",
     title: "Own the outcome",
-    desc: "When I take on a project, I care whether it actually works — not just whether my code compiles. I stay involved from the first commit to the last deployment.",
+    desc: "When I take on a project, I care whether it actually works, not just whether my code compiles. I stay involved from the first commit to the last deployment.",
   },
   {
     icon: <FaUsers />,
@@ -175,14 +175,14 @@ export default function About() {
               Engineer by degree.<br />Founder by choice.
             </h1>
             <p className="about-bio-text">
-              I&apos;m Kevin Jerome — I graduated from FIU in August 2026 with a CS degree
+              I&apos;m Kevin Jerome. I graduated from FIU in August 2026 with a CS degree
               and a company already running. Auralith Systems, the consultancy I founded in
               December 2025, had its first client delivery before I walked across the stage.
             </p>
             <p className="about-bio-text">
               I build full-stack applications with React, Next.js, TypeScript, and Node.js,
               and I&apos;ve been integrating LLM APIs into production software since before
-              it was a resume buzzword. Based in Miami — open to full-time roles, contract
+              it was a resume buzzword. Based in Miami, open to full-time roles, contract
               work, and problems that don&apos;t have a clean answer yet.
             </p>
             <div className="about-intro-actions">

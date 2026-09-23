@@ -3,9 +3,9 @@ const projects = [
     id: 6,
     title: "Auralith Systems",
     description:
-      "Software consultancy I founded in Dec 2025 — delivered a full storefront redesign and custom admin dashboard for a live client (Classic Menswear) as sole engineer.",
+      "Software consultancy I founded in Dec 2025. Delivered a full storefront redesign and custom admin dashboard for a live client (Classic Menswear) as sole engineer.",
     longDescription:
-      "Auralith Systems is the software consultancy I founded in December 2025. I own the full engineering lifecycle for every engagement — architecture, frontend, backend, admin tooling, and deployment — as a sole engineer. First client delivery: a complete storefront redesign and StoreLens admin dashboard for Classic Menswear, replacing a manual spreadsheet-based operation with a live site and centralized content management. Site is live at classicmenswear.org.",
+      "Auralith Systems is the software consultancy I founded in December 2025. I own the full engineering lifecycle for every engagement: architecture, frontend, backend, admin tooling, and deployment, as a sole engineer. First client delivery: a complete storefront redesign and StoreLens admin dashboard for Classic Menswear, replacing a manual spreadsheet-based operation with a live site and centralized content management. Site is live at classicmenswear.org.",
     image: "/Images/StoreLens.webp",
     imageFallback: "/Images/StoreLens.png",
     github: "#",
@@ -13,8 +13,8 @@ const projects = [
     featured: true,
     stack: ["Next.js", "TypeScript", "Tailwind CSS", "React", "Vercel"],
     highlights: [
-      "Founded Dec 2025 — sole engineer delivering full-stack solutions for real clients.",
-      "First client: Classic Menswear — storefront redesign + StoreLens admin dashboard shipped to production.",
+      "Founded Dec 2025. Sole engineer delivering full-stack solutions for real clients.",
+      "First client: Classic Menswear. Storefront redesign and StoreLens admin dashboard shipped to production.",
       "Replaced manual spreadsheet management with a centralized, live content system.",
       "Owns the complete engineering lifecycle: architecture, frontend, admin tooling, and Vercel deployment.",
     ],
@@ -23,9 +23,9 @@ const projects = [
     id: 1,
     title: "ExpenseIQ",
     description:
-      "Full-stack expense tracker with JWT auth, AI-powered spending insights via Claude, and real-time charts — deployed to production with a full CI/CD pipeline.",
+      "Full-stack expense tracker with JWT auth, AI-powered spending insights via Claude, and real-time charts. Deployed to production with a full CI/CD pipeline.",
     longDescription:
-      "ExpenseIQ is a production-grade full-stack expense tracker that goes beyond logging — it actively helps you understand your spending. Built with React 19, TypeScript, and Node.js/Express, it features a complete JWT authentication system, AI-powered insights and transaction auto-categorization via the Anthropic Claude API, optimistic UI updates with TanStack Query v5, and real-time charts with Recharts. Deployed on Vercel and Render with a full CI/CD pipeline.",
+      "ExpenseIQ is a production-grade full-stack expense tracker that goes beyond logging. It actively helps you understand your spending. Built with React 19, TypeScript, and Node.js/Express, it features a complete JWT authentication system, AI-powered insights and transaction auto-categorization via the Anthropic Claude API, optimistic UI updates with TanStack Query v5, and real-time charts with Recharts. Deployed on Vercel and Render with a full CI/CD pipeline.",
     image: "/Images/ExpenseIQ.webp",
     imageFallback: "/Images/ExpenseIQ.png",
     github: "https://github.com/KevinJeromeTech/ExpenseIQ",
@@ -33,10 +33,10 @@ const projects = [
     featured: true,
     stack: ["React 19", "TypeScript", "Node.js", "PostgreSQL", "Claude AI"],
     highlights: [
-      "JWT auth built from scratch — bcrypt hashing, rate limiting, httpOnly refresh tokens, and password reset via Nodemailer.",
+      "JWT auth built from scratch: bcrypt hashing, rate limiting, httpOnly refresh tokens, and password reset via Nodemailer.",
       "Anthropic Claude API (claude-haiku-4-5) auto-categorizes transactions and generates plain-English spending insights in real time.",
-      "TanStack Query v5 powers all server state — optimistic updates, 5-minute stale windows, and automatic rollback on failure.",
-      "Recharts dashboard with a spending-by-category donut, month-over-month bar chart, and daily trend line — all feel instant.",
+      "TanStack Query v5 powers all server state: optimistic updates, 5-minute stale windows, and automatic rollback on failure.",
+      "Recharts dashboard with a spending-by-category donut, month-over-month bar chart, and daily trend line. All feel instant.",
       "GitHub Actions CI runs ESLint, Vitest unit tests, and Playwright E2E across the full auth flow on every push.",
     ],
   },
@@ -84,9 +84,9 @@ const projects = [
     id: 4,
     title: "StoreLens",
     description:
-      "Custom admin dashboard built for Classic Menswear — giving the owner centralized control over storefront content, inventory, and product tracking, replacing manual spreadsheet-based management.",
+      "Custom admin dashboard built for Classic Menswear. Gives the owner centralized control over storefront content, inventory, and product tracking, replacing manual spreadsheet-based management.",
     longDescription:
-      "StoreLens is a custom admin system built for Classic Menswear as part of a full storefront redesign delivered through Auralith Systems. The owner now has a single dashboard to manage storefront content, inventory, and product tracking — replacing the manual, spreadsheet-based process they had before. Delivered solo: architecture, frontend, admin tooling, and deployment on Vercel.",
+      "StoreLens is a custom admin system built for Classic Menswear as part of a full storefront redesign delivered through Auralith Systems. The owner now has a single dashboard to manage storefront content, inventory, and product tracking, replacing the manual spreadsheet-based process they had before. Delivered solo: architecture, frontend, admin tooling, and deployment on Vercel.",
     image: "/Images/StoreLens.webp",
     imageFallback: "/Images/StoreLens.png",
     github: "#",
@@ -106,7 +106,7 @@ const projects = [
     description:
       "Production-ready portfolio built with React and Vite featuring PWA support, animations, SEO, and performance optimizations.",
     longDescription:
-      "This portfolio is a fully custom personal site built to present my work, technical growth, and professional direction. Every detail was intentionally crafted — from the animated code rain background and page transitions to the project detail pages and Lighthouse-optimized performance. Built with React, Vite, and a focus on real production quality.",
+      "This portfolio is a fully custom personal site built to present my work, technical growth, and professional direction. Every detail was intentionally crafted, from the animated code rain background and page transitions to the project detail pages and Lighthouse-optimized performance. Built with React, Vite, and a focus on real production quality.",
     image: "/Images/nportfolio.webp",
     imageFallback: "/Images/nportfolio.png",
     github: "https://github.com/KevinJeromeTech/personal-portfolio",

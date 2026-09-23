@@ -6,7 +6,7 @@ export default function ContactCTA() {
       <h2>Have something worth building?</h2>
       <p>
         I&apos;m open to full-time roles and consulting work through Auralith Systems.
-        If you have a real problem that needs a real engineer — not a template — let&apos;s talk.
+        If you have a real problem that needs a real engineer, not a template, let&apos;s talk.
       </p>
       <Link to="/contact" className="hero-button">
         Get In Touch

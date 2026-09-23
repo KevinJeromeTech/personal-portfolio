@@ -75,8 +75,8 @@ export default function AboutPreview() {
         <div className="preview-card">
           <h3>Real Experience</h3>
           <p>
-            My experience spans client work through Auralith Systems — including
-            the StoreLens admin dashboard for Classic Menswear — alongside
+            My experience spans client work through Auralith Systems, including
+            the StoreLens admin dashboard for Classic Menswear, alongside
             self-directed builds like ExpenseIQ and this portfolio. Each project
             pushed me to learn a new layer of the stack, from LLM API integration
             to automated testing and production deployment.
