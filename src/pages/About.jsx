@@ -190,7 +190,7 @@ export default function About() {
                 View My Work
               </Link>
               <a
-                href="/Documents/KevinJeromeSoftwareEngineerResume.pdf"
+                href="/Documents/Kevin Jerome Resume.pdf"
                 download
                 className="hero-button hero-btn-secondary"
               >
@@ -293,7 +293,7 @@ export default function About() {
             and the projects I&apos;ve worked on.
           </p>
           <a
-            href="/Documents/KevinJeromeSoftwareEngineerResume.pdf"
+            href="/Documents/Kevin Jerome Resume.pdf"
             download
             className="hero-button hero-btn-primary"
           >
