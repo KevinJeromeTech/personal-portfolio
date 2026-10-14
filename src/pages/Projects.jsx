@@ -107,7 +107,7 @@ export default function Projects() {
     <>
       <Helmet>
         <title>Projects | Kevin Jerome</title>
-        <meta name="description" content="Explore Kevin Jerome's projects — full-stack apps, React dashboards, and web experiences built with modern technologies." />
+        <meta name="description" content="Kevin Jerome's projects: client systems for Classic Menswear and Redgine Creates, ExpenseIQ, and team and course work." />
         <link rel="canonical" href="https://kevinjerome.dev/projects" />
         <meta property="og:title" content="Projects | Kevin Jerome" />
         <meta property="og:url" content="https://kevinjerome.dev/projects" />
@@ -128,8 +128,8 @@ export default function Projects() {
             <span className="page-eyebrow">Portfolio</span>
             <h1 className="page-hero-title">My Projects</h1>
             <p className="projects-lead">
-              A selection of builds that reflect my growth in full-stack development,
-              frontend engineering, product design, and technical execution.
+              Client systems built through Auralith Systems, my own full-stack
+              projects, and team and course work.
             </p>
           </div>
 

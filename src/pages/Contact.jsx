@@ -111,7 +111,7 @@ export default function Contact() {
     <>
       <Helmet>
         <title>Contact | Kevin Jerome</title>
-        <meta name="description" content="Get in touch with Kevin Jerome — open to freelance projects and full-time opportunities." />
+        <meta name="description" content="Contact Kevin Jerome, a full-stack software engineer in Miami open to full-time roles and Auralith Systems consulting work." />
         <link rel="canonical" href="https://kevinjerome.dev/contact" />
         <meta property="og:title" content="Contact | Kevin Jerome" />
         <meta property="og:url" content="https://kevinjerome.dev/contact" />

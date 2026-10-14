@@ -6,7 +6,8 @@ import {
   FaCode,
   FaServer,
   FaPuzzlePiece,
-  FaBookOpen,
+  FaRobot,
+  FaVial,
   FaHtml5,
   FaJsSquare,
   FaPython,
@@ -22,7 +23,6 @@ import {
   FaCss3Alt,
 } from "react-icons/fa";
 import { SiExpress, SiTailwindcss, SiVite, SiPostman, SiTypescript, SiNextdotjs, SiPrisma, SiPostgresql, SiAnthropic } from "react-icons/si";
-import { HiOutlineSpeakerphone } from "react-icons/hi";
 import { MdGroups2, MdOutlineAutoGraph } from "react-icons/md";
 import ScrambleText from "../components/ScrambleText.jsx";
 import "../styles/skills.css";
@@ -37,39 +37,39 @@ const fadeUp = (delay = 0) => ({
 const skillAreas = [
   {
     num: "01",
-    icon: <FaPalette />,
-    title: "Web Design",
-    desc: "Creating visually appealing, user-friendly designs that elevate your brand and captivate your audience.",
+    icon: <FaCode />,
+    title: "Frontend",
+    desc: "React, Next.js, and TypeScript interfaces, with server state managed through TanStack Query and styling in Tailwind or plain CSS.",
   },
   {
     num: "02",
-    icon: <FaCode />,
-    title: "Web Development",
-    desc: "Building fast, responsive, feature-rich websites using modern technologies and solid frontend structure.",
+    icon: <FaServer />,
+    title: "Backend & APIs",
+    desc: "REST APIs in Express and Next.js route handlers and server actions, with Zod input validation, JWT auth, and rate limiting.",
   },
   {
     num: "03",
-    icon: <FaServer />,
-    title: "Backend Development",
-    desc: "Developing APIs, databases, and server-side logic to support dynamic content and scalable functionality.",
+    icon: <FaDatabase />,
+    title: "Databases & Access Control",
+    desc: "PostgreSQL schema design through Prisma and Supabase, including row-level security policies and role-based permissions.",
   },
   {
     num: "04",
-    icon: <HiOutlineSpeakerphone />,
-    title: "Digital Strategy",
-    desc: "Planning experiences that improve online visibility, usability, and user engagement.",
+    icon: <FaRobot />,
+    title: "LLM Integration",
+    desc: "Claude API features that compute metrics in code first, then ask the model for structured output that is validated before it reaches the UI.",
   },
   {
     num: "05",
-    icon: <FaPuzzlePiece />,
-    title: "Problem Solving",
-    desc: "Applying analytical thinking and creativity to solve challenging technical problems efficiently.",
+    icon: <FaVial />,
+    title: "Testing & Deployment",
+    desc: "Vitest unit tests, Playwright end-to-end tests, GitHub Actions CI, and deployments on Vercel and Render.",
   },
   {
     num: "06",
-    icon: <FaBookOpen />,
-    title: "Continuous Learning",
-    desc: "Staying adaptable and committed to mastering new frameworks, tools, and engineering practices.",
+    icon: <FaPalette />,
+    title: "Interface Design",
+    desc: "Responsive, accessible layouts with semantic HTML, keyboard support, and Figma for design work.",
   },
 ];
 
@@ -142,21 +142,21 @@ const techGroups = [
 const proofStats = [
   {
     icon: <MdOutlineAutoGraph />,
-    stat: "2",
-    label: "Production Apps",
-    desc: "ExpenseIQ and Classic Menswear live in production, handling real users and real data.",
+    stat: "3",
+    label: "Apps in Production",
+    desc: "ExpenseIQ, the Classic Menswear storefront with StoreLens, and the Auralith Systems platform.",
   },
   {
     icon: <FaCode />,
-    stat: "6+",
-    label: "Shipped Projects",
-    desc: "From solo full-stack builds to team collaborations — all the way to deployed.",
+    stat: "30",
+    label: "Tables with Row-Level Security",
+    desc: "The StoreLens Postgres schema, with access scoped to five user roles.",
   },
   {
     icon: <FaServer />,
-    stat: "1",
-    label: "Consultancy Founded",
-    desc: "Auralith Systems — sole engineer delivering architecture, frontend, and deployment for real clients.",
+    stat: "2",
+    label: "Auralith Clients",
+    desc: "Classic Menswear and Redgine Creates, each delivered with me as the sole engineer.",
   },
 ];
 
@@ -166,7 +166,7 @@ export default function Skills() {
     <>
       <Helmet>
         <title>Skills | Kevin Jerome</title>
-        <meta name="description" content="Kevin Jerome's technical skills — React, JavaScript, Node.js, Python, databases, UI/UX, and more." />
+        <meta name="description" content="Kevin Jerome's technical skills: React, Next.js, TypeScript, Node.js, PostgreSQL, Claude API, testing, and deployment." />
         <link rel="canonical" href="https://kevinjerome.dev/skills" />
         <meta property="og:title" content="Skills | Kevin Jerome" />
         <meta property="og:url" content="https://kevinjerome.dev/skills" />
@@ -187,8 +187,8 @@ export default function Skills() {
           <span className="page-eyebrow">Skills</span>
           <h1 className="page-hero-title">What I work with</h1>
           <p className="skills-lead">
-            A detailed look at my core skills and areas of expertise spanning
-            web development, design, digital strategy, and backend thinking.
+            The tools I use and where I've used them in production: client
+            systems for Auralith Systems and my own full-stack projects.
           </p>
         </div>
       </motion.section>

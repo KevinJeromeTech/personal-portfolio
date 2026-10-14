@@ -31,7 +31,7 @@ export default function Footer() {
             <img src="/Images/Logo.webp" alt="Kevin Jerome" className="footer-logo-img" />
             <div className="footer-name-block">
               <span className="footer-name">Kevin Jerome</span>
-              <span className="footer-tagline">Full-Stack Developer · Founder, Auralith Systems</span>
+              <span className="footer-tagline">Full-Stack Software Engineer · Founder, Auralith Systems</span>
             </div>
           </div>
           <div className="footer-availability">

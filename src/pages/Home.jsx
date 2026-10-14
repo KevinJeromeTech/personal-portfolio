@@ -12,7 +12,7 @@ const jsonLd = {
   "@type": "Person",
   name: "Kevin Jerome",
   url: "https://kevinjerome.dev",
-  jobTitle: "Full-Stack Developer",
+  jobTitle: "Full-Stack Software Engineer",
   sameAs: [
     "https://github.com/KevinJeromeTech",
     "https://www.linkedin.com/in/kevinjerome-kj/",
@@ -24,10 +24,10 @@ export default function Home() {
   return (
     <>
       <Helmet>
-        <title>Kevin Jerome | Full-Stack Developer</title>
-        <meta name="description" content="Kevin Jerome — Full-Stack Developer specialising in React, Node.js, and modern web experiences. View projects, skills, and get in touch." />
+        <title>Kevin Jerome | Full-Stack Software Engineer</title>
+        <meta name="description" content="Kevin Jerome — full-stack software engineer building with React, Next.js, TypeScript, Node.js, and PostgreSQL. Founder of Auralith Systems." />
         <link rel="canonical" href="https://kevinjerome.dev/" />
-        <meta property="og:title" content="Kevin Jerome | Full-Stack Developer" />
+        <meta property="og:title" content="Kevin Jerome | Full-Stack Software Engineer" />
         <meta property="og:url" content="https://kevinjerome.dev/" />
         <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
       </Helmet>

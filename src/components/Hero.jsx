@@ -6,10 +6,8 @@ import { FiDownload } from "react-icons/fi";
 import MagneticButton from "./MagneticButton.jsx";
 
 const roles = [
-  "Full-Stack Developer",
+  "Full-Stack Software Engineer",
   "Founder, Auralith Systems",
-  "React & Next.js Engineer",
-  "Problem Solver",
 ];
 
 const stagger = {
@@ -124,9 +122,9 @@ export default function Hero() {
         </motion.div>
 
         <motion.p className="hero-bio" variants={item}>
-          CS graduate from FIU and founder of Auralith Systems. I build and ship
-          full-stack applications with React, Next.js, TypeScript, and Node.js,
-          for real clients and real users.
+          CS graduate from FIU and founder of Auralith Systems. I build full-stack
+          applications with React, Next.js, TypeScript, Node.js, and PostgreSQL,
+          including production systems for two small-business clients.
         </motion.p>
 
         <motion.div className="hero-actions" variants={item}>

@@ -56,7 +56,7 @@ export default function Navbar() {
             <img src="/Images/Logo.webp" alt="Kevin Jerome logo" className="logo-image" />
             <div className="logo-block">
               <span className="logo-text">Kevin Jerome</span>
-              <span className="logo-subtext">Full-Stack Developer</span>
+              <span className="logo-subtext">Full-Stack Software Engineer</span>
             </div>
           </Link>
 
