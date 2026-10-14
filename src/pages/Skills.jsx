@@ -148,7 +148,7 @@ const proofStats = [
   },
   {
     icon: <FaCode />,
-    stat: "30",
+    stat: "31",
     label: "Tables with Row-Level Security",
     desc: "The StoreLens Postgres schema, with access scoped to five user roles.",
   },

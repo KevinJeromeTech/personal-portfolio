@@ -72,7 +72,7 @@ const highlights = [
   {
     icon: <FaRocket />,
     title: "Full-Stack Ownership",
-    desc: "From Postgres schema and access rules to API, UI, tests, and deployment. StoreLens runs a 30-table schema with row-level security on every table.",
+    desc: "From Postgres schema and access rules to API, UI, tests, and deployment. StoreLens runs a 31-table schema with row-level security on every table.",
   },
 ];
 
@@ -215,7 +215,7 @@ export default function About() {
         <div className="about-stats">
           <StatCounter value={2} label="Auralith Clients" suffix="" />
           <StatCounter value={3} label="Apps in Production" suffix="" />
-          <StatCounter value={30} label="Tables in StoreLens Schema" suffix="" />
+          <StatCounter value={31} label="Tables in StoreLens Schema" suffix="" />
         </div>
       </motion.section>
 

@@ -64,7 +64,7 @@ export default function AboutPreview() {
           <p>
             I work across the stack: React and TypeScript interfaces, Express and
             Next.js APIs, and PostgreSQL schemas through Prisma or Supabase. On
-            StoreLens that meant 30 tables with row-level security and role-based
+            StoreLens that meant 31 tables with row-level security and role-based
             permissions, not just a UI on top of a database.
           </p>
         </div>
