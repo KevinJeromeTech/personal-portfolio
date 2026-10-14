@@ -25,7 +25,7 @@
 .projects-hero-orb-2 {
   width: 300px;
   height: 300px;
-  background: radial-gradient(circle, rgba(59, 130, 246, 0.4), transparent);
+  background: radial-gradient(circle, rgba(139, 26, 42, 0.45), transparent);
   bottom: -100px;
   left: -50px;
 }
@@ -504,7 +504,7 @@
 .project-image-wrap {
   display: block;
   position: relative;
-  background: rgba(10, 3, 6, 0.95);
+  background: rgba(16, 4, 7, 0.92);
   padding: 0.85rem;
   border: none;
   width: 100%;
