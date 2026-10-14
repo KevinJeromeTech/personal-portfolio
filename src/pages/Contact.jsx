@@ -159,6 +159,7 @@ export default function Contact() {
                     </div>
                     <div className="contact-info-text">
                       <span style={{ color: "#fff", fontSize: "1rem", fontWeight: 600 }}>{card.label}</span>
+                      <span style={{ color: "rgba(255,255,255,0.5)", fontSize: "0.82rem", marginTop: "0.1rem", display: "block" }}>{card.value}</span>
                     </div>
                   </a>
                 ))}

@@ -182,8 +182,8 @@ export default function Projects() {
                           )}
                           <h3>{project.title}</h3>
                         </div>
-                        {project.featured && (
-                          <span className="featured-badge">Featured</span>
+                        {project.impact && (
+                          <span className="impact-badge">{project.impact}</span>
                         )}
                       </div>
 

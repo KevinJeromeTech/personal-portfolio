@@ -158,12 +158,34 @@
   border-right: 1px solid rgba(255, 255, 255, 0.06);
 }
 
+.split-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
 .split-counter {
   font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.35);
+}
+
+.split-impact {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(139, 26, 42, 0.55), rgba(196, 77, 94, 0.35));
+  border: 1px solid rgba(196, 77, 94, 0.35);
+  color: rgba(255, 200, 205, 0.95);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
 }
 
 .split-title {
@@ -307,9 +329,11 @@
 .split-image-panel img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: top left;
+  object-fit: contain;
+  object-position: center top;
   display: block;
+  padding: 1.2rem;
+  background: rgba(8, 2, 5, 0.9);
 }
 
 /* Responsive */
@@ -477,6 +501,21 @@
   color: var(--burgundy);
   font-size: 0.78rem;
   font-weight: 800;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.impact-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.38rem 0.78rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(139, 26, 42, 0.55), rgba(196, 77, 94, 0.35));
+  border: 1px solid rgba(196, 77, 94, 0.35);
+  color: rgba(255, 200, 205, 0.95);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
   white-space: nowrap;
   flex-shrink: 0;
 }

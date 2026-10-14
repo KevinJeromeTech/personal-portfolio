@@ -139,21 +139,24 @@ const techGroups = [
   },
 ];
 
-const softSkills = [
+const proofStats = [
   {
-    icon: <MdGroups2 />,
-    title: "Teamwork",
-    desc: "Collaborating effectively with others to move projects forward and keep execution aligned.",
+    icon: <MdOutlineAutoGraph />,
+    stat: "2",
+    label: "Production Apps",
+    desc: "ExpenseIQ and Classic Menswear live in production, handling real users and real data.",
   },
   {
-    icon: <HiOutlineSpeakerphone />,
-    title: "Communication",
-    desc: "Articulating ideas clearly in both written and verbal formats to teammates and stakeholders.",
+    icon: <FaCode />,
+    stat: "6+",
+    label: "Shipped Projects",
+    desc: "From solo full-stack builds to team collaborations — all the way to deployed.",
   },
   {
-    icon: <FaBookOpen />,
-    title: "Adaptability",
-    desc: "Adjusting quickly to new tools, environments, and challenges while maintaining quality.",
+    icon: <FaServer />,
+    stat: "1",
+    label: "Consultancy Founded",
+    desc: "Auralith Systems — sole engineer delivering architecture, frontend, and deployment for real clients.",
   },
 ];
 
@@ -244,23 +247,24 @@ export default function Skills() {
         </div>
       </motion.section>
 
-      {/* ── Soft skills ── */}
+      {/* ── Proof of work ── */}
       <motion.section className="section-card" {...fadeUp(0)}>
         <div className="section-heading-block">
-          <ScrambleText text="Soft Skills" as="h2" />
+          <ScrambleText text="By the Numbers" as="h2" />
           <div className="heading-accent" />
         </div>
         <div className="three-column-grid">
-          {softSkills.map((skill, i) => (
+          {proofStats.map((item, i) => (
             <motion.div
-              className="soft-skill-card"
-              key={skill.title}
+              className="soft-skill-card proof-stat-card"
+              key={item.label}
               {...fadeUp(i * 0.1)}
               whileHover={{ y: -5 }}
             >
-              <div className="soft-skill-icon">{skill.icon}</div>
-              <h3>{skill.title}</h3>
-              <p>{skill.desc}</p>
+              <div className="soft-skill-icon">{item.icon}</div>
+              <div className="proof-stat-number">{item.stat}</div>
+              <h3>{item.label}</h3>
+              <p>{item.desc}</p>
             </motion.div>
           ))}
         </div>

@@ -11,6 +11,7 @@ const projects = [
     github: "#",
     demo: "https://classicmenswear.org",
     featured: true,
+    impact: "Live Client",
     stack: ["Next.js", "TypeScript", "Tailwind CSS", "React", "Vercel"],
     highlights: [
       "Founded Dec 2025. Sole engineer delivering full-stack solutions for real clients.",
@@ -31,6 +32,7 @@ const projects = [
     github: "https://github.com/KevinJeromeTech/ExpenseIQ",
     demo: "https://expense-iq-lilac.vercel.app/",
     featured: true,
+    impact: "In Production",
     stack: ["React 19", "TypeScript", "Node.js", "PostgreSQL", "Claude AI"],
     highlights: [
       "JWT auth built from scratch: bcrypt hashing, rate limiting, httpOnly refresh tokens, and password reset via Nodemailer.",
@@ -52,6 +54,7 @@ const projects = [
     github: "https://github.com/KevinJeromeTech/UEE",
     demo: "https://spiketek241.github.io/Universal-Educational-Empowerment/",
     featured: false,
+    impact: "Open Source",
     stack: ["HTML", "CSS", "JavaScript"],
     highlights: [
       "Designed a visually engaging layout around a strong educational mission.",
@@ -72,6 +75,7 @@ const projects = [
     github: "https://github.com/Kairos-Moment/kairos-app?tab=readme-ov-file",
     demo: "",
     featured: false,
+    impact: "Team Project",
     stack: ["React", "Node.js", "CSS"],
     highlights: [
       "Built around a productivity-first concept with real planning workflows.",
@@ -92,6 +96,7 @@ const projects = [
     github: "#",
     demo: "https://classicmenswear.org",
     featured: false,
+    impact: "Live Client",
     stack: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
     highlights: [
       "Designed and deployed a mobile-first storefront with inquiry and reservation functionality, replacing an outdated web presence.",
@@ -112,6 +117,7 @@ const projects = [
     github: "https://github.com/KevinJeromeTech/personal-portfolio",
     demo: "https://kevinjerome.dev/",
     featured: false,
+    impact: "Live Site",
     stack: ["React", "Vite", "PWA", "CSS"],
     highlights: [
       "Built with React, Vite, PWA support, and a full CI/CD pipeline via GitHub Actions.",

@@ -75,9 +75,14 @@ export default function ProjectCarousel() {
           >
             {/* Left: info panel */}
             <div className="split-info">
-              <span className="split-counter">
-                {String(index + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
-              </span>
+              <div className="split-top-row">
+                <span className="split-counter">
+                  {String(index + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
+                </span>
+                {project.impact && (
+                  <span className="split-impact">{project.impact}</span>
+                )}
+              </div>
 
               <h3 className="split-title">{project.title}</h3>
               <p className="split-desc">{project.description}</p>
