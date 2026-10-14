@@ -54,7 +54,7 @@ body.dark-mode .bp-back-link {
   height: 340px;
   top: -120px;
   right: -80px;
-  background: radial-gradient(circle, rgba(143, 175, 192, 0.22) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(139, 26, 42, 0.22) 0%, transparent 70%);
 }
 
 .bp-header-orb-2 {
@@ -62,7 +62,7 @@ body.dark-mode .bp-back-link {
   height: 260px;
   bottom: -80px;
   left: -60px;
-  background: radial-gradient(circle, rgba(143, 175, 192, 0.12) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(139, 26, 42, 0.12) 0%, transparent 70%);
 }
 
 .bp-header-inner {
@@ -227,8 +227,8 @@ body.dark-mode .bp-back-link {
   margin: 0 0 1.75rem;
   padding: 1rem 1.25rem;
   border-radius: 10px;
-  border: 1px solid rgba(143, 175, 192, 0.28);
-  background: rgba(143, 175, 192, 0.07);
+  border: 1px solid rgba(139, 26, 42, 0.28);
+  background: rgba(139, 26, 42, 0.07);
 }
 
 .bp-callout-icon {
@@ -323,14 +323,14 @@ body.dark-mode .bp-back-link {
   font-size: 0.95rem;
   text-decoration: none;
   border: 1px solid rgba(255, 255, 255, 0.7);
-  box-shadow: 0 10px 26px rgba(143, 175, 192, 0.2);
+  box-shadow: 0 10px 26px rgba(139, 26, 42, 0.2);
   transition: transform 0.22s ease, box-shadow 0.22s ease;
   margin-top: 0.5rem;
 }
 
 .bp-link-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 14px 32px rgba(143, 175, 192, 0.3);
+  box-shadow: 0 14px 32px rgba(139, 26, 42, 0.3);
 }
 
 /* ── Responsive ── */
