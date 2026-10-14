@@ -62,17 +62,17 @@ const highlights = [
   {
     icon: <FaFolder />,
     title: "Client Delivery",
-    desc: "I've taken a real client from contract to launched product through Auralith Systems. Scoped, built, and shipped. I know what it takes to own a project end to end, not just contribute to one.",
+    desc: "Through Auralith Systems I've taken two small businesses from requirements to production as the only engineer: data model, application, and deployment.",
   },
   {
     icon: <FaCode />,
-    title: "AI-Native Development",
-    desc: "I integrate LLM APIs as a core part of the stack, not an afterthought. ExpenseIQ uses Claude to auto-categorize transactions and generate plain-English spending insights in real time.",
+    title: "Practical LLM Integration",
+    desc: "I use LLMs where they fit and keep the math in code. ExpenseIQ and StoreLens both compute metrics server-side first, then have Claude turn them into specific recommendations.",
   },
   {
     icon: <FaRocket />,
     title: "Full-Stack Ownership",
-    desc: "From database schema to deployed UI, I own the whole thing. No handoffs, no gaps. Just a working product in production with real users.",
+    desc: "From Postgres schema and access rules to API, UI, tests, and deployment. StoreLens runs a 30-table schema with row-level security on every table.",
   },
 ];
 
@@ -104,15 +104,15 @@ const timeline = [
     icon: <FaBriefcase />,
     title: "Founder & Software Engineer",
     org: "Auralith Systems",
-    desc: "Founded a software consultancy delivering full-stack engineering solutions for small businesses. First engagement: Classic Menswear storefront redesign and StoreLens admin dashboard. Solo engineer across architecture, frontend, admin tooling, and deployment.",
+    desc: "Founded a software consultancy for small businesses. Built the Classic Menswear storefront and StoreLens operations dashboard, then reused the StoreLens architecture for Redgine Creates. Sole engineer from requirements through deployment.",
   },
   {
     year: "2023 – Present",
     type: "edu",
     icon: <FaGraduationCap />,
-    title: "Web Development, iOS, Technical Interview Prep & Foundations to AI",
+    title: "Web Development, Technical Interview Prep & Foundations of AI",
     org: "CodePath",
-    desc: "Completed intensive training in Web Development, iOS Development (SwiftUI), Technical Interview Preparation, and Foundations to AI. Capstone: Kairos, a collaborative task management app built with a 3-person team.",
+    desc: "Courses in web development, technical interview preparation, and foundations of AI. Capstone: Kairos, a collaborative task-management app built with a 3-person team.",
   },
   {
     year: "Jan 2022 – Aug 2026",
@@ -128,7 +128,15 @@ const timeline = [
     icon: <FaStar />,
     title: "First Line of Code",
     org: "Self-taught",
-    desc: "Discovered programming through self-study, built my first projects, and developed a genuine passion for crafting clean and intuitive user experiences.",
+    desc: "Started programming through self-study and built my first projects.",
+  },
+  {
+    year: "Dec 2019 – Present",
+    type: "work",
+    icon: <FaBriefcase />,
+    title: "Sales Associate / Floor Lead",
+    org: "Classic Menswear Inc",
+    desc: "Retail floor lead at the Miami menswear store that became Auralith's first client.",
   },
 ];
 
@@ -137,7 +145,7 @@ export default function About() {
     <>
       <Helmet>
         <title>About | Kevin Jerome</title>
-        <meta name="description" content="Learn about Kevin Jerome — a Full-Stack Developer passionate about React, Node.js, clean UI, and building real-world web products." />
+        <meta name="description" content="Kevin Jerome — full-stack software engineer, FIU Computer Science graduate, and founder of Auralith Systems." />
         <link rel="canonical" href="https://kevinjerome.dev/about" />
         <meta property="og:title" content="About | Kevin Jerome" />
         <meta property="og:url" content="https://kevinjerome.dev/about" />
@@ -175,15 +183,15 @@ export default function About() {
               Engineer by degree.<br />Founder by choice.
             </h1>
             <p className="about-bio-text">
-              I&apos;m Kevin Jerome. I graduated from FIU in August 2026 with a CS degree
-              and a company already running. Auralith Systems, the consultancy I founded in
-              December 2025, had its first client delivery before I walked across the stage.
+              I&apos;m Kevin Jerome. I graduated from FIU in August 2026 with a B.A. in Computer
+              Science and a minor in Entrepreneurship. In December 2025 I founded Auralith
+              Systems, a software consultancy, and delivered its first client system before
+              graduating.
             </p>
             <p className="about-bio-text">
-              I build full-stack applications with React, Next.js, TypeScript, and Node.js,
-              and I&apos;ve been integrating LLM APIs into production software since before
-              it was a resume buzzword. Based in Miami, open to full-time roles, contract
-              work, and problems that don&apos;t have a clean answer yet.
+              I build full-stack applications with React, Next.js, TypeScript, Node.js, and
+              PostgreSQL. I&apos;m based in Miami and looking for my first full-time software
+              engineering role.
             </p>
             <div className="about-intro-actions">
               <Link to="/projects" className="hero-button hero-btn-primary">
@@ -205,10 +213,9 @@ export default function About() {
       {/* ── Stats ── */}
       <motion.section className="section-card about-stats-section" {...fadeUp(0)}>
         <div className="about-stats">
-          <StatCounter value={5} label="Projects Shipped" />
-          <StatCounter value={15} label="Technologies" />
-          <StatCounter value={1} label="Live Client" suffix="" />
-          <StatCounter value={200} label="Commits Pushed" />
+          <StatCounter value={2} label="Auralith Clients" suffix="" />
+          <StatCounter value={3} label="Apps in Production" suffix="" />
+          <StatCounter value={30} label="Tables in StoreLens Schema" suffix="" />
         </div>
       </motion.section>
 

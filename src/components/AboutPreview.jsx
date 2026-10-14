@@ -1,9 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 
 const stats = [
-  { value: 5,  label: "Projects Shipped", suffix: "+" },
-  { value: 15, label: "Technologies",     suffix: "+" },
-  { value: 1,  label: "Live Client",      suffix: "" },
+  { value: 2,  label: "Auralith Clients",   suffix: "" },
+  { value: 3,  label: "Apps in Production", suffix: "" },
 ];
 
 function StatCounter({ value, label, suffix }) {
@@ -46,12 +45,11 @@ export default function AboutPreview() {
     <section className="about-preview section-card">
       <h2>About Me</h2>
       <p>
-        Full-Stack Developer and CS graduate from Florida International University.
-        I design and build modern web applications end to end with React, Next.js,
-        TypeScript, Node.js, and PostgreSQL, integrating LLM APIs through Anthropic
-        Claude and shipping everything through real CI/CD pipelines on Vercel and
-        Render. My focus is clean architecture, accessible interfaces, and performance
-        that holds up in production, not just in a demo.
+        Full-stack software engineer and CS graduate from Florida International
+        University. I build web applications end to end with React, Next.js,
+        TypeScript, Node.js, and PostgreSQL, deploy them on Vercel and Render, and
+        use the Claude API where it does real work, like turning computed spending
+        or inventory data into specific recommendations.
       </p>
 
       <div className="about-stats">
@@ -64,43 +62,39 @@ export default function AboutPreview() {
         <div className="preview-card">
           <h3>Full-Stack Builds</h3>
           <p>
-            I work across the entire stack, from React and TypeScript interfaces
-            to Node.js and Express APIs backed by PostgreSQL and Prisma. That
-            means designing the database schema, building the auth and business
-            logic, and wiring it all into a polished UI, then deploying and
-            monitoring it like a real product.
+            I work across the stack: React and TypeScript interfaces, Express and
+            Next.js APIs, and PostgreSQL schemas through Prisma or Supabase. On
+            StoreLens that meant 30 tables with row-level security and role-based
+            permissions, not just a UI on top of a database.
           </p>
         </div>
 
         <div className="preview-card">
-          <h3>Real Experience</h3>
+          <h3>Client Work</h3>
           <p>
-            My experience spans client work through Auralith Systems, including
-            the StoreLens admin dashboard for Classic Menswear, alongside
-            self-directed builds like ExpenseIQ and this portfolio. Each project
-            pushed me to learn a new layer of the stack, from LLM API integration
-            to automated testing and production deployment.
+            Through Auralith Systems I built the Classic Menswear storefront and
+            the StoreLens operations dashboard, then reused that architecture for
+            a second client, Redgine Creates. ExpenseIQ, my own full-stack app,
+            is where I worked through auth, testing, and CI.
           </p>
         </div>
 
         <div className="preview-card">
-          <h3>Result-Oriented</h3>
+          <h3>From Requirements to Software</h3>
           <p>
-            I treat every project like it has a real stakeholder, because most
-            of mine have. That means defining a clear goal up front, scoping the
-            work realistically, and shipping something that actually solves the
-            problem rather than something that just looks good in a screenshot.
+            My client projects start with a business owner describing how things
+            work today, such as inventory tracked in spreadsheets. I turn
+            that into requirements, scope it, and build the system that replaces
+            the manual process.
           </p>
         </div>
 
         <div className="preview-card">
-          <h3>User-First Design</h3>
+          <h3>Built for Real Workflows</h3>
           <p>
-            I design interfaces around how people actually use them: clear
-            visual hierarchy, fast load times, keyboard and screen-reader
-            support, and thoughtful micro-interactions. Accessibility and
-            performance aren't an afterthought, they're part of the same design
-            decisions from the start.
+            StoreLens is a tool for store staff, so the dashboard is organized
+            around their daily tasks: QR-code stock counts, tailoring work
+            orders, and customer reservations.
           </p>
         </div>
       </div>
