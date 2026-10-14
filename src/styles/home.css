@@ -207,34 +207,25 @@
   100% { background-position: 0% center; }
 }
 
-/* ── Typing animation ── */
+/* ── Role rotator ── */
 .hero-role-wrap {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0;
   margin-bottom: 1.4rem;
-  min-height: 2.2rem;
+  min-height: 2.4rem;
+  overflow: hidden;
 }
 
 .hero-role {
+  display: inline-block;
   font-size: 1.35rem;
   font-weight: 700;
-  color: rgba(255, 255, 255, 0.9);
   letter-spacing: 0.01em;
-}
-
-.typing-cursor {
-  font-size: 1.35rem;
-  font-weight: 300;
-  color: rgba(255, 200, 200, 0.85);
-  animation: blinkCursor 1s step-end infinite;
-  margin-left: 2px;
-}
-
-@keyframes blinkCursor {
-  0%, 100% { opacity: 1; }
-  50%       { opacity: 0; }
+  background: linear-gradient(90deg, #fff 0%, rgba(255,200,200,0.9) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .hero-bio {
@@ -403,10 +394,6 @@
 
 @media (max-width: 600px) {
   .hero-role {
-    font-size: 1.12rem;
-  }
-
-  .typing-cursor {
     font-size: 1.12rem;
   }
 

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { motion } from "motion/react";
+import { motion, AnimatePresence } from "motion/react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { FiDownload } from "react-icons/fi";
 import MagneticButton from "./MagneticButton.jsx";
@@ -11,39 +11,6 @@ const roles = [
   "React & Next.js Engineer",
   "Problem Solver",
 ];
-
-function useTypingEffect(words) {
-  const [displayed, setDisplayed] = useState("");
-  const [wordIndex, setWordIndex] = useState(0);
-  const [phase, setPhase] = useState("typing");
-
-  useEffect(() => {
-    const current = words[wordIndex];
-    let timeout;
-
-    if (phase === "typing") {
-      if (displayed === current) {
-        timeout = setTimeout(() => setPhase("deleting"), 2200);
-      } else {
-        timeout = setTimeout(
-          () => setDisplayed(current.slice(0, displayed.length + 1)),
-          80
-        );
-      }
-    } else {
-      if (displayed === "") {
-        setWordIndex((i) => (i + 1) % words.length);
-        setPhase("typing");
-        return;
-      }
-      timeout = setTimeout(() => setDisplayed(displayed.slice(0, -1)), 45);
-    }
-
-    return () => clearTimeout(timeout);
-  }, [displayed, phase, wordIndex, words]);
-
-  return displayed;
-}
 
 const stagger = {
   hidden: {},
@@ -73,7 +40,12 @@ const particles = [
 ];
 
 export default function Hero() {
-  const role = useTypingEffect(roles);
+  const [roleIndex, setRoleIndex] = useState(0);
+
+  useEffect(() => {
+    const id = setInterval(() => setRoleIndex((i) => (i + 1) % roles.length), 2800);
+    return () => clearInterval(id);
+  }, []);
 
   return (
     <section className="hero section-card hero-enhanced">
@@ -137,8 +109,18 @@ export default function Hero() {
         </motion.h1>
 
         <motion.div className="hero-role-wrap" variants={item}>
-          <span className="hero-role">{role}</span>
-          <span className="typing-cursor" aria-hidden="true">|</span>
+          <AnimatePresence mode="wait">
+            <motion.span
+              key={roleIndex}
+              className="hero-role"
+              initial={{ y: 28, opacity: 0, filter: "blur(6px)" }}
+              animate={{ y: 0,  opacity: 1, filter: "blur(0px)" }}
+              exit={{    y: -28, opacity: 0, filter: "blur(6px)" }}
+              transition={{ duration: 0.38, ease: [0.22, 1, 0.36, 1] }}
+            >
+              {roles[roleIndex]}
+            </motion.span>
+          </AnimatePresence>
         </motion.div>
 
         <motion.p className="hero-bio" variants={item}>
