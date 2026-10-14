@@ -3,7 +3,7 @@
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: rgba(15, 17, 25, 0.78);
+  background: rgba(10, 3, 6, 0.78);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.04);
@@ -11,7 +11,7 @@
 }
 
 .site-header.scrolled {
-  background: rgba(15, 17, 25, 0.97);
+  background: rgba(10, 3, 6, 0.97);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.28);
   border-bottom-color: rgba(255, 255, 255, 0.07);
 }
@@ -40,7 +40,7 @@
   height: 48px;
   object-fit: cover;
   border-radius: 14px;
-  box-shadow: 0 10px 24px rgba(143, 175, 192, 0.28);
+  box-shadow: 0 10px 24px rgba(139, 26, 42, 0.28);
   flex-shrink: 0;
 }
 
@@ -101,9 +101,9 @@
   inset: 0;
   z-index: -1;
   border-radius: 8px;
-  background: linear-gradient(135deg, rgba(143, 175, 192, 0.32), rgba(184, 208, 224, 0.16));
-  border: 1px solid rgba(143, 175, 192, 0.4);
-  box-shadow: 0 4px 16px rgba(143, 175, 192, 0.2);
+  background: linear-gradient(135deg, rgba(139, 26, 42, 0.32), rgba(107, 18, 32, 0.16));
+  border: 1px solid rgba(139, 26, 42, 0.4);
+  box-shadow: 0 4px 16px rgba(139, 26, 42, 0.2);
 }
 
 .nav-link-icon {
@@ -155,8 +155,8 @@
 }
 
 .nav-social-btn:hover {
-  background: rgba(143, 175, 192, 0.18);
-  border-color: rgba(143, 175, 192, 0.35);
+  background: rgba(139, 26, 42, 0.18);
+  border-color: rgba(139, 26, 42, 0.35);
   color: #ffffff;
   transform: translateY(-2px);
 }
@@ -173,7 +173,7 @@
   font-weight: 800;
   font-size: 0.93rem;
   line-height: 1;
-  box-shadow: 0 10px 26px rgba(143, 175, 192, 0.2);
+  box-shadow: 0 10px 26px rgba(139, 26, 42, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.7);
   transition: transform 0.22s ease, box-shadow 0.22s ease, opacity 0.22s ease;
   margin-left: 0.5rem;
@@ -181,7 +181,7 @@
 
 .button-contact:hover {
   transform: translateY(-2px);
-  box-shadow: 0 14px 32px rgba(143, 175, 192, 0.28);
+  box-shadow: 0 14px 32px rgba(139, 26, 42, 0.28);
 }
 
 .button-contact.active {
@@ -257,7 +257,7 @@
   left: 0;
   right: 0;
   z-index: 950;
-  background: rgba(12, 14, 22, 0.98);
+  background: rgba(8, 2, 4, 0.98);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.07);
@@ -293,9 +293,9 @@
 }
 
 .mobile-nav-link.active {
-  background: rgba(143, 175, 192, 0.22);
+  background: rgba(139, 26, 42, 0.22);
   color: #ffffff;
-  border-color: rgba(143, 175, 192, 0.35);
+  border-color: rgba(139, 26, 42, 0.35);
 }
 
 .mobile-contact-link {
@@ -326,7 +326,7 @@
 }
 
 .mobile-nav-link.active .mobile-nav-icon {
-  background: rgba(143, 175, 192, 0.45);
+  background: rgba(139, 26, 42, 0.45);
   color: #ffffff;
 }
 
