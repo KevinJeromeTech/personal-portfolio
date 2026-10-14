@@ -150,20 +150,90 @@ export default function Projects() {
         </section>
 
         <section className="section-card projects-grid-section">
-          <motion.div className="upgraded-grid" layout>
+          <div className="projects-layout">
             <AnimatePresence mode="popLayout">
               {filteredProjects.map((project, index) => {
                 const isInProgress = project.status === "In Progress";
+
+                if (project.featured) {
+                  return (
+                    <motion.article
+                      className={`project-featured-card ${isInProgress ? "in-progress-project" : ""}`}
+                      key={project.id}
+                      layout
+                      initial={{ opacity: 0, y: 28 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, scale: 0.96 }}
+                      transition={{ duration: 0.42, delay: index * 0.06, ease: [0.22, 1, 0.36, 1] }}
+                    >
+                      <div className="project-featured-content">
+                        <div className="project-featured-meta">
+                          {project.status && (
+                            <span className="project-status">{project.status}</span>
+                          )}
+                          {project.impact && (
+                            <span className="impact-badge">{project.impact}</span>
+                          )}
+                        </div>
+                        <h3 className="project-featured-title">{project.title}</h3>
+                        <p className="project-featured-desc">{project.description}</p>
+                        {project.stack?.length > 0 && (
+                          <div className="project-stack">
+                            {project.stack.slice(0, 5).map((item) => (
+                              <span key={item} className="project-badge">{item}</span>
+                            ))}
+                          </div>
+                        )}
+                        <div className="project-links">
+                          {project.demo ? (
+                            <a href={project.demo} target="_blank" rel="noreferrer">Live Demo</a>
+                          ) : (
+                            <span className="project-link-disabled">Live Demo</span>
+                          )}
+                          {project.github ? (
+                            <a
+                              href={project.github}
+                              target="_blank"
+                              rel="noreferrer"
+                              className={project.github === "#" ? "link-disabled" : ""}
+                            >
+                              GitHub
+                            </a>
+                          ) : (
+                            <span className="project-link-disabled">GitHub</span>
+                          )}
+                          <button
+                            type="button"
+                            className="project-modal-button"
+                            onClick={() => openModal(project)}
+                          >
+                            Details
+                          </button>
+                        </div>
+                      </div>
+                      <button
+                        type="button"
+                        className="project-featured-image-btn project-image-button"
+                        onClick={() => openModal(project)}
+                        aria-label={`Open details for ${project.title}`}
+                      >
+                        <ProjectImage src={project.image} alt={project.title} />
+                        <div className="project-featured-overlay" aria-hidden="true">View Project</div>
+                      </button>
+                    </motion.article>
+                  );
+                }
+
                 return (
                   <motion.article
-                    className={`project-showcase-card ${project.featured ? "featured-project" : ""} ${isInProgress ? "in-progress-project" : ""}`}
+                    className={`project-regular-card ${isInProgress ? "in-progress-project" : ""}`}
                     key={project.id}
                     layout
                     initial={{ opacity: 0, y: 24, scale: 0.97 }}
-                    animate={{ opacity: 1, y: 0,  scale: 1 }}
-                    exit={{    opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.95 }}
                     transition={{ duration: 0.38, delay: index * 0.06, ease: [0.22, 1, 0.36, 1] }}
-                    whileHover={{ y: -6, scale: 1.01 }}
+                    whileHover={{ y: -6 }}
                   >
                     <button
                       type="button"
@@ -173,7 +243,6 @@ export default function Projects() {
                     >
                       <ProjectImage src={project.image} alt={project.title} />
                     </button>
-
                     <div className="project-copy">
                       <div className="project-top-row">
                         <div className="project-title-group">
@@ -186,9 +255,7 @@ export default function Projects() {
                           <span className="impact-badge">{project.impact}</span>
                         )}
                       </div>
-
                       <p>{project.description}</p>
-
                       {project.stack?.length > 0 && (
                         <div className="project-stack">
                           {project.stack.map((item) => (
@@ -203,7 +270,6 @@ export default function Projects() {
                           ))}
                         </div>
                       )}
-
                       <div className="project-links">
                         {project.demo ? (
                           <a href={project.demo} target="_blank" rel="noreferrer">Live Demo</a>
@@ -235,7 +301,7 @@ export default function Projects() {
                 );
               })}
             </AnimatePresence>
-          </motion.div>
+          </div>
         </section>
       </motion.main>
       {/* Modal */}
