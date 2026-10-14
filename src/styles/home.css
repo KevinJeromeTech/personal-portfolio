@@ -375,22 +375,6 @@
   transform: scale(1.2) rotate(3deg);
 }
 
-/* ── Carousel pill dots ── */
-.carousel-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 999px;
-  border: none;
-  background: rgba(255, 255, 255, 0.28);
-  cursor: pointer;
-  transition: all 0.35s ease;
-  padding: 0;
-}
-
-.carousel-dot.active {
-  background: #ffffff;
-  width: 30px;
-}
 
 @media (max-width: 600px) {
   .hero-role {
