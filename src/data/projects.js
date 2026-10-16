@@ -6,8 +6,8 @@ const projects = [
       "Software consultancy I founded in Dec 2025 and run as the sole engineer. Two client engagements delivered: Classic Menswear and Redgine Creates.",
     longDescription:
       "Auralith Systems is the software consultancy I founded in December 2025. I handle every engagement end to end as the only engineer: gathering requirements from the business owner, designing the data model, building the application, and deploying it. The first engagement was a full storefront and back-office system for Classic Menswear, a Miami menswear retailer. I then reused the same inventory and admin architecture for a second client, Redgine Creates. Auralith also runs on its own platform, with a public site, client dashboard, and admin portal.",
-    image: "/Images/StoreLens.webp",
-    imageFallback: "/Images/StoreLens.png",
+    image: "/Logo/AuralithLogo.webp",
+    imageFallback: "/Logo/AuralithLogo.png",
     github: "#",
     demo: "https://auralith-systems.vercel.app",
     featured: true,
