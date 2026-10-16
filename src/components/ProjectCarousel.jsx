@@ -53,8 +53,8 @@ export default function ProjectCarousel() {
       <div className="section-heading">
         <h2>Featured Projects</h2>
         <p>
-          A curated look at standout builds that reflect my skills in frontend,
-          full-stack development, and product-minded design.
+          Systems I&apos;ve built and shipped, for clients and for myself. Full
+          case studies are on the Projects page.
         </p>
       </div>
 

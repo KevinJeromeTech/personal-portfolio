@@ -1,23 +1,23 @@
-import { FaCode, FaServer, FaPalette } from "react-icons/fa";
+import { FaCode, FaServer, FaDatabase } from "react-icons/fa";
 
 const skills = [
   {
     icon: <FaCode />,
     title: "Frontend Engineering",
     description:
-      "Building responsive, performant interfaces with React, Next.js, TypeScript, and modern CSS.",
+      "React, Next.js, and TypeScript interfaces, with server state handled by TanStack Query.",
   },
   {
     icon: <FaServer />,
     title: "Backend Development",
     description:
-      "REST APIs, server-side logic, and database design using Node.js, Express, and PostgreSQL.",
+      "REST APIs in Express and Next.js, with Zod input validation, JWT auth, and rate limiting.",
   },
   {
-    icon: <FaPalette />,
-    title: "UI Design",
+    icon: <FaDatabase />,
+    title: "Databases & Access Control",
     description:
-      "Clean, modern visual design with strong hierarchy, thoughtful spacing, and polished detail.",
+      "PostgreSQL schemas through Prisma and Supabase, including row-level security and role-based permissions.",
   },
 ];
 
