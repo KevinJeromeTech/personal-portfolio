@@ -39,7 +39,7 @@ const work = [
     ],
     visual: {
       type: "image",
-      src: "/Home/expenseiq-budgets.webp",
+      src: "/CaseStudies/expenseiq-budgets.webp",
       width: 1400,
       height: 710,
       alt: "ExpenseIQ category budgets and a spending-by-category donut chart",
@@ -63,7 +63,7 @@ const work = [
     ],
     visual: {
       type: "image",
-      src: "/Home/auralith-dashboard.webp",
+      src: "/CaseStudies/auralith-dashboard.webp",
       width: 1600,
       height: 882,
       alt: "Auralith Systems admin dashboard with leads, projects, revenue, and quick actions",
@@ -83,14 +83,14 @@ function WorkLink({ link }) {
   );
 }
 
-export default function SelectedWork() {
+export default function CaseStudies() {
   return (
-    <section id="work" className="hm-work" aria-labelledby="hm-work-title">
+    <section className="section-card cs-wrap" aria-labelledby="cs-title">
       <header className="hm-section-head">
-        <h2 id="hm-work-title">Selected work</h2>
+        <h2 id="cs-title">Case studies</h2>
         <p>
-          Three systems in production: one for a client, one for myself, and
-          one that runs my consultancy.
+          A closer look at three systems in production: one for a client, one
+          for myself, and one that runs my consultancy.
         </p>
       </header>
 
@@ -127,9 +127,6 @@ export default function SelectedWork() {
         </article>
       ))}
 
-      <p className="hm-work-more">
-        <Link to="/projects" className="hm-link">All projects, including team and course work</Link>
-      </p>
     </section>
   );
 }

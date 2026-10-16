@@ -1,0 +1,336 @@
+/* Case studies on the Projects page. Lives inside a .section-card,
+   so it uses the dark palette in both themes. Selectors are prefixed
+   with .cs-wrap to outrank the generic .section-card p/span/li rules. */
+
+.cs-wrap {
+  --hm-ink: #f5eff0;
+  --hm-muted: #c3b2b7;
+  --hm-rule: rgba(255, 255, 255, 0.12);
+  --hm-accent: #e07484;
+  --hm-shot-border: rgba(255, 255, 255, 0.12);
+  --hm-shot-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+}
+
+.cs-wrap :where(h2, h3, p, ul) {
+  margin: 0;
+}
+
+.cs-wrap h2,
+.cs-wrap h3 {
+  color: var(--hm-ink);
+}
+
+.cs-wrap .hm-section-head h2 {
+  font-size: clamp(1.9rem, 3.4vw, 2.6rem);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+  margin-bottom: 0.8rem;
+}
+
+.cs-wrap .hm-section-head p {
+  color: var(--hm-muted);
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.cs-wrap .hm-shot {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  border: 1px solid var(--hm-shot-border);
+  box-shadow: var(--hm-shot-shadow);
+}
+
+.cs-wrap .hm-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--hm-accent);
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.25em;
+}
+
+.cs-wrap .hm-link svg {
+  font-size: 0.85em;
+}
+
+.cs-wrap .hm-link:hover {
+  text-decoration-thickness: 2px;
+}
+
+.cs-wrap .hm-page a:focus-visible {
+  outline: 3px solid var(--hm-accent);
+  outline-offset: 3px;
+}
+
+.cs-wrap .hm-shot {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  border: 1px solid var(--hm-shot-border);
+  box-shadow: var(--hm-shot-shadow);
+}
+
+
+.cs-wrap .hm-section-head {
+  max-width: 60ch;
+  margin-bottom: 1rem;
+}
+
+
+/*.cs-wrap ── Cases ── */
+
+
+.cs-wrap .hm-case {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.15fr);
+  gap: 4rem;
+  align-items: center;
+  padding: 4.5rem 0;
+  border-top: 1px solid var(--hm-rule);
+}
+
+.cs-wrap .hm-case:first-of-type {
+  border-top: 0;
+  padding-top: 2.5rem;
+}
+
+.cs-wrap .hm-case:nth-of-type(even) .hm-case-text {
+  order: 2;
+}
+
+.cs-wrap .hm-case-context {
+  color: var(--hm-accent);
+  font-weight: 700;
+  font-size: 0.95rem;
+  margin-bottom: 0.6rem;
+}
+
+.cs-wrap .hm-case h3 {
+  font-size: clamp(1.6rem, 2.8vw, 2.15rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin-bottom: 1.1rem;
+}
+
+.cs-wrap .hm-case-summary {
+  font-size: 1.05rem;
+  line-height: 1.65;
+  max-width: 58ch;
+  margin-bottom: 1.4rem;
+}
+
+.cs-wrap .hm-case-facts {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.4rem;
+  display: grid;
+  gap: 0.8rem;
+  max-width: 58ch;
+}
+
+.cs-wrap .hm-case-facts li {
+  position: relative;
+  padding-left: 1.4rem;
+  line-height: 1.55;
+  color: var(--hm-ink);
+}
+
+.cs-wrap .hm-case-facts li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.72em;
+  width: 0.65rem;
+  height: 2px;
+  background: var(--hm-accent);
+}
+
+.cs-wrap .hm-case-stack {
+  color: var(--hm-muted);
+  font-size: 0.93rem;
+  line-height: 1.5;
+  margin-bottom: 1.2rem;
+}
+
+.cs-wrap .hm-case-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 1.6rem;
+}
+
+
+/*.cs-wrap ── Reservation diagram (always on a dark panel) ──────────── */
+
+.cs-wrap .hm-diagram {
+  margin: 0;
+  background: #1c0b0f;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  padding: 1.6rem 1.6rem 1.2rem;
+  box-shadow: var(--hm-shot-shadow);
+}
+
+.cs-wrap .hm-diagram svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  font-family: inherit;
+}
+
+.cs-wrap .hm-diagram figcaption {
+  color: #c9b8bc;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-top: 1rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cs-wrap .hm-diagram .d-box {
+  fill: rgba(255, 255, 255, 0.04);
+  stroke: rgba(255, 255, 255, 0.22);
+}
+
+.cs-wrap .hm-diagram .d-tx {
+  fill: rgba(139, 26, 42, 0.22);
+  stroke: #c44d5e;
+  stroke-width: 1.5;
+}
+
+.cs-wrap .hm-diagram .d-ok {
+  fill: rgba(196, 77, 94, 0.3);
+  stroke: #e07484;
+  stroke-width: 1.5;
+}
+
+.cs-wrap .hm-diagram .d-line {
+  stroke: #e07484;
+  stroke-width: 2;
+}
+
+.cs-wrap .hm-diagram .d-line-dim {
+  stroke: rgba(255, 255, 255, 0.4);
+  stroke-dasharray: 4 4;
+}
+
+.cs-wrap .hm-diagram .d-arrowhead {
+  fill: #e07484;
+}
+
+.cs-wrap .hm-diagram .d-strong {
+  fill: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.cs-wrap .hm-diagram .d-muted {
+  fill: #c9b8bc;
+  font-size: 13px;
+}
+
+.cs-wrap .hm-diagram .d-body {
+  fill: #f2e9eb;
+  font-size: 14px;
+}
+
+.cs-wrap .hm-diagram .d-code {
+  fill: #ffffff;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.cs-wrap .hm-diagram .d-num-bg {
+  fill: #8b1a2a;
+}
+
+.cs-wrap .hm-diagram .d-num {
+  fill: #ffffff;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.cs-wrap .hm-diagram .d-note {
+  fill: #a8969b;
+  font-size: 12.5px;
+}
+
+.cs-wrap .hm-diagram-mobile {
+  display: none;
+  color: #f2e9eb;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.cs-wrap .hm-diagram-mobile p { margin: 0; }
+
+.cs-wrap .hm-diagram-mobile .dm-pair { color: #c9b8bc; margin-bottom: 0.9rem; }
+
+.cs-wrap .hm-diagram-mobile .dm-tx {
+  border: 1.5px solid #c44d5e;
+  background: rgba(139, 26, 42, 0.22);
+  border-radius: 10px;
+  padding: 0.9rem 1rem;
+}
+
+.cs-wrap .hm-diagram-mobile .dm-code {
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.cs-wrap .hm-diagram-mobile .dm-muted { color: #c9b8bc; font-size: 0.85rem; margin-bottom: 0.6rem; }
+
+.cs-wrap .hm-diagram-mobile ol { margin: 0; padding-left: 1.2rem; display: grid; gap: 0.35rem; }
+
+.cs-wrap .hm-diagram-mobile .dm-outcomes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.7rem;
+  margin-top: 0.9rem;
+}
+
+.cs-wrap .hm-diagram-mobile .dm-outcomes p {
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 10px;
+  padding: 0.7rem 0.8rem;
+  color: #c9b8bc;
+  font-size: 0.88rem;
+}
+
+.cs-wrap .hm-diagram-mobile .dm-outcomes strong {
+  display: block;
+  color: #ffffff;
+  margin-bottom: 0.2rem;
+}
+
+.cs-wrap .hm-diagram-mobile .dm-outcomes .dm-ok {
+  background: rgba(196, 77, 94, 0.3);
+  border-color: #e07484;
+}
+
+
+@media (max-width: 960px) {
+  .cs-wrap .hm-case {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2.5rem;
+    padding: 3rem 0;
+  }
+
+  .cs-wrap .hm-case:nth-of-type(even) .hm-case-text {
+    order: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .cs-wrap .hm-diagram .hm-diagram-svg { display: none; }
+  .cs-wrap .hm-diagram .hm-diagram-mobile { display: block; }
+  .cs-wrap .hm-diagram { padding: 1rem 0.9rem 0.9rem; }
+}
