@@ -6,8 +6,8 @@ const projects = [
       "Software consultancy I founded in Dec 2025 and run as the sole engineer. Two client engagements delivered: Classic Menswear and Redgine Creates.",
     longDescription:
       "Auralith Systems is the software consultancy I founded in December 2025. I handle every engagement end to end as the only engineer: gathering requirements from the business owner, designing the data model, building the application, and deploying it. The first engagement was a full storefront and back-office system for Classic Menswear, a Miami menswear retailer. I then reused the same inventory and admin architecture for a second client, Redgine Creates. Auralith also runs on its own platform, with a public site, client dashboard, and admin portal.",
-    image: "/Images/StoreLens.webp",
-    imageFallback: "/Images/StoreLens.png",
+    image: "/Logo/AuralithLogo.webp",
+    imageFallback: "/Logo/AuralithLogo.png",
     github: "#",
     demo: "https://auralith-systems.vercel.app",
     featured: true,
@@ -26,7 +26,7 @@ const projects = [
     description:
       "Production storefront and back-office system for a Miami menswear retailer: online reservations, customer accounts, inventory, tailoring work orders, and a staff dashboard (StoreLens) with role-based access.",
     longDescription:
-      "Classic Menswear tracked its inventory in spreadsheets. I built a replacement through Auralith Systems: a Next.js storefront where customers browse stock, reserve items, and manage their accounts, backed by StoreLens, a staff dashboard for inventory, orders, alterations, and storefront content. The data layer is a 30-table Supabase Postgres schema with row-level security enabled on every table and access controlled by role (owner, staff, tailor, consultant, customer). I've also worked at Classic Menswear on the sales floor since 2019.",
+      "Classic Menswear tracked its inventory in spreadsheets. I built a replacement through Auralith Systems: a Next.js storefront where customers browse stock, reserve items, and manage their accounts, backed by StoreLens, a staff dashboard for inventory, orders, alterations, and storefront content. The data layer is a 31-table Supabase Postgres schema with row-level security enabled on every table and access controlled by role (owner, staff, tailor, consultant, customer). I've also worked at Classic Menswear on the sales floor since 2019.",
     image: "/Images/StoreLens.webp",
     imageFallback: "/Images/StoreLens.png",
     github: "https://github.com/KevinJeromeTech/classic-menswear-redesign",
@@ -35,8 +35,8 @@ const projects = [
     impact: "Live Client",
     stack: ["Next.js", "TypeScript", "Supabase (Postgres)", "Tailwind CSS", "Claude API", "Playwright"],
     highlights: [
-      "Designed a 30-table Postgres schema with row-level security on every table and 65 access policies scoped to five user roles plus a per-permission table.",
-      "Built online reservations with emailed confirm/cancel links and a nightly Vercel cron job that releases expired holds back into stock.",
+      "Designed a 31-table Postgres schema with row-level security on every table, five user roles, and per-role permissions the owner configures from the dashboard.",
+      "Built 24-hour reservation holds in a single Postgres transaction that locks inventory rows first, so two customers can't both reserve the last unit.",
       "StoreLens dashboard: inventory with size variants, stock-movement history, QR-code stock counts, orders, and tailoring work orders.",
       "Owner-facing insights: server action aggregates sales, inventory, and tailoring data and asks Claude for restock alerts and slow-mover recommendations.",
       "Transactional email via Resend; Playwright end-to-end tests cover the storefront and authentication gating.",

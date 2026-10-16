@@ -1,0 +1,564 @@
+/* ─────────────────────────────────────────────────────────────
+   Home page. Open layout instead of stacked cards: the work
+   (real screenshots + the reservation diagram) carries the page.
+   ───────────────────────────────────────────────────────────── */
+
+.hm-page {
+  --hm-ink: #1d1416;
+  --hm-muted: #5d4c50;
+  --hm-rule: rgba(45, 10, 16, 0.13);
+  --hm-accent: #8b1a2a;
+  --hm-shot-border: rgba(45, 10, 16, 0.14);
+  --hm-shot-shadow: 0 24px 60px rgba(45, 10, 16, 0.22);
+  color: var(--hm-ink);
+  padding-top: 0;
+  padding-bottom: 3rem;
+}
+
+body.dark-mode .hm-page {
+  --hm-ink: #f5eff0;
+  --hm-muted: #bcaab0;
+  --hm-rule: rgba(255, 255, 255, 0.11);
+  --hm-accent: #c44d5e;
+  --hm-shot-border: rgba(255, 255, 255, 0.12);
+  --hm-shot-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+}
+
+:where(.hm-page) :where(h1, h2, h3) {
+  color: var(--hm-ink);
+  margin: 0;
+}
+
+:where(.hm-page) :where(p) {
+  margin: 0;
+}
+
+/* ── Shared controls ───────────────────────────────────────── */
+
+.hm-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.9rem 1.2rem;
+}
+
+.hm-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.35rem;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 0.98rem;
+  line-height: 1;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.hm-btn-primary {
+  background: #8b1a2a;
+  color: #ffffff;
+  border: 1px solid #8b1a2a;
+}
+
+.hm-btn-primary:hover {
+  background: #6b1220;
+  border-color: #6b1220;
+}
+
+.hm-btn-quiet {
+  color: var(--hm-ink);
+  border: 1px solid var(--hm-rule);
+  background: transparent;
+}
+
+.hm-btn-quiet:hover {
+  border-color: var(--hm-accent);
+}
+
+.hm-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--hm-accent);
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.25em;
+}
+
+.hm-link svg {
+  font-size: 0.85em;
+}
+
+.hm-link:hover {
+  text-decoration-thickness: 2px;
+}
+
+.hm-page a:focus-visible {
+  outline: 3px solid var(--hm-accent);
+  outline-offset: 3px;
+}
+
+.hm-shot {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  border: 1px solid var(--hm-shot-border);
+  box-shadow: var(--hm-shot-shadow);
+}
+
+/* ── Hero ──────────────────────────────────────────────────── */
+
+.hm-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  gap: 4rem;
+  align-items: center;
+  padding: 4.5rem 0 5.5rem;
+}
+
+.hm-hero-text {
+  animation: hm-rise 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.hm-name {
+  font-size: clamp(3.1rem, 7.2vw, 5.8rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 0.95;
+  margin-bottom: 1.6rem;
+}
+
+.hm-lead {
+  font-size: clamp(1.2rem, 1.9vw, 1.5rem);
+  font-weight: 500;
+  line-height: 1.45;
+  max-width: 32ch;
+  margin-bottom: 1rem;
+}
+
+.hm-sub {
+  color: var(--hm-muted);
+  font-size: 1rem;
+  line-height: 1.6;
+  max-width: 46ch;
+  margin-bottom: 2.2rem;
+}
+
+.hm-social {
+  display: inline-flex;
+  gap: 0.9rem;
+  margin-left: 0.3rem;
+}
+
+.hm-social a {
+  color: var(--hm-muted);
+  font-size: 1.35rem;
+  display: inline-flex;
+}
+
+.hm-social a:hover {
+  color: var(--hm-accent);
+}
+
+.hm-hero-shots {
+  position: relative;
+  aspect-ratio: 1 / 0.82;
+}
+
+.hm-hero-shots .hm-shot {
+  position: absolute;
+}
+
+.hm-shot-back {
+  top: 0;
+  right: 0;
+  width: 90%;
+}
+
+.hm-shot-front {
+  left: 0;
+  bottom: 0;
+  width: 54%;
+}
+
+/* ── Section heads ─────────────────────────────────────────── */
+
+.hm-section-head {
+  max-width: 60ch;
+  margin-bottom: 1rem;
+}
+
+.hm-section-head h2,
+.hm-stack-intro h2,
+.hm-contact h2 {
+  font-size: clamp(1.9rem, 3.4vw, 2.6rem);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+  margin-bottom: 0.8rem;
+}
+
+.hm-section-head p,
+.hm-stack-intro p {
+  color: var(--hm-muted);
+  font-size: 1.08rem;
+  line-height: 1.6;
+}
+
+/* ── Selected work ─────────────────────────────────────────── */
+
+.hm-work {
+  padding-bottom: 2rem;
+}
+
+.hm-case {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.15fr);
+  gap: 4rem;
+  align-items: center;
+  padding: 4.5rem 0;
+  border-top: 1px solid var(--hm-rule);
+}
+
+.hm-case:first-of-type {
+  border-top: 0;
+  padding-top: 2.5rem;
+}
+
+.hm-case:nth-of-type(even) .hm-case-text {
+  order: 2;
+}
+
+.hm-case-context {
+  color: var(--hm-accent);
+  font-weight: 700;
+  font-size: 0.95rem;
+  margin-bottom: 0.6rem;
+}
+
+.hm-case h3 {
+  font-size: clamp(1.6rem, 2.8vw, 2.15rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin-bottom: 1.1rem;
+}
+
+.hm-case-summary {
+  font-size: 1.05rem;
+  line-height: 1.65;
+  max-width: 58ch;
+  margin-bottom: 1.4rem;
+}
+
+.hm-case-facts {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.4rem;
+  display: grid;
+  gap: 0.8rem;
+  max-width: 58ch;
+}
+
+.hm-case-facts li {
+  position: relative;
+  padding-left: 1.4rem;
+  line-height: 1.55;
+  color: var(--hm-ink);
+}
+
+.hm-case-facts li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.72em;
+  width: 0.65rem;
+  height: 2px;
+  background: var(--hm-accent);
+}
+
+.hm-case-stack {
+  color: var(--hm-muted);
+  font-size: 0.93rem;
+  line-height: 1.5;
+  margin-bottom: 1.2rem;
+}
+
+.hm-case-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 1.6rem;
+}
+
+.hm-work-more {
+  border-top: 1px solid var(--hm-rule);
+  padding-top: 2rem;
+}
+
+/* ── Reservation diagram (always on a dark panel) ──────────── */
+
+.hm-diagram {
+  margin: 0;
+  background: #1c0b0f;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  padding: 1.6rem 1.6rem 1.2rem;
+  box-shadow: var(--hm-shot-shadow);
+}
+
+.hm-diagram svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  font-family: inherit;
+}
+
+.hm-diagram figcaption {
+  color: #c9b8bc;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-top: 1rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hm-diagram .d-box {
+  fill: rgba(255, 255, 255, 0.04);
+  stroke: rgba(255, 255, 255, 0.22);
+}
+
+.hm-diagram .d-tx {
+  fill: rgba(139, 26, 42, 0.22);
+  stroke: #c44d5e;
+  stroke-width: 1.5;
+}
+
+.hm-diagram .d-ok {
+  fill: rgba(196, 77, 94, 0.3);
+  stroke: #e07484;
+  stroke-width: 1.5;
+}
+
+.hm-diagram .d-line {
+  stroke: #e07484;
+  stroke-width: 2;
+}
+
+.hm-diagram .d-line-dim {
+  stroke: rgba(255, 255, 255, 0.4);
+  stroke-dasharray: 4 4;
+}
+
+.hm-diagram .d-arrowhead {
+  fill: #e07484;
+}
+
+.hm-diagram .d-strong {
+  fill: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.hm-diagram .d-muted {
+  fill: #c9b8bc;
+  font-size: 13px;
+}
+
+.hm-diagram .d-body {
+  fill: #f2e9eb;
+  font-size: 14px;
+}
+
+.hm-diagram .d-code {
+  fill: #ffffff;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.hm-diagram .d-num-bg {
+  fill: #8b1a2a;
+}
+
+.hm-diagram .d-num {
+  fill: #ffffff;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.hm-diagram .d-note {
+  fill: #a8969b;
+  font-size: 12.5px;
+}
+
+.hm-diagram-mobile {
+  display: none;
+  color: #f2e9eb;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.hm-diagram-mobile p { margin: 0; }
+
+.hm-diagram-mobile .dm-pair { color: #c9b8bc; margin-bottom: 0.9rem; }
+
+.hm-diagram-mobile .dm-tx {
+  border: 1.5px solid #c44d5e;
+  background: rgba(139, 26, 42, 0.22);
+  border-radius: 10px;
+  padding: 0.9rem 1rem;
+}
+
+.hm-diagram-mobile .dm-code {
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.hm-diagram-mobile .dm-muted { color: #c9b8bc; font-size: 0.85rem; margin-bottom: 0.6rem; }
+
+.hm-diagram-mobile ol { margin: 0; padding-left: 1.2rem; display: grid; gap: 0.35rem; }
+
+.hm-diagram-mobile .dm-outcomes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.7rem;
+  margin-top: 0.9rem;
+}
+
+.hm-diagram-mobile .dm-outcomes p {
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 10px;
+  padding: 0.7rem 0.8rem;
+  color: #c9b8bc;
+  font-size: 0.88rem;
+}
+
+.hm-diagram-mobile .dm-outcomes strong {
+  display: block;
+  color: #ffffff;
+  margin-bottom: 0.2rem;
+}
+
+.hm-diagram-mobile .dm-outcomes .dm-ok {
+  background: rgba(196, 77, 94, 0.3);
+  border-color: #e07484;
+}
+
+/* ── Stack ─────────────────────────────────────────────────── */
+
+.hm-stack {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr);
+  gap: 4rem;
+  padding: 4rem 0 4.5rem;
+}
+
+.hm-stack-list {
+  margin: 0;
+}
+
+.hm-stack-row {
+  display: grid;
+  grid-template-columns: 12rem minmax(0, 1fr);
+  gap: 1.5rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--hm-rule);
+}
+
+.hm-stack-row:first-child {
+  padding-top: 0.2rem;
+}
+
+.hm-stack-row dt {
+  font-weight: 700;
+  color: var(--hm-ink);
+}
+
+.hm-stack-row dd {
+  margin: 0;
+  color: var(--hm-muted);
+  line-height: 1.55;
+}
+
+/* ── Contact ───────────────────────────────────────────────── */
+
+.hm-contact {
+  padding: 4.5rem 0 1rem;
+  border-top: 1px solid var(--hm-rule);
+}
+
+.hm-contact h2,
+.hm-contact p {
+  max-width: 62ch;
+}
+
+.hm-contact p {
+  font-size: 1.12rem;
+  line-height: 1.6;
+  color: var(--hm-muted);
+  margin-bottom: 1.8rem;
+}
+
+/* ── Motion ────────────────────────────────────────────────── */
+
+@keyframes hm-rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hm-hero-text { animation: none; }
+  .hm-btn { transition: none; }
+}
+
+/* ── Responsive ────────────────────────────────────────────── */
+
+@media (max-width: 960px) {
+  .hm-hero,
+  .hm-case,
+  .hm-stack {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2.5rem;
+  }
+
+  .hm-hero {
+    padding: 2.5rem 0 3.5rem;
+  }
+
+  .hm-case,
+  .hm-stack {
+    padding: 3.2rem 0;
+  }
+
+  .hm-case:nth-of-type(even) .hm-case-text {
+    order: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .hm-diagram .hm-diagram-svg { display: none; }
+  .hm-diagram .hm-diagram-mobile { display: block; }
+}
+
+@media (max-width: 560px) {
+  .hm-stack-row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.25rem;
+  }
+
+  .hm-diagram {
+    padding: 1rem 0.9rem 0.9rem;
+  }
+
+  .hm-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .hm-social {
+    margin-left: 0;
+  }
+}
