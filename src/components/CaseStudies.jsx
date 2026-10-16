@@ -58,7 +58,7 @@ const work = [
     ],
     stack: ["Next.js", "TypeScript", "Spring Boot", "PostgreSQL", "Vercel"],
     links: [
-      { label: "auralith-systems.vercel.app", href: "https://auralith-systems.vercel.app", icon: "site" },
+      { label: "auralithsystems.dev", href: "https://auralithsystems.dev", icon: "site" },
       { label: "Read the build write-up", to: "/blog/building-auralith-systems" },
     ],
     visual: {

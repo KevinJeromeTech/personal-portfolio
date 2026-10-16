@@ -9,7 +9,7 @@ const projects = [
     image: "/Logo/AuralithLogo.webp",
     imageFallback: "/Logo/AuralithLogo.png",
     github: "#",
-    demo: "https://auralith-systems.vercel.app",
+    demo: "https://auralithsystems.dev",
     featured: true,
     impact: "2 Clients",
     stack: ["Next.js", "TypeScript", "PostgreSQL", "Spring Boot", "Vercel"],
