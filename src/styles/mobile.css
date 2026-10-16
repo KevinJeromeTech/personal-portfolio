@@ -1,0 +1,289 @@
+/* ─────────────────────────────────────────────────────────────
+   Phone and small-tablet refinements. Loaded last.
+   Goals: less scrolling, readable text, thumb-sized controls,
+   and no per-frame blur work on phones.
+   ───────────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  /* Backdrop blur is recalculated on every scroll frame and is the main
+     source of jank on mid-range phones. Cards are nearly opaque already,
+     so dropping it changes almost nothing visually. */
+  *,
+  *::before,
+  *::after {
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
+
+  /* Without the blur, the header needs to be nearly opaque to stay readable */
+  .site-header,
+  .site-header.scrolled {
+    background: rgba(10, 4, 7, 0.97);
+  }
+
+  /* Hover lifts don't exist on touch and leave cards stuck mid-transform */
+  .preview-card:hover,
+  .info-card:hover,
+  .skill-item:hover,
+  .skill-card:hover {
+    transform: none;
+  }
+}
+
+@media (max-width: 600px) {
+  /* ── Page frame ── */
+  .container {
+    width: calc(100% - 24px);
+  }
+
+  .page-shell {
+    padding-top: 1.25rem;
+    padding-bottom: 2.5rem;
+  }
+
+  .section-card {
+    padding: 1.9rem 1.1rem;
+    margin-bottom: 1.25rem;
+    border-radius: 22px;
+  }
+
+  .info-card,
+  .preview-card,
+  .skill-item {
+    min-height: 0;
+    padding: 1.3rem 1.15rem;
+    border-radius: 16px;
+  }
+
+  .preview-grid {
+    gap: 0.9rem;
+  }
+
+  /* ── Section headings: smaller, tighter ── */
+  .about-preview h2,
+  .skills-preview h2,
+  .carousel-section h2,
+  .carousel-section .section-heading h2,
+  .contact-cta h2 {
+    font-size: 1.75rem;
+    line-height: 1.15;
+  }
+
+  /* Long centered paragraphs are hard to read on a phone */
+  .about-preview > p,
+  .about-bio-text {
+    text-align: left;
+    line-height: 1.65;
+    font-size: 1rem;
+  }
+
+  .about-preview > p {
+    margin-bottom: 1.4rem;
+  }
+
+  /* ── Home hero: get the bio and buttons above the fold ── */
+  .hero {
+    padding-top: 2rem;
+    padding-bottom: 2.2rem;
+  }
+
+  .profile-picture {
+    margin-bottom: 1rem;
+  }
+
+  .hero-avatar-wrap {
+    width: 112px;
+    height: 112px;
+  }
+
+  .hero-logo {
+    width: 100px;
+    height: 100px;
+    margin: 6px;
+    border-width: 3px;
+  }
+
+  .hero-greeting {
+    margin-bottom: 0.2rem;
+  }
+
+  .hero-bio {
+    line-height: 1.6;
+    font-size: 1rem;
+    margin-bottom: 1.6rem;
+  }
+
+  .hero-actions {
+    flex-wrap: wrap;
+  }
+
+  .hero-actions > * {
+    flex: 1 1 140px;
+  }
+
+  .hero-actions .hero-button {
+    width: 100%;
+    justify-content: center;
+    white-space: nowrap;
+    padding-left: 0.8rem;
+    padding-right: 0.8rem;
+  }
+
+  /* ── Stats: one row instead of a tall stack ── */
+  .about-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+    gap: 0.5rem;
+    padding: 0;
+  }
+
+  .stat-item {
+    min-width: 0;
+    text-align: center;
+  }
+
+  .stat-number {
+    font-size: 2rem;
+  }
+
+  .stat-label {
+    font-size: 0.68rem;
+    line-height: 1.3;
+  }
+
+  /* ── Core strengths: icon beside the title, not stacked above ── */
+  .skills-preview .skill-card {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 0.9rem;
+    align-items: center;
+  }
+
+  .skills-preview .skill-card .skill-icon-wrap {
+    margin: 0;
+    width: 40px;
+    height: 40px;
+  }
+
+  .skills-preview .skill-card h3 {
+    margin: 0;
+    font-size: 1.05rem;
+  }
+
+  .skills-preview .skill-card p {
+    grid-column: 1 / -1;
+    margin: 0.7rem 0 0;
+  }
+
+  /* ── Featured carousel ── */
+  body .split-info {
+    padding: 1.5rem 1.2rem;
+  }
+
+  body .split-image-panel {
+    height: 170px;
+  }
+
+  body .split-actions {
+    gap: 0.5rem;
+    flex-wrap: nowrap;
+  }
+
+  body .split-actions .split-btn {
+    flex: 1 1 0;
+    justify-content: center;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    white-space: nowrap;
+    font-size: 0.86rem;
+  }
+
+  /* Dots stay small visually but get a 28px touch area */
+  body .split-dot {
+    position: relative;
+  }
+
+  body .split-dot::after {
+    content: "";
+    position: absolute;
+    inset: -11px -6px;
+  }
+
+  body .split-dots {
+    gap: 0.75rem;
+  }
+
+  body .split-arrow {
+    width: 42px;
+    height: 42px;
+  }
+
+  /* ── Projects page ── */
+  body .filter-bar {
+    gap: 0.5rem;
+  }
+
+  body .filter-btn {
+    padding: 0.55rem 0.95rem;
+    font-size: 0.9rem;
+  }
+
+  body .project-links {
+    gap: 0.5rem;
+    flex-wrap: nowrap;
+  }
+
+  body .project-links a,
+  body .project-links .project-modal-button {
+    flex: 1 1 0;
+    padding: 0.7rem 0.5rem;
+    font-size: 0.88rem;
+    white-space: nowrap;
+  }
+
+  /* Disabled "Live Demo"/"GitHub" pills read as broken on a phone; hide them */
+  body .project-links .project-link-disabled,
+  body .project-links .link-disabled {
+    display: none;
+  }
+
+  body .project-featured-image-btn {
+    height: 190px;
+  }
+
+  body .project-featured-content {
+    padding: 1.6rem 1.25rem;
+    gap: 0.9rem;
+  }
+
+  body .project-featured-title {
+    font-size: 1.5rem;
+  }
+
+  /* ── Small text links: bigger tap area without changing the look ── */
+  .hm-case-links .hm-link,
+  body .project-detail-back,
+  body .bp-back-link {
+    padding: 0.55rem 0;
+    margin-top: -0.55rem;
+    margin-bottom: -0.55rem;
+  }
+
+  .hm-case-links {
+    row-gap: 0.4rem;
+    padding: 0.55rem 0;
+  }
+
+  body .project-detail-back {
+    margin-bottom: 0.9rem;
+  }
+
+  /* ── Scroll-to-top: smaller and out of the text column ── */
+  .scroll-to-top {
+    width: 40px;
+    height: 40px;
+    right: 0.75rem;
+    bottom: 1rem;
+    font-size: 1rem;
+  }
+}

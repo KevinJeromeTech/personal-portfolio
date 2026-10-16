@@ -137,7 +137,7 @@ export default function Projects() {
 
           {/* Filter bar */}
           <div className="filter-bar" role="group" aria-label="Filter projects">
-            {filterOptions.map(({ key, label }) => (
+            {filterOptions.filter(({ key }) => key === "all" || counts[key] > 0).map(({ key, label }) => (
               <button
                 key={key}
                 type="button"

@@ -105,18 +105,35 @@ function useTilt() {
   }, []);
 }
 
+// Decorative effects (3D background, code rain, custom cursor) only run on
+// larger screens with a mouse. On phones they cost a 225 KB download, battery,
+// and scroll smoothness for something drawn at a few percent opacity.
+function useRichEffects() {
+  const [rich] = useState(
+    () =>
+      typeof window !== "undefined" &&
+      window.matchMedia("(min-width: 768px) and (pointer: fine)").matches
+  );
+  return rich;
+}
+
 function App() {
   const location = useLocation();
+  const richEffects = useRichEffects();
   useSpotlight();
   useTilt();
 
   return (
     <>
       <Analytics />
-      <Suspense fallback={null}>
-        <ThreeBackground />
-      </Suspense>
-      <CodeRain />
+      {richEffects && (
+        <>
+          <Suspense fallback={null}>
+            <ThreeBackground />
+          </Suspense>
+          <CodeRain />
+        </>
+      )}
       <Toaster
         position="bottom-right"
         toastOptions={{
@@ -125,7 +142,7 @@ function App() {
           error:   { iconTheme: { primary: "#ef4444", secondary: "#1f1225" } },
         }}
       />
-      <CustomCursor />
+      {richEffects && <CustomCursor />}
       <ScrollProgressBar />
       <Navbar />
       <ScrollToTop />
