@@ -149,10 +149,10 @@
   padding: 0.44rem 0.9rem;
   border-radius: 999px;
   backdrop-filter: blur(10px);
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
+  letter-spacing: 0;
   position: relative;
   z-index: 1;
+  margin: 0 0 1.1rem;
 }
 
 .pulse-dot {
@@ -189,16 +189,12 @@
 }
 
 .hero-name {
-  font-size: clamp(3rem, 7vw, 5.2rem);
+  font-size: clamp(2.8rem, 6.5vw, 4.6rem);
+  font-weight: 800;
   line-height: 1.02;
-  margin: 0 0 0.9rem;
-  background: linear-gradient(135deg, #ffffff 0%, #ffbfd0 40%, #ffffff 60%, #ffd6e4 100%);
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  letter-spacing: -0.04em;
-  animation: gradientShift 5s ease-in-out infinite;
+  margin: 0 0 0.6rem;
+  color: #ffffff;
+  letter-spacing: -0.035em;
 }
 
 @keyframes gradientShift {
@@ -218,14 +214,28 @@
 }
 
 .hero-role {
-  display: inline-block;
-  font-size: 1.35rem;
-  font-weight: 700;
-  letter-spacing: 0.01em;
-  background: linear-gradient(90deg, #fff 0%, rgba(255,200,200,0.9) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #f2b8c3;
+  margin: 0 0 1.4rem;
+}
+
+/* ── Photo ── */
+.hero-photo-wrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.1rem;
+}
+
+.hero-photo {
+  width: 136px;
+  height: 136px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: 50% 18%;
+  border: 3px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.35);
+  display: block;
 }
 
 .hero-bio {
@@ -321,17 +331,10 @@
   color: #ffffff;
 }
 
-.about-preview h2::after,
-.skills-preview h2::after,
-.carousel-section h2::after,
-.contact-cta h2::after {
-  content: "";
-  display: block;
-  width: 56px;
-  height: 3px;
-  background: linear-gradient(90deg, rgba(255,255,255,0.9), rgba(255,180,200,0.4));
-  border-radius: 2px;
-  margin: 0.55rem auto 1rem;
+.about-preview h2,
+.skills-preview h2,
+.contact-cta h2 {
+  margin-bottom: 1rem;
 }
 
 .about-preview p,
@@ -412,4 +415,93 @@
 
 .skills-preview .preview-card p {
   line-height: 1.65;
+}
+
+
+/* ── Featured projects: the section that carries the page ──
+   Deeper, solid panel instead of the shared glass card, a left-aligned
+   header with the link to everything else, and a larger image side. */
+.carousel-section.featured-work {
+  background: #13050a;
+  border: 1px solid rgba(196, 77, 94, 0.32);
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.32);
+  padding: 3.2rem 3rem 3rem;
+}
+
+.carousel-section.featured-work::before {
+  display: none;
+}
+
+.featured-work .featured-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem 3rem;
+  flex-wrap: wrap;
+  text-align: left;
+  margin-bottom: 2rem;
+}
+
+.featured-work .featured-head h2 {
+  text-align: left;
+  font-size: clamp(2.1rem, 3.4vw, 2.9rem);
+  letter-spacing: -0.03em;
+  margin: 0 0 0.5rem;
+}
+
+.featured-work .featured-head p {
+  margin: 0;
+  max-width: 52ch;
+  text-align: left;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.featured-all-link {
+  color: #f2b8c3;
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.25em;
+  white-space: nowrap;
+  padding: 0.4rem 0;
+}
+
+.featured-all-link:hover {
+  color: #ffffff;
+}
+
+.featured-work .split-carousel {
+  max-width: none;
+}
+
+.featured-work .split-card {
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.25fr);
+  min-height: 480px;
+  border-color: rgba(255, 255, 255, 0.07);
+}
+
+.featured-work .split-info {
+  background: #1b080e;
+}
+
+.featured-work .split-image-panel,
+.featured-work .split-image-panel img {
+  background: #0c0306;
+}
+
+.featured-work .split-image-panel img {
+  padding: 1.8rem;
+  object-position: center;
+}
+
+@media (max-width: 860px) {
+  .featured-work .split-card {
+    grid-template-columns: minmax(0, 1fr);
+    min-height: auto;
+  }
+
+  .featured-work .split-image-panel img {
+    padding: 1rem;
+  }
 }

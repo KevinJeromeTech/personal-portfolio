@@ -49,13 +49,17 @@ export default function ProjectCarousel() {
   const total = featuredProjects.length;
 
   return (
-    <section className="carousel-section section-card">
-      <div className="section-heading">
-        <h2>Featured Projects</h2>
-        <p>
-          Systems I&apos;ve built and shipped, for clients and for myself. Full
-          case studies are on the Projects page.
-        </p>
+    <section className="carousel-section section-card featured-work">
+      <div className="section-heading featured-head">
+        <div>
+          <h2>Featured Projects</h2>
+          <p>
+            Systems I&apos;ve built and shipped, for clients and for myself.
+          </p>
+        </div>
+        <Link to="/projects" className="featured-all-link">
+          All projects and case studies
+        </Link>
       </div>
 
       <div
@@ -123,9 +127,6 @@ export default function ProjectCarousel() {
                     GitHub
                   </a>
                 )}
-                <Link to="/projects" className="split-btn split-btn-ghost">
-                  View All
-                </Link>
               </div>
 
               {/* Nav controls inside info panel */}
