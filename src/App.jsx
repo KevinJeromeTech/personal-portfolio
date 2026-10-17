@@ -64,7 +64,7 @@ function ScrollProgressBar() {
         width: "100%",
         transform: "scaleX(0)",
         transformOrigin: "0 50%",
-        background: "linear-gradient(90deg, #5f8099, #8fafc0, #ffffff)",
+        background: "#c44d5e",
         zIndex: 9999,
         pointerEvents: "none",
         willChange: "transform",
