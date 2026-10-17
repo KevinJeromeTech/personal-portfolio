@@ -1,26 +1,25 @@
 /* ─────────────────────────────────────────────────────────────
-   Phone and small-tablet refinements. Loaded last.
-   Goals: less scrolling, readable text, thumb-sized controls,
-   and no per-frame blur work on phones.
+   Performance and phone refinements. Loaded last.
    ───────────────────────────────────────────────────────────── */
 
+/* No backdrop blur anywhere. The code rain animates behind every card, so
+   each blurred card had to be re-blurred on every frame, which made
+   scrolling lag. Cards are nearly opaque, so the visual change is minimal. */
+*,
+*::before,
+*::after {
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+}
+
+/* Without the blur, the header and mobile menu need to be nearly opaque */
+.site-header,
+.site-header.scrolled,
+body.dark-mode .site-header {
+  background: rgba(10, 4, 7, 0.985);
+}
+
 @media (max-width: 768px) {
-  /* Backdrop blur is recalculated on every scroll frame and is the main
-     source of jank on mid-range phones. Cards are nearly opaque already,
-     so dropping it changes almost nothing visually. */
-  *,
-  *::before,
-  *::after {
-    -webkit-backdrop-filter: none !important;
-    backdrop-filter: none !important;
-  }
-
-  /* Without the blur, the header needs to be nearly opaque to stay readable */
-  .site-header,
-  .site-header.scrolled {
-    background: rgba(10, 4, 7, 0.97);
-  }
-
   /* Hover lifts don't exist on touch and leave cards stuck mid-transform */
   .preview-card:hover,
   .info-card:hover,

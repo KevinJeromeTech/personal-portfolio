@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect, useState } from "react";
+import { lazy, Suspense, useEffect, useRef, useState } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "motion/react";
 import { Toaster } from "react-hot-toast";
@@ -9,7 +9,6 @@ import CustomCursor from "./components/CustomCursor.jsx";
 import ErrorBoundary from "./components/ErrorBoundary.jsx";
 import ScrollToTop from "./components/ScrollToTop.jsx";
 import CodeRain from "./components/CodeRain.jsx";
-const ThreeBackground = lazy(() => import("./components/ThreeBackground.jsx"));
 
 const Home          = lazy(() => import("./pages/Home.jsx"));
 const About         = lazy(() => import("./pages/About.jsx"));
@@ -30,31 +29,45 @@ function PageLoader() {
 }
 
 function ScrollProgressBar() {
-  const [progress, setProgress] = useState(0);
+  const barRef = useRef(null);
 
+  // Updates via a ref and transform, at most once per frame: no React
+  // re-render and no layout on every scroll event.
   useEffect(() => {
+    let frame = 0;
     const update = () => {
+      frame = 0;
       const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      setProgress(docHeight > 0 ? (window.scrollY / docHeight) * 100 : 0);
+      const p = docHeight > 0 ? window.scrollY / docHeight : 0;
+      if (barRef.current) barRef.current.style.transform = `scaleX(${p})`;
     };
-    window.addEventListener("scroll", update, { passive: true });
-    return () => window.removeEventListener("scroll", update);
+    const onScroll = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      cancelAnimationFrame(frame);
+    };
   }, []);
 
   return (
     <div
+      ref={barRef}
       aria-hidden="true"
       style={{
         position: "fixed",
         top: 0,
         left: 0,
         height: "3px",
-        width: `${progress}%`,
+        width: "100%",
+        transform: "scaleX(0)",
+        transformOrigin: "0 50%",
         background: "linear-gradient(90deg, #5f8099, #8fafc0, #ffffff)",
         zIndex: 9999,
-        transition: "width 0.08s linear",
         pointerEvents: "none",
-        borderRadius: "0 2px 2px 0",
+        willChange: "transform",
       }}
     />
   );
@@ -105,9 +118,8 @@ function useTilt() {
   }, []);
 }
 
-// Decorative effects (3D background, code rain, custom cursor) only run on
-// larger screens with a mouse. On phones they cost a 225 KB download, battery,
-// and scroll smoothness for something drawn at a few percent opacity.
+// Decorative effects (code rain, custom cursor) only run on larger screens
+// with a mouse; on phones they cost battery and scroll smoothness.
 function useRichEffects() {
   const [rich] = useState(
     () =>
@@ -126,14 +138,7 @@ function App() {
   return (
     <>
       <Analytics />
-      {richEffects && (
-        <>
-          <Suspense fallback={null}>
-            <ThreeBackground />
-          </Suspense>
-          <CodeRain />
-        </>
-      )}
+      {richEffects && <CodeRain />}
       <Toaster
         position="bottom-right"
         toastOptions={{

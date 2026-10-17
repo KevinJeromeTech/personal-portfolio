@@ -77,8 +77,8 @@ a {
 .section-card {
   background: linear-gradient(
     145deg,
-    rgba(30, 8, 12, 0.82),
-    rgba(20, 5, 8, 0.88)
+    rgba(30, 8, 12, 0.9),
+    rgba(20, 5, 8, 0.94)
   );
   color: var(--white);
   backdrop-filter: blur(18px);
