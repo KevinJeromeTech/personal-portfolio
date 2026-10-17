@@ -391,3 +391,25 @@
     height: 146px;
   }
 }
+
+
+/* Card text reads better left-aligned; keep section intros centered */
+.about-preview .preview-card p {
+  text-align: left;
+  margin: 0;
+  max-width: none;
+  line-height: 1.7;
+  font-size: 0.98rem;
+}
+
+.about-preview .preview-card h3 {
+  margin: 0 0 0.8rem;
+}
+
+.about-preview .about-stats {
+  margin-bottom: 2.4rem;
+}
+
+.skills-preview .preview-card p {
+  line-height: 1.65;
+}

@@ -9,7 +9,7 @@ const projects = [
     image: "/Logo/AuralithLogo.webp",
     imageFallback: "/Logo/AuralithLogo.png",
     github: "#",
-    demo: "https://auralith-systems.vercel.app",
+    demo: "https://auralithsystems.dev",
     featured: true,
     impact: "2 Clients",
     stack: ["Next.js", "TypeScript", "PostgreSQL", "Spring Boot", "Vercel"],
@@ -27,11 +27,11 @@ const projects = [
       "Production storefront and back-office system for a Miami menswear retailer: online reservations, customer accounts, inventory, tailoring work orders, and a staff dashboard (StoreLens) with role-based access.",
     longDescription:
       "Classic Menswear tracked its inventory in spreadsheets. I built a replacement through Auralith Systems: a Next.js storefront where customers browse stock, reserve items, and manage their accounts, backed by StoreLens, a staff dashboard for inventory, orders, alterations, and storefront content. The data layer is a 31-table Supabase Postgres schema with row-level security enabled on every table and access controlled by role (owner, staff, tailor, consultant, customer). I've also worked at Classic Menswear on the sales floor since 2019.",
-    image: "/Images/StoreLens.webp",
-    imageFallback: "/Images/StoreLens.png",
+    image: "/Images/StoreLens-transparent.webp",
+    imageFallback: "/Images/StoreLens-transparent.png",
     github: "https://github.com/KevinJeromeTech/classic-menswear-redesign",
     demo: "https://classicmenswear.org",
-    featured: false,
+    featured: true,
     impact: "Live Client",
     stack: ["Next.js", "TypeScript", "Supabase (Postgres)", "Tailwind CSS", "Claude API", "Playwright"],
     highlights: [

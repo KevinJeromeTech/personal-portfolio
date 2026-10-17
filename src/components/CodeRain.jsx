@@ -17,14 +17,15 @@ export default function CodeRain() {
     const fps        = isMobile ? 20 : 30;
     const interval   = 1000 / fps;
 
-    const off    = document.createElement("canvas");
-    const offCtx = off.getContext("2d");
+    // Draw straight onto the visible canvas: the old offscreen buffer cost a
+    // full-screen clear and copy on every frame for no visual difference.
+    const offCtx = ctx;
 
     let animId, cols, drops, lastTime = 0;
 
     function resize() {
-      canvas.width  = off.width  = window.innerWidth;
-      canvas.height = off.height = window.innerHeight;
+      canvas.width  = window.innerWidth;
+      canvas.height = window.innerHeight;
       cols  = Math.floor(canvas.width / colSpacing);
       drops = Array.from({ length: cols }, () => Math.random() * -100);
     }
@@ -42,7 +43,7 @@ export default function CodeRain() {
       // Fade trails toward transparent
       offCtx.globalCompositeOperation = "destination-out";
       offCtx.fillStyle = "rgba(0,0,0,0.08)";
-      offCtx.fillRect(0, 0, off.width, off.height);
+      offCtx.fillRect(0, 0, canvas.width, canvas.height);
       offCtx.globalCompositeOperation = "source-over";
 
       offCtx.font = `bold ${fontSize}px monospace`;
@@ -58,16 +59,21 @@ export default function CodeRain() {
         if (y * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
         drops[i] += 0.4;
       });
-
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.drawImage(off, 0, 0);
     }
+
+    // Stop drawing entirely while the tab is in the background
+    function onVisibility() {
+      cancelAnimationFrame(animId);
+      if (!document.hidden) animId = requestAnimationFrame(draw);
+    }
+    document.addEventListener("visibilitychange", onVisibility);
 
     animId = requestAnimationFrame(draw);
 
     return () => {
       cancelAnimationFrame(animId);
       window.removeEventListener("resize", resize);
+      document.removeEventListener("visibilitychange", onVisibility);
     };
   }, []);
 

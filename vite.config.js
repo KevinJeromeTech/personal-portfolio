@@ -48,7 +48,6 @@ export default defineConfig({
           }
           if (id.includes('motion')) return 'motion';
           if (id.includes('react-icons')) return 'icons';
-          if (id.includes('three') || id.includes('@react-three')) return 'three-vendor';
         },
       },
     },

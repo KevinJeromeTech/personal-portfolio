@@ -3,6 +3,8 @@ import { AnimatePresence, motion } from "motion/react";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import projects from "../data/projects.js";
+import CaseStudies from "../components/CaseStudies.jsx";
+import "../styles/case-studies.css";
 import "../styles/projects.css";
 
 const modalOverlayVariants = {
@@ -135,7 +137,7 @@ export default function Projects() {
 
           {/* Filter bar */}
           <div className="filter-bar" role="group" aria-label="Filter projects">
-            {filterOptions.map(({ key, label }) => (
+            {filterOptions.filter(({ key }) => key === "all" || counts[key] > 0).map(({ key, label }) => (
               <button
                 key={key}
                 type="button"
@@ -148,6 +150,8 @@ export default function Projects() {
             ))}
           </div>
         </section>
+
+        <CaseStudies />
 
         <section className="section-card projects-grid-section">
           <div className="projects-layout">

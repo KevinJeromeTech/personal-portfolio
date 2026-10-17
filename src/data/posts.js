@@ -62,7 +62,7 @@ const posts = [
       {
         type: "bullets",
         items: [
-          "The public site at auralith-systems.vercel.app is the marketing front. It covers services, company information, and a contact pipeline. SEO and page speed matter here, so it leans heavily on Next.js static generation and server-side rendering.",
+          "The public site at auralithsystems.dev is the marketing front. It covers services, company information, and a contact pipeline. SEO and page speed matter here, so it leans heavily on Next.js static generation and server-side rendering.",
           "The client dashboard lets customers log in, view project status, track milestones, and access deliverables. This is a fully authenticated SPA-style experience inside the Next.js app, gated by NextAuth.js sessions with role checks.",
           "The admin portal is where I manage projects, clients, invoices, and internal operations. It has elevated permissions, bulk actions, and reporting tools. Same Next.js app, different route group, different authorization layer.",
         ],
@@ -160,7 +160,7 @@ const posts = [
       {
         type: "link",
         text: "Visit Auralith Systems",
-        url: "https://auralith-systems.vercel.app",
+        url: "https://auralithsystems.dev",
       },
     ],
   },
