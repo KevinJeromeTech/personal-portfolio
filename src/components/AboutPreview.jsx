@@ -1,44 +1,9 @@
-import { useEffect, useRef, useState } from "react";
+import StatCounter from "./StatCounter.jsx";
 
 const stats = [
   { value: 2,  label: "Auralith Clients",   suffix: "" },
   { value: 3,  label: "Apps in Production", suffix: "" },
 ];
-
-function StatCounter({ value, label, suffix }) {
-  const [count, setCount] = useState(0);
-  const ref = useRef(null);
-
-  useEffect(() => {
-    const node = ref.current;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry.isIntersecting) return;
-        observer.unobserve(node);
-        let current = 0;
-        const step = Math.ceil(value / 35);
-        const timer = setInterval(() => {
-          current = Math.min(current + step, value);
-          setCount(current);
-          if (current >= value) clearInterval(timer);
-        }, 45);
-      },
-      { threshold: 0.5 }
-    );
-    observer.observe(node);
-    return () => observer.disconnect();
-  }, [value]);
-
-  return (
-    <div className="stat-item" ref={ref}>
-      <span className="stat-number">
-        {count}
-        {suffix}
-      </span>
-      <span className="stat-label">{label}</span>
-    </div>
-  );
-}
 
 export default function AboutPreview() {
   return (
