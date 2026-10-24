@@ -1,4 +1,3 @@
-import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "motion/react";
 import { Helmet } from "react-helmet-async";
@@ -15,6 +14,7 @@ import {
   FaStar,
 } from "react-icons/fa";
 import ScrambleText from "../components/ScrambleText.jsx";
+import StatCounter from "../components/StatCounter.jsx";
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 28 },
@@ -22,41 +22,6 @@ const fadeUp = (delay = 0) => ({
   viewport: { once: true, amount: 0.15 },
   transition: { duration: 0.5, delay, ease: [0.22, 1, 0.36, 1] },
 });
-
-function StatCounter({ value, label, suffix = "+" }) {
-  const [count, setCount] = useState(0);
-  const ref = useRef(null);
-
-  useEffect(() => {
-    const node = ref.current;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry.isIntersecting) return;
-        observer.unobserve(node);
-        let current = 0;
-        const step = Math.ceil(value / 35);
-        const timer = setInterval(() => {
-          current = Math.min(current + step, value);
-          setCount(current);
-          if (current >= value) clearInterval(timer);
-        }, 45);
-      },
-      { threshold: 0.5 }
-    );
-    observer.observe(node);
-    return () => observer.disconnect();
-  }, [value]);
-
-  return (
-    <div className="stat-item" ref={ref}>
-      <span className="stat-number">
-        {count}
-        {suffix}
-      </span>
-      <span className="stat-label">{label}</span>
-    </div>
-  );
-}
 
 const highlights = [
   {
