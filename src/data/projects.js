@@ -6,8 +6,8 @@ const projects = [
       "Software consultancy I founded in Dec 2025 and run as the sole engineer. Two client engagements delivered: Classic Menswear and Redgine Creates.",
     longDescription:
       "Auralith Systems is the software consultancy I founded in December 2025. I handle every engagement end to end as the only engineer: gathering requirements from the business owner, designing the data model, building the application, and deploying it. The first engagement was a full storefront and back-office system for Classic Menswear, a Miami menswear retailer. I then reused the same inventory and admin architecture for a second client, Redgine Creates. Auralith also runs on its own platform, with a public site, client dashboard, and admin portal.",
-    image: "/Logo/AuralithLogo.webp",
-    imageFallback: "/Logo/AuralithLogo.png",
+    image: "/CaseStudies/auralith-dashboard.webp",
+    imageFallback: "/CaseStudies/auralith-dashboard.webp",
     github: "",
     demo: "https://auralithsystems.dev",
     featured: true,
@@ -49,8 +49,8 @@ const projects = [
       "Full-stack expense tracker with JWT auth, budgets, analytics charts, and Claude-powered spending insights and transaction categorization. Deployed on Vercel and Render.",
     longDescription:
       "ExpenseIQ is a full-stack expense tracker I built and use, along with a few other people. The frontend is React 19 and TypeScript with TanStack Query for server state; the backend is a TypeScript Express API on PostgreSQL through Prisma. Instead of sending raw transactions to an LLM, the server computes the numbers first (category totals, budget usage, daily average, projected month-end spend) and gives Claude Haiku that summary to turn into specific insights. Claude also suggests a category when you add a transaction.",
-    image: "/Images/ExpenseIQ.webp",
-    imageFallback: "/Images/ExpenseIQ.png",
+    image: "/Images/ExpenseIQ-dashboard.webp",
+    imageFallback: "/Images/ExpenseIQ-dashboard.jpg",
     github: "https://github.com/KevinJeromeTech/ExpenseIQ",
     demo: "https://expense-iq-lilac.vercel.app/",
     featured: true,
@@ -91,8 +91,8 @@ const projects = [
       "This site. React and Vite single-page app with per-page SEO, PWA support, and CI on every push.",
     longDescription:
       "This portfolio is a custom React and Vite site. Content (projects, blog posts) lives in plain data files so updating the site doesn't mean touching components. It ships with per-page metadata through react-helmet-async, an offline-capable PWA build, and long-lived cache headers for static assets on Vercel.",
-    image: "/Images/nportfolio.webp",
-    imageFallback: "/Images/nportfolio.png",
+    image: "/Images/Portfolio-home.webp",
+    imageFallback: "/Images/Portfolio-home.jpg",
     github: "https://github.com/KevinJeromeTech/personal-portfolio",
     demo: "https://kevinjerome.dev/",
     featured: false,
@@ -111,8 +111,8 @@ const projects = [
       "Responsive, accessible static site presenting educational resources. CodePath WEB101 coursework.",
     longDescription:
       "Universal Education Empowerment is a static website built for CodePath's WEB101 course. It presents educational resources with a focus on responsive layout and accessibility.",
-    image: "/Images/UEE.webp",
-    imageFallback: "/Images/UEE.png",
+    image: "/Images/UEE-site.webp",
+    imageFallback: "/Images/UEE-site.jpg",
     github: "https://github.com/KevinJeromeTech/UEE",
     demo: "https://spiketek241.github.io/Universal-Educational-Empowerment/",
     featured: false,

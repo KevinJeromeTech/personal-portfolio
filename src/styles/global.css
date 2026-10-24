@@ -318,11 +318,8 @@ section h2 {
   font-size: clamp(2.2rem, 4.5vw, 3.6rem);
   line-height: 1.08;
   margin: 0 0 1.2rem;
-  background: linear-gradient(135deg, #ffffff 30%, #c8dce8 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
   letter-spacing: -0.04em;
+  color: #ffffff;
 }
 
 .section-heading-block {
@@ -666,12 +663,9 @@ body.dark-mode .page-loader {
 .not-found-code {
   font-size: clamp(5rem, 15vw, 9rem);
   font-weight: 800;
-  background: linear-gradient(135deg, #6b1220, #8b1a2a);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
   margin: 0 0 0.5rem;
   line-height: 1;
+  color: #f2b8c3;
 }
 .not-found-title {
   font-size: clamp(1.4rem, 3vw, 2rem);
